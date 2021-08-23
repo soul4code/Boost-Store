@@ -1,9 +1,31 @@
-import MainLayout from "../components/layouts/main";
+import MainLayout from "../components/layouts/Main";
+import MainSlider from "../components/MainSlider";
+import Reviews from "../components/Reviews";
+import SectionGames from "../components/SectionGames";
 
 export default function Home() {
-  return (
-    <MainLayout title="Boosting Service">
-      <h1>Главная страница</h1>
-    </MainLayout>
-  )
+
+    return (
+        <MainLayout title="Boosting Service">
+            <MainSlider/>
+            <SectionGames/>
+            <Reviews/>
+            <section className="page-text">
+                <div className="container">
+                    <h2 className="page-text__title">BoostCenter</h2>
+                    <h3 className="page-text__subtitle">Fast and Pro Game Boosting services, in any game!</h3>
+                    <div className="page-text__text">
+                        <p>BoostHub was created for everyone who play in online games willing to buy any kind of gaming
+                            services
+                            – ratings, coaching, ELO boosting, powerlevelling, any ratings and achievements, any items
+                            in
+                            such
+                            games as: World of Warcraft, Starcraft 2, League of Legends, Dota 2, CS:GO, Heathstone,
+                            Overwatch,
+                            PlayerUnknown's Battlegrounds, Heroes of the Storm and many other games.</p>
+                    </div>
+                </div>
+            </section>
+        </MainLayout>
+    )
 }
