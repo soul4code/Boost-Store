@@ -5420,6 +5420,7 @@ body {
 
 .tab__item-account {
   height: 32px;
+  padding: 10px;
 }
 
 .tab__item-account:hover {

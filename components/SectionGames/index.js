@@ -1,91 +1,56 @@
-import {useEffect, useState} from "react";
+import { connect } from "react-redux";
+import { setGames } from "../../store/games/actions";
+import { useEffect } from "react";
+import Link from 'next/link';
+import { api } from '../../utils/api/api';
+import GameCard from "../GameCard";
 
-export default function SectionGames() {
-
-    const [games, setGames] = useState([]);
+const SectionGames = (props) => {
 
     useEffect(() => {
-        fetch('https://boost-center.com/api/games')
-            .then(res => {
-                return res.json();
-            })
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(`Ошибка при получении списка игр ${err}`);
-            })
+        api.getGames()
+        .then(res => {
+            props.setGames(res);
+        })
+        .catch(err => {
+            console.log(`Ошибка при получении списка игр ${err}`);
+        })
     }, [])
 
-    return(
+    return (
         <section className="section-games container">
-                <h2 className="section-games__title">Games</h2>
-                <div className="section-games__catalog">
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_cs.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_dota.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_tanks.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_wow.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_diablo.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_wow.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_diablo.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_wow.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="game-card section-games__game-card" href="#">
-                        <div className="game-card__wrap-img mainGame-card__wrap-img">
-                            <img className="game-card__img" src="img/game-card/game-card__img_diablo.jpg" alt="альт" />
-                        </div>
-                    </a>
-                    <a className="section-games__players" href='#'>
-                        <div className="section-games__players-icon">
-                            <img src="img/icons/man.svg" alt="" />
-                            <img className="section-games__players-hov" src="img/icons/man-blue.svg" alt="" />
-                        </div>
-                        <div className="section-games__players-text">
-                            More than <b>500 professionals players</b>
-                        </div>
-                    </a>
-                </div>
-            </section>
+            <h2 className="section-games__title">Games</h2>
+            <div className="section-games__catalog">
+                {
+                    props.games.map(game => {
+                        return (
+                            <Link href={`/${game.NAME}`} key={game.ID}>
+                                <GameCard picture={game.PICTURE} link={`/${game.CODE}`} alt={game.NAME} />
+                            </Link>
+                        );
+                    })
+                }
+
+                <a className="section-games__players" href='#'>
+                    <div className="section-games__players-icon">
+                        <img src="img/icons/man.svg" alt="more then 500 professionals players"/>
+                        <img className="section-games__players-hov" src="img/icons/man-blue.svg" alt="more then 500 professionals players"/>
+                    </div>
+                    <div className="section-games__players-text">
+                        More than <b>500 professionals players</b>
+                    </div>
+                </a>
+            </div>
+        </section>
     );
 }
+
+const mapStateToProps = state => ({
+    games: state.games.games
+})
+
+const mapDispatchToProps = {
+    setGames
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SectionGames);
