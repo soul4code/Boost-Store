@@ -2,8 +2,13 @@ import MainLayout from "../components/layouts/Main";
 import MainSlider from "../components/MainSlider";
 import Reviews from "../components/Reviews";
 import SectionGames from "../components/SectionGames";
+import en from "../locale/main/en";
+import ru from "../locale/main/ru";
+import {useRouter} from "next/router";
 
 export default function Home() {
+    const router = useRouter();
+    const t = router.locale === "ru" ? ru : en;
 
     return (
         <MainLayout title="Boosting Service">
