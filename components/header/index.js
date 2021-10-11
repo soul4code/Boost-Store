@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { LanguageSwitcher } from '../languageSwitcher';
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <>
@@ -33,12 +34,16 @@ const Header = () => {
                                 </a>
                             </Link>
                             <div className="header__navbar-games-list select__wrap-list">
-                                <Link href="#">
-                                    <a className="header__navbar-games-item">
-                                        <img src="img/wow.png" alt=""/>
-                                        <p>World of Warcraft</p>
-                                    </a>
-                                </Link>
+                                {
+                                    props.games.map(game => (
+                                        <Link href={`/${game.CODE}`} key={game.ID} passHref>
+                                            <a className="header__navbar-games-item">
+                                                <img width="50px" src={game.UF_SVG_ICON} alt={game.NAME}/>
+                                                <p>{game.NAME}</p>
+                                            </a>
+                                        </Link>
+                                    ))
+                                }
                             </div>
                         </li>
                         <li className="header__navbar-item select">
@@ -158,4 +163,8 @@ const Header = () => {
     );
 }
 
-export default Header;
+const mapStateToProps = state => ({
+    games: state.games.games
+})
+
+export default connect(mapStateToProps)(Header);

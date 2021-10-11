@@ -1,36 +1,15 @@
 import Link from 'next/link';
-import styles from './style.module.css';
+import { LanguageSwitcher } from '../languageSwitcher';
+import Logo from '../logo';
+import { connect } from 'react-redux';
 
-const Footer = () => {
+const Footer = (props) => {
 
     return(
         <>
         <footer className="footer">
             <div className="footer__box">
-                <div className="select footer__select">
-                    <div className="select__field">
-                        <span className="select__field-text">Eng</span>
-                        <svg className="select__field-icon" width="9" height="5" viewBox="0 0 9 5" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.74694 4.89542L8.90279 0.609586C9.03566 0.467701 9.03185 0.241607 8.89427 0.104577C8.76005 -0.0291042 8.54729 -0.0291042 8.4131 0.104577L4.5021 4.13791L0.591098 0.104577C0.455871 -0.0348594 0.236633 -0.0348594 0.101406 0.104577C-0.0338011 0.244055 -0.0338011 0.470128 0.101406 0.609586L4.25725 4.89542C4.3925 5.03486 4.61172 5.03486 4.74694 4.89542Z" />
-                        </svg>
-                    </div>
-                    <div className="select__wrap-list">
-                        <ul className="select__list">
-                            <li className="select__list-item">
-                            <Link href="#">
-                                <a className="select__list-link">RUS</a>
-                            </Link>
-                            </li>
-                            <li className="select__list-item">
-                            <Link href="#">
-                                <a className="select__list-link select__list-link_active">ENG</a>
-                            </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <LanguageSwitcher isFooter={true} />
 
                 <ul className="soc-net footer__soc-net">
                     <li className="soc-net__item">
@@ -85,81 +64,21 @@ const Footer = () => {
                 </ul>
             </div>
 
-        <Link href="/">
-            <a className='logo footer__logo'>
-                <img className='logo__img footer__logo-img' src="img/logo.jpg" alt="логотип" title="Перейти на главную страницу" />
-                <div className='logo__name'>
-                    <span className='logo__name-item'>Boost</span>
-                    <span className='logo__name-item'>Center</span>
-                </div>
-            </a>
-        </Link>
+            <Logo linkClass="footer__logo" />
 
             <ul className="game-catalog footer__game-catalog">
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/dota2.svg" alt="dota2" />
-                        <span className="game-catalog__game-name">Dota 2</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
-                <li className="game-catalog__item">
-                <Link href="#">
-                    <a className="game-catalog__game-link">
-                        <img className="game-catalog__game-img" src="img/game-catalog__game-img.svg" alt="логотип" />
-                        <span className="game-catalog__game-name">WoW-classic</span>
-                    </a>
-                </Link>
-                </li>
+                {
+                    props.games.map(game => (
+                        <li className="game-catalog__item">
+                            <Link href={`/${game.CODE}`} key={game.ID} passHref>
+                                <a className="game-catalog__game-link">
+                                    <img className="game-catalog__game-img" src={ game.UF_SVG_ICON } alt={ game.NAME } />
+                                    <span className="game-catalog__game-name">{game.NAME}</span>
+                                </a>
+                            </Link>
+                        </li>
+                    ))
+                }
             </ul>
 
             <div className="footer__copyrigth">© 2021 All rights reserved. Boost-Store - game boosting service</div>
@@ -193,4 +112,8 @@ const Footer = () => {
     );
 }
 
-export default Footer;
+const mapStateToProps = state => ({
+    games: state.games.games
+})
+
+export default connect(mapStateToProps)(Footer);

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 
-export const LanguageSwitcher = () => {
+export const LanguageSwitcher = ({ isFooter }) => {
     const router = useRouter();
     const langName = router.locale === "ru" ? "RUS" : "ENG";
-
+    const switcherClasses = (isFooter) ? 'select footer__select' : 'select header__select header__select-lang';
 
     return (
-        <div className="select header__select header__select-lang">
+        <div className={ switcherClasses }>
             <div className="select__field">
                 <span className="select__field-text">{ langName }</span>
                 <svg className="select__field-icon" width="9" height="5" viewBox="0 0 9 5" fill="none"

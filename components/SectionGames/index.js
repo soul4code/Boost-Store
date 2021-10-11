@@ -30,14 +30,14 @@ const SectionGames = (props) => {
                 {
                     props.games.map(game => {
                         return (
-                            <Link href={`/${game.NAME}`} key={game.ID}>
+                            <Link href={`/${game.CODE}`} key={game.ID} passHref>
                                 <GameCard picture={game.PICTURE} link={`/${game.CODE}`} alt={game.NAME}/>
                             </Link>
                         );
                     })
                 }
 
-                <a className="section-games__players" href='#'>
+                {/* <a className="section-games__players" href='#'>
                     <div className="section-games__players-icon">
                         <img src="img/icons/man.svg" alt="more then 500 professionals players"/>
                         <img className="section-games__players-hov" src="img/icons/man-blue.svg"
@@ -46,26 +46,20 @@ const SectionGames = (props) => {
                     <div className="section-games__players-text">
                         More than <b>500 professionals players</b>
                     </div>
-                </a>
+                </a> */}
             </div>
         </section>
     );
 }
 
 const mapStateToProps = state => ({
-    games: state.games.games
+    games: state.games.games,
+    lang: state.lang.lang
 })
 
 const mapDispatchToProps = {
     setGames
 }
 
-export function getStaticProps({ locale }) {
-    return {
-        props: {
-            locale
-        }
-    }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SectionGames);

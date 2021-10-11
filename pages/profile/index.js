@@ -2,7 +2,7 @@ import MainLayout from "../../components/layouts/Main";
 
 export default function Profile() {
     return (
-        <MainLayout>
+        <MainLayout title="Personal Page | Boost-Store">
             <div className="main__page">
                 <h1 className="page__title account__title">
                     Account overview

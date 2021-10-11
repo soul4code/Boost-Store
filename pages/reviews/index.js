@@ -1,7 +1,8 @@
 import MainLayout from '../../components/layouts/Main';
 import Image from 'next/image';
 import wotPic from '../../images/review/img1.jpg';
-import userSvg from '../../images/review/user.svg';
+import UserSvg from '../../images/review/user.svg';
+import StarIcon from '../../public/img/reviews/star.svg';
 
 const Reviews = () => {
 
@@ -32,85 +33,17 @@ const Reviews = () => {
                                         Reviews: 1452 <span>Excellent</span>
                                     </div>
                                     <div className="reviews__header-rating">
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="#C4C4C4"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="url(#paint0_linear)"/>
-                                            <defs>
-                                                <linearGradient id="paint0_linear" x1="11.5" y1="0" x2="11.5" y2="23"
-                                                                gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#30CAFF"/>
-                                                    <stop offset="1" stop-color="#329BF8"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="#C4C4C4"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="url(#paint0_linear)"/>
-                                            <defs>
-                                                <linearGradient id="paint0_linear" x1="11.5" y1="0" x2="11.5" y2="23"
-                                                                gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#30CAFF"/>
-                                                    <stop offset="1" stop-color="#329BF8"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="#C4C4C4"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="url(#paint0_linear)"/>
-                                            <defs>
-                                                <linearGradient id="paint0_linear" x1="11.5" y1="0" x2="11.5" y2="23"
-                                                                gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#30CAFF"/>
-                                                    <stop offset="1" stop-color="#329BF8"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="#C4C4C4"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="url(#paint0_linear)"/>
-                                            <defs>
-                                                <linearGradient id="paint0_linear" x1="11.5" y1="0" x2="11.5" y2="23"
-                                                                gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#30CAFF"/>
-                                                    <stop offset="1" stop-color="#329BF8"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="white"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="white"/>
-                                        </svg>
+                                        <StarIcon/>
+                                        <StarIcon/>
+                                        <StarIcon/>
+                                        <StarIcon/>
+                                        <StarIcon/>
                                     </div>
                                 </div>
                         </div>
                         <div className="reviews__header-write">
                             <div className="reviews__header-user">
-                                <Image src={userSvg} alt="иконка отзыва" width="41" height="50" />
+                                <UserSvg/>
                             </div>
                             <div className="reviews__header-write-box">
                                 <div className="reviews__header-stars">
@@ -186,22 +119,7 @@ const Reviews = () => {
                             <div className="reviews__item-wrapper">
                                 <div className="reviews__item-content">
                                     <div className="reviews__item-stars">
-                                        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="#C4C4C4"/>
-                                            <path
-                                                d="M11.5 0L14.0819 7.9463H22.4371L15.6776 12.8574L18.2595 20.8037L11.5 15.8926L4.74047 20.8037L7.32238 12.8574L0.56285 7.9463H8.91809L11.5 0Z"
-                                                fill="url(#paint0_linear)"/>
-                                            <defs>
-                                                <linearGradient id="paint0_linear" x1="11.5" y1="0" x2="11.5" y2="23"
-                                                                gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#30CAFF"/>
-                                                    <stop offset="1" stop-color="#329BF8"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
+                                        <StarIcon/>
                                         <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
