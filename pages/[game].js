@@ -5,6 +5,7 @@ import ProductArrow from "../public/img/icons/product-arrow.svg";
 
 const Game = (props) => {
   const router = useRouter();
+  console.log(props);
 
   return (
     <MainLayout title="Заменить когда придут данные">
@@ -49,33 +50,37 @@ const Game = (props) => {
       </nav>
       <h1>Games</h1>
       <div className="products">
-        {props.data.CARDS.map((card) => (
-          <div className="product" key={card.ID}>
-            <Link href={`${router.asPath}/${card.CODE}`}>
-              <a>
-                <div className="product__image-wrap">
-                  <img src={card.PREVIEW_PICTURE} className="product__image" />
-                </div>
-                <h2 className="product__title">{card.NAME}</h2>
-              </a>
-            </Link>
+        {props.data.CARDS &&
+          props.data.CARDS.map((card) => (
+            <div className="product" key={card.ID}>
+              <Link href={`${router.asPath}/${card.CODE}`}>
+                <a>
+                  <div className="product__image-wrap">
+                    <img
+                      src={card.PREVIEW_PICTURE}
+                      className="product__image"
+                    />
+                  </div>
+                  <h2 className="product__title">{card.NAME}</h2>
+                </a>
+              </Link>
 
-            <p className="product__description">{card.PREVIEW_TEXT}</p>
-            <div className="product__price-term">
-              <div className="product__price">From 10$</div>
-              <div className="product__term">3-5 days</div>
+              <p className="product__description">{card.PREVIEW_TEXT}</p>
+              <div className="product__price-term">
+                <div className="product__price">From 10$</div>
+                <div className="product__term">3-5 days</div>
+              </div>
+              <span className="product__separator"></span>
+              <Link href="/">
+                <a>
+                  <div className="product__more">
+                    <span className="product__more-price">22 000₽</span>
+                    <ProductArrow />
+                  </div>
+                </a>
+              </Link>
             </div>
-            <span className="product__separator"></span>
-            <Link href="/">
-              <a>
-                <div className="product__more">
-                  <span className="product__more-price">22 000₽</span>
-                  <ProductArrow />
-                </div>
-              </a>
-            </Link>
-          </div>
-        ))}
+          ))}
       </div>
     </MainLayout>
   );
@@ -100,7 +105,7 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`https://boost-center.com/api/game/${params.game}`);
   const data = await res.json();
 
-  return { props: { data } };
+  return { props: { data }, revalidate: 5 };
 }
 
 export default Game;
