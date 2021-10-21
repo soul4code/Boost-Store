@@ -1,3 +1,7 @@
 .css{
     display: block;
 }
+
+.someSelector {
+    display: none;
+}
