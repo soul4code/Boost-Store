@@ -3153,6 +3153,7 @@ body {
   justify-content: center;
   height: 53px;
   margin-top: 13px;
+  position: relative;
 }
 
 .matchmaking__progressbar-desk-item img {
@@ -3180,6 +3181,17 @@ body {
   flex: 1 1 auto;
   justify-self: flex-end;
 }
+
+.matchmaking__progressbar-desk-item::before{
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: #fff;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+} 
 
 .matchmaking__bottom-inner {
   margin-top: 65px;

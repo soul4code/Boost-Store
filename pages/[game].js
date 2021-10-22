@@ -48,7 +48,7 @@ const Game = (props) => {
           </Link>
         </ul>
       </nav>
-      <h1>Games</h1>
+      <h1 className='page__title'>Games</h1>
       <div className="products">
         {props.data.CARDS &&
           props.data.CARDS.map((card) => (

@@ -1,4 +1,23 @@
+import { useState } from "react";
+import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+
 const MmrTemplate = (props) => {
+  debugger
+
+  // сюда собираем данные о том, что выбрал пользователь
+  let [orderData, setOrderData]=useState()
+
+  // указал ли пользователь всю необзодимую информацию или что-то пропустил
+  let [isAllData, setIsAllData]=useState(false)
+
+  const nextStage =()=>{
+    if(isAllData){
+      
+    }else{
+      return alert('вы заполнили не все поля')
+    }
+  }
+
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
@@ -336,75 +355,57 @@ const MmrTemplate = (props) => {
           <div id="matchmaking__progressbar"></div>
           <div className="matchmaking__progressbar-desk">
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>s1</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>s2</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>s3</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>s4</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>se</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>sem</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>gn1</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>gn2</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>gn3</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>gn4</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>mg1</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>mg2</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>mge</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>dmg</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>le</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>lem</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>smfc</p>
             </div>
             <div className="matchmaking__progressbar-desk-item">
-              <img src="img/icons/line.svg" alt="" />
               <p>ge</p>
             </div>
           </div>
@@ -501,9 +502,7 @@ const MmrTemplate = (props) => {
                 <div className="enum__result">30 days</div>
               </div>
               <div className="matchmaking__info-btns">
-                <button className="button-color matchmaking__info-btn">
-                  Buy it now
-                </button>
+                <ButtonCardTemplateColor />
                 <button className="button-transp matchmaking__info-btn">
                   <p>add to cart</p>
                 </button>
