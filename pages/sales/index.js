@@ -4,7 +4,7 @@ const Sales = () => {
 
     return(
         <MainLayout title='Sales'>
-            <h1>Sales</h1>
+            <h1 className='page__title'>Sales</h1>
         </MainLayout>
     );
 }
