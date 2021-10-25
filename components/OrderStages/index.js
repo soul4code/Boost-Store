@@ -4,7 +4,6 @@ const OrderStages = (props) => {
   debugger
   return (
     <>
-      
         <div class="stage__top">
           <div class="stage-list">
             <div class="stage-list__item stage-list__item1 active">

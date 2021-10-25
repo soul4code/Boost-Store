@@ -2,8 +2,12 @@ import Link from "next/link";
 import { LanguageSwitcher } from "../languageSwitcher";
 import Logo from "../logo";
 import { connect } from "react-redux";
+import GameItem from "./GameItem";
 
 const Footer = (props) => {
+
+  const gamesList = props.games.map((game) => <GameItem game={game} />);
+  
   return (
     <>
       <footer className="footer">
@@ -84,20 +88,7 @@ const Footer = (props) => {
         <Logo linkClass="footer__logo" />
 
         <ul className="game-catalog footer__game-catalog">
-          {props.games.map((game) => (
-            <li className="game-catalog__item" key={game.ID}>
-              <Link href={`/${game.CODE}`} key={game.ID} passHref>
-                <a className="game-catalog__game-link">
-                  <img
-                    className="game-catalog__game-img"
-                    src={game.UF_SVG_ICON}
-                    alt={game.NAME}
-                  />
-                  <span className="game-catalog__game-name">{game.NAME}</span>
-                </a>
-              </Link>
-            </li>
-          ))}
+          {gamesList}
         </ul>
 
         <div className="footer__copyrigth">

@@ -2,86 +2,51 @@ import MainLayout from "../components/layouts/Main";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import ProductArrow from "../public/img/icons/product-arrow.svg";
+import Product from "../components/Product/Product";
+import CategoriesDefault from "../components/CategoriesDefault/CategoriesDefault";
+import { connect } from "react-redux";
+import {
+  setCurrentGame,
+  setFilter,
+  setCurrentGameServices,
+} from "../store/games/actions";
+import { useEffect } from "react";
 
 const Game = (props) => {
-  const router = useRouter();
-  console.log(props);
+  let router =useRouter()
+
+  // зануляю фильтр при изменении игры
+  useEffect(() => {
+    props.setFilter([]);
+  }, [router.query.game]);
+
+  
+  props.setCurrentGameServices(props.data);
+
+  let cardsList;
+  if (props.filter.length === 0) {
+    cardsList =
+      props.data.CARDS &&
+      props.data.CARDS.map((card) => (
+        <Product card={card} currentGameCode={props.params.game} />
+      ));
+  } else {
+    cardsList = props.filter.map((card) => (
+      <Product card={card} currentGameCode={props.params.game} />
+    ));
+  }
 
   return (
     <MainLayout title="Заменить когда придут данные">
       <nav className="category-menu">
-        <ul className="category-menu__list">
-          <Link href="/">
-            <li className="category-menu__item">
-              <a className="category-menu__link">Прокачка статистики</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">ЛБЗ</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">Фарм Серебра</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">Прокачка танка на ветке</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">WNB</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">Топовый урон</a>
-            </li>
-          </Link>
-          <Link href="#">
-            <li className="category-menu__item">
-              <a className="category-menu__link">Популярное</a>
-            </li>
-          </Link>
-        </ul>
+        <CategoriesDefault
+          categories={props.data.CATEGORIES}
+          setFilter={props.setFilter}
+          currentGameServices={props.data}
+        />
       </nav>
-      <h1 className='page__title'>Games</h1>
-      <div className="products">
-        {props.data.CARDS &&
-          props.data.CARDS.map((card) => (
-            <div className="product" key={card.ID}>
-              <Link href={`${router.asPath}/${card.CODE}`}>
-                <a>
-                  <div className="product__image-wrap">
-                    <img
-                      src={card.PREVIEW_PICTURE}
-                      className="product__image"
-                    />
-                  </div>
-                  <h2 className="product__title">{card.NAME}</h2>
-                </a>
-              </Link>
-
-              <p className="product__description">{card.PREVIEW_TEXT}</p>
-              <div className="product__price-term">
-                <div className="product__price">From 10$</div>
-                <div className="product__term">3-5 days</div>
-              </div>
-              <span className="product__separator"></span>
-              <Link href="/">
-                <a>
-                  <div className="product__more">
-                    <span className="product__more-price">22 000₽</span>
-                    <ProductArrow />
-                  </div>
-                </a>
-              </Link>
-            </div>
-          ))}
-      </div>
+      <h1 className="page__title">Games</h1>
+      <div className="products">{cardsList}</div>
     </MainLayout>
   );
 };
@@ -105,7 +70,21 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`https://boost-center.com/api/game/${params.game}`);
   const data = await res.json();
 
-  return { props: { data }, revalidate: 5 };
+  return { props: { data, params }, revalidate: 5 };
 }
 
-export default Game;
+const mapStateToProps = (state) => ({
+  currentGame: state.games.currentGame,
+  filter: state.games.filter,
+  currentGame: state.games.filter,
+  currentGameServices: state.games.currentGameServices,
+});
+const mapDispatchToProps = {
+  setCurrentGame,
+  setFilter,
+  setCurrentGameServices,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
+
+// export default Game;

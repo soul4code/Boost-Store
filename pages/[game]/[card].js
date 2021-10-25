@@ -4,7 +4,6 @@ import MmrTemplate from "../../components/card-templates/mmr-template";
 import WotTemplate from "../../components/card-templates/wot-template";
 
 const Card = (props) => {
-  console.log(props.PROPERTY_CARD_TEMPLATE_VALUE);
 
   const renderCardTemplate = (param) => {
     switch (param) {
@@ -42,6 +41,7 @@ export async function getServerSideProps({ params }) {
   }
 
   return { props: data };
+
 }
 
 export default Card;

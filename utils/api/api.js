@@ -20,6 +20,14 @@ class Api {
         })
     }
 
+    getGameItem = (codeGame)=>{
+        debugger
+        return fetch(`${this._baseUrl}/game/${codeGame}`, {headers: this._headers})
+        .then(res=>{
+            return this._checkRequest(res);
+        })
+    }
+
     getReviews = () => {
         return fetch(this._baseUrl + '/reviews', {
             headers: this._headers

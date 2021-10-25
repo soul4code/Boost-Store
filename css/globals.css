@@ -2580,7 +2580,6 @@ body {
 
 .game__rank-list {
   width: 100%;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2629,6 +2628,7 @@ body {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 .game__rank-item + .game__rank-item {
@@ -3434,7 +3434,7 @@ body {
 
 .category-menu__list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .category-menu__item {

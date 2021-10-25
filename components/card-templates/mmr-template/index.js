@@ -1,8 +1,8 @@
 import { useState } from "react";
+import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
 
 const MmrTemplate = (props) => {
-  debugger
 
   // сюда собираем данные о том, что выбрал пользователь
   let [orderData, setOrderData]=useState()
@@ -21,39 +21,7 @@ const MmrTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <div className="game__rank-list">
-        <a href="#" className="game__rank-item">
-          <p>MM rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Danger Zone rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Private rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Wingman rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Achivements</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Danger Zone rank</p>
-        </a>
-        <a href="#" className="game__rank-item game__rank-item-more">
-          <p>More</p>
-          <svg
-            className="game__rank-item-arr"
-            width="9"
-            height="5"
-            viewBox="0 0 9 5"
-            fill="#fff"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M4.74694 4.89542L8.90279 0.609586C9.03566 0.467701 9.03185 0.241607 8.89427 0.104577C8.76005 -0.0291042 8.54729 -0.0291042 8.4131 0.104577L4.5021 4.13791L0.591098 0.104577C0.455871 -0.0348594 0.236633 -0.0348594 0.101406 0.104577C-0.0338011 0.244055 -0.0338011 0.470128 0.101406 0.609586L4.25725 4.89542C4.3925 5.03486 4.61172 5.03486 4.74694 4.89542Z" />
-          </svg>
-        </a>
-      </div>
+      <CategoriesGradient />
       <section className="matchmaking block-bg">
         <div className="matchmaking__top-box">
           <div className="matchmaking__title">

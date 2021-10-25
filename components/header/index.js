@@ -1,65 +1,59 @@
 import Link from "next/link";
 import { LanguageSwitcher } from "../languageSwitcher";
 import { connect } from "react-redux";
+import GameItem from "./GameItem";
+import {setCurrentGame} from '../../store/games/actions'
 
 const Header = (props) => {
+  
+  let gamesList = props.games.map((game) => <GameItem game={game} setCurrentGame={props.setCurrentGame}/>);
+
   return (
     <>
       <header className="header">
         <div className="header__left">
           <ul className="header__navbar">
             <li className="header__navbar-item select">
-                <button className="header__navbar-link header__navbar-link_games">
-                  <svg
-                    width="27"
-                    height="27"
-                    viewBox="0 0 27 27"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect width="27" height="27" fill="url(#pattern0)" />
-                    <defs>
-                      <pattern
-                        id="pattern0"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use xlinkHref="#image0" transform="scale(0.037037)" />
-                      </pattern>
-                      <image
-                        id="image0"
-                        width="27"
-                        height="27"
-                        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAqklEQVRIie2VQQoDIRAE2xz8QfLihT3lCYE8TliIj6ggGDASxSGbQxYbPChd9BycGQEeWIBAWyF7klfFMbEJWDvGWmsVZmId8JB01piipEvhNLEpjOLBNYwtj4k9DVa1i2bYf4bF4k7jvBQr3sSmsJuhuHt1t7F55FyBrdP9W/Z8GlfDrHvv6d/q2L/RS1okhc6PCtnjK97GzhXT8MwVM8P2DZsr5rsVA/4JZqdJyEEiu18AAAAASUVORK5CYII="
-                      />
-                    </defs>
-                  </svg>
-                  <span>Games</span>
-                  <svg
-                    className="header__navbar-link-icon-after-games"
-                    width="9"
-                    height="5"
-                    viewBox="0 0 9 5"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M4.74694 4.89542L8.90279 0.609586C9.03566 0.467701 9.03185 0.241607 8.89427 0.104577C8.76005 -0.0291042 8.54729 -0.0291042 8.4131 0.104577L4.5021 4.13791L0.591098 0.104577C0.455871 -0.0348594 0.236633 -0.0348594 0.101406 0.104577C-0.0338011 0.244055 -0.0338011 0.470128 0.101406 0.609586L4.25725 4.89542C4.3925 5.03486 4.61172 5.03486 4.74694 4.89542Z" />
-                  </svg>
-                </button>
+              <button className="header__navbar-link header__navbar-link_games">
+                <svg
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="27" height="27" fill="url(#pattern0)" />
+                  <defs>
+                    <pattern
+                      id="pattern0"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use xlinkHref="#image0" transform="scale(0.037037)" />
+                    </pattern>
+                    <image
+                      id="image0"
+                      width="27"
+                      height="27"
+                      xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAqklEQVRIie2VQQoDIRAE2xz8QfLihT3lCYE8TliIj6ggGDASxSGbQxYbPChd9BycGQEeWIBAWyF7klfFMbEJWDvGWmsVZmId8JB01piipEvhNLEpjOLBNYwtj4k9DVa1i2bYf4bF4k7jvBQr3sSmsJuhuHt1t7F55FyBrdP9W/Z8GlfDrHvv6d/q2L/RS1okhc6PCtnjK97GzhXT8MwVM8P2DZsr5rsVA/4JZqdJyEEiu18AAAAASUVORK5CYII="
+                    />
+                  </defs>
+                </svg>
+                <span>Games</span>
+                <svg
+                  className="header__navbar-link-icon-after-games"
+                  width="9"
+                  height="5"
+                  viewBox="0 0 9 5"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M4.74694 4.89542L8.90279 0.609586C9.03566 0.467701 9.03185 0.241607 8.89427 0.104577C8.76005 -0.0291042 8.54729 -0.0291042 8.4131 0.104577L4.5021 4.13791L0.591098 0.104577C0.455871 -0.0348594 0.236633 -0.0348594 0.101406 0.104577C-0.0338011 0.244055 -0.0338011 0.470128 0.101406 0.609586L4.25725 4.89542C4.3925 5.03486 4.61172 5.03486 4.74694 4.89542Z" />
+                </svg>
+              </button>
               <div className="header__navbar-games-list select__wrap-list">
-                {props.games.map((game) => (
-                  <Link href={`/${game.CODE}`} key={game.ID} passHref>
-                    <a className="header__navbar-games-item">
-                      <img
-                        width="50px"
-                        src={game.UF_SVG_ICON}
-                        alt={game.NAME}
-                      />
-                      <p>{game.NAME}</p>
-                    </a>
-                  </Link>
-                ))}
+                {gamesList}
               </div>
             </li>
             <li className="header__navbar-item select">
@@ -213,4 +207,8 @@ const mapStateToProps = (state) => ({
   games: state.games.games,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps ={
+  setCurrentGame,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

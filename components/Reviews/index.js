@@ -16,6 +16,14 @@ const Reviews = (props) => {
       });
   }, []);
 
+  const reviewsList = props.reviews.map((review) => (
+    <Review
+      name={review.NAME}
+      previewText={review.PREVIEW_TEXT}
+      key={review.ID}
+    />
+  ));
+
   return (
     <section className="review__slider">
       <div className="review__slider-container">
@@ -66,15 +74,7 @@ const Reviews = (props) => {
         </div>
         <div className="swiper-container review__swiper-container">
           <div className="swiper-wrapper review__swiper-wrapper">
-            {props.reviews.map((review) => {
-              return (
-                <Review
-                  name={review.NAME}
-                  previewText={review.PREVIEW_TEXT}
-                  key={review.ID}
-                />
-              );
-            })}
+            {reviewsList}
           </div>
           <div className="swiper-scrollbar review__swiper-scrollbar"></div>
           <div className="swiper-button-prev review__swiper-button-prev">
