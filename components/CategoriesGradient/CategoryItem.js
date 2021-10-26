@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const CategoryItem = (props) => {
-  debugger
+
   return (
     <>
       <Link href={`/${props.currentGame}`}>
