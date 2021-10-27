@@ -1,11 +1,13 @@
 import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+import RangeExperience from "./RangeExperience";
+import RangeSkill from "./RangeSkill";
 
 const OptionsTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <CategoriesGradient />
+      <CategoriesGradient currentGame={props.currentGame}/>
       <div className="block-bg stage__wrapper">
         <div className="matchmaking__top-box">
           <div className="matchmaking__title">
@@ -365,14 +367,10 @@ const OptionsTemplate = (props) => {
             <div className="matchmaking__card2-box matchmaking__card2-box-progress">
               <div className="subtitle__page">Options</div>
               <div className="matchmaking__min-scrollbar-box matchmaking__scrollbar-start">
-                <div className="matchmaking__min-scrollbar-title">Skill</div>
-                <div id="matchmaking__min-scrollbar-skill"></div>
+                <RangeSkill />
               </div>
               <div className="matchmaking__min-scrollbar-box">
-                <div className="matchmaking__min-scrollbar-title">
-                  Experience
-                </div>
-                <div id="matchmaking__min-scrollbar-experience"></div>
+                <RangeExperience />
               </div>
             </div>
             <div className="matchmaking__card2-box matchmaking__card2-box-extra">

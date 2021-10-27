@@ -46,10 +46,7 @@ const CategoriesGradient = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentGame: state.games.currentGame,
-});
 
-export default connect(mapStateToProps)(CategoriesGradient);
+export default CategoriesGradient;
 
 // export default CategoriesGradient;

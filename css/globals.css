@@ -4108,13 +4108,6 @@ body {
   height: 7px;
 }
 
-#matchmaking__min-scrollbar-skill .noUi-handle-lower,
-#matchmaking__min-scrollbar-experience .noUi-handle-lower,
-#matchmaking__min-scrollbar-skill-mobile .noUi-handle-lower,
-#matchmaking__min-scrollbar-experience-mobile .noUi-handle-lower {
-  display: none;
-}
-
 #matchmaking__min-scrollbar-skill .noUi-connects,
 #matchmaking__min-scrollbar-experience .noUi-connects,
 #matchmaking__min-scrollbar-skill-mobile .noUi-connects,

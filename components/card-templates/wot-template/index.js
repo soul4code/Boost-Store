@@ -5,7 +5,7 @@ const WotTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">World Of Tanks </h1>
-      <CategoriesGradient />
+      <CategoriesGradient currentGame={props.currentGame}/>
 
       <section className="matchmaking block-bg matchmaking-card3">
         <div className="matchmaking__top-box">
@@ -237,33 +237,33 @@ const WotTemplate = (props) => {
         <div className="matchmaking__card3-inner">
           <div className="matchmaking__card3-item matchmaking__card3-choice">
             <div className="matchmaking__card3-className">
-              <div className="matchmaking__card3-className-label active">
+              <div className="matchmaking__card3-class-label active">
                 <img src="img/icons/tank/img1.svg" alt="" />
-                <span className="checkbox-text matchmaking__card3-className-checkbox-text">
+                <span className="checkbox-text matchmaking__card3-class-checkbox-text">
                   lt
                 </span>
               </div>
-              <div className="matchmaking__card3-className-label">
+              <div className="matchmaking__card3-class-label">
                 <img src="img/icons/tank/img2.svg" alt="" />
-                <span className="checkbox-text matchmaking__card3-className-checkbox-text">
+                <span className="checkbox-text matchmaking__card3-class-checkbox-text">
                   lt
                 </span>
               </div>
-              <div className="matchmaking__card3-className-label">
+              <div className="matchmaking__card3-class-label">
                 <img src="img/icons/tank/img3.svg" alt="" />
-                <span className="checkbox-text matchmaking__card3-className-checkbox-text">
+                <span className="checkbox-text matchmaking__card3-class-checkbox-text">
                   lt
                 </span>
               </div>
-              <div className="matchmaking__card3-className-label">
+              <div className="matchmaking__card3-class-label">
                 <img src="img/icons/tank/img4.svg" alt="" />
-                <span className="checkbox-text matchmaking__card3-className-checkbox-text">
+                <span className="checkbox-text matchmaking__card3-class-checkbox-text">
                   lt
                 </span>
               </div>
-              <div className="matchmaking__card3-className-label">
+              <div className="matchmaking__card3-class-label">
                 <img src="img/icons/tank/img5.svg" alt="" />
-                <span className="checkbox-text matchmaking__card3-className-checkbox-text">
+                <span className="checkbox-text matchmaking__card3-class-checkbox-text">
                   lt
                 </span>
               </div>

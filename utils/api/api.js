@@ -21,7 +21,6 @@ class Api {
     }
 
     getGameItem = (codeGame) => {
-        debugger
         return fetch(`${this._baseUrl}/game/${codeGame}`, {
                 headers: this._headers
             })

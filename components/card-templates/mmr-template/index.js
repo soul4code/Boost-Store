@@ -1,27 +1,27 @@
 import { useState } from "react";
 import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+import OrderStages from "../../OrderStages";
+import Nouislider from "nouislider-react";
 
 const MmrTemplate = (props) => {
-
   // сюда собираем данные о том, что выбрал пользователь
-  let [orderData, setOrderData]=useState()
+  let [orderData, setOrderData] = useState();
 
   // указал ли пользователь всю необзодимую информацию или что-то пропустил
-  let [isAllData, setIsAllData]=useState(false)
+  let [isAllData, setIsAllData] = useState(false);
 
-  const nextStage =()=>{
-    if(isAllData){
-      
-    }else{
-      return alert('вы заполнили не все поля')
+  const nextStage = () => {
+    if (isAllData) {
+    } else {
+      return alert("вы заполнили не все поля");
     }
-  }
+  };
 
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <CategoriesGradient />
+      <CategoriesGradient currentGame={props.currentGame}/>
       <section className="matchmaking block-bg">
         <div className="matchmaking__top-box">
           <div className="matchmaking__title">
@@ -140,7 +140,7 @@ const MmrTemplate = (props) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0)">
+                <g clipPath="url(#clip0)">
                   <path
                     d="M16.7723 6.61664C16.926 6.61664 17.0506 6.49206 17.0506 6.33831V3.64961C17.0506 3.09989 16.6221 2.64735 16.075 2.61941C12.7742 2.45133 11.0001 1.10142 10.2364 0.311733C10.042 0.110702 9.7805 0 9.50001 0C9.21953 0 8.95801 0.110702 8.76369 0.311696C7.99995 1.10138 6.22586 2.4513 2.92494 2.61941C2.37792 2.64735 1.9494 3.09985 1.9494 3.64961V11.4096C1.9494 13.6444 3.15184 15.727 5.08755 16.8447L8.23638 18.6623C8.62616 18.8875 9.06303 19 9.50005 19C9.93696 19 10.374 18.8875 10.7636 18.6624L13.9126 16.8447C15.8482 15.7271 17.0507 13.6445 17.0507 11.4096V7.63727C17.0507 7.48352 16.926 7.35893 16.7723 7.35893C16.6186 7.35893 16.494 7.48352 16.494 7.63727V11.4096C16.494 13.4462 15.3982 15.3441 13.6342 16.3626L10.4853 18.1803C9.87758 18.5314 9.12248 18.5313 8.51472 18.1803L5.36584 16.3626C3.60188 15.3441 2.50607 13.4462 2.50607 11.4096V3.64961C2.50607 3.39651 2.70253 3.18817 2.95329 3.17537C6.44488 2.99757 8.34308 1.54734 9.16386 0.69869C9.25237 0.607137 9.37176 0.556703 9.50001 0.556703C9.62827 0.556703 9.74766 0.607137 9.8362 0.698727C10.6569 1.54734 12.5551 2.99757 16.0467 3.17537C16.2975 3.18821 16.494 3.39651 16.494 3.64961V6.33831C16.494 6.49206 16.6186 6.61664 16.7723 6.61664Z"
                     fill="white"
@@ -320,7 +320,13 @@ const MmrTemplate = (props) => {
               </div>
             </div>
           </div>
-          <div id="matchmaking__progressbar"></div>
+          {/* <ProgressBoost /> */}
+          <Nouislider
+            id={`matchmaking__progressbar`}
+            range={{ min: 0, max: 100 }}
+            start={[20, 80]}
+            connect
+          />
           <div className="matchmaking__progressbar-desk">
             <div className="matchmaking__progressbar-desk-item">
               <p>s1</p>
@@ -432,18 +438,7 @@ const MmrTemplate = (props) => {
           </div>
           <div className="matchmaking__info">
             <div className="matchmaking__info-left">
-              <div className="stage-list">
-                <div className="stage-list__item stage-list__item1 active">
-                  <p>Stage 1</p>
-                </div>
-                <div className="stage-list__item stage-list__item2">
-                  <p>Stage 2</p>
-                </div>
-                <div className="stage-list__item stage-list__item3">
-                  <p>Stage 3</p>
-                </div>
-                <div className="stage-list__bg"></div>
-              </div>
+              <OrderStages />
               <p className="matchmaking__info-text">
                 "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
