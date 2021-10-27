@@ -20,7 +20,6 @@ export const registrationPOST = async (email, pass) => {
       return response.json();
     })
     .then(function (json) {
-      console.log(json);
       localStorage.setItem("boostToken", json.user.UF_REST_API_TOKEN);
     })
     .catch(function (error) {

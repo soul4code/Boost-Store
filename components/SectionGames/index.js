@@ -38,7 +38,7 @@ const SectionGames = (props) => {
 
 const mapStateToProps = (state) => ({
   games: state.games.games,
-  lang: state.lang.lang,
+  lang: state.main.lang,
 });
 
 export default connect(mapStateToProps)(SectionGames);

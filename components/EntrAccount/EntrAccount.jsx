@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Authorisation from "../Authorisation/Authorisation";
 import Registration from "../Registration/Registration";
+import Button from "./Button";
 
 const EntrAccount = (props) => {
   const [typeEntr, setTypeEntr] = useState("");
@@ -37,18 +38,8 @@ const EntrAccount = (props) => {
       >
         {!typeEntr ? (
           <div className={`account__header-entr`}>
-            <button
-              className={"button-color-basic button__auth"}
-              onClick={getTypeEntrReg}
-            >
-              Registration
-            </button>
-            <button
-              className={"button-color-basic button__auth"}
-              onClick={getTypeEntrAuth}
-            >
-              Authorisation
-            </button>
+            <Button text='Registration' action={getTypeEntrReg}/>
+            <Button text='Authorisation' action={getTypeEntrAuth}/>
           </div>
         ) : 
           typeForm()

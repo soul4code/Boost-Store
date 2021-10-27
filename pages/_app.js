@@ -6,7 +6,7 @@ import "../css/globals.css";
 
 import { api } from "../utils/api/api";
 
-import { Provider } from "react-redux";
+import { connect, Provider } from "react-redux";
 import store from "../store/store";
 
 import { setGames } from "../store/games/actions";
@@ -32,5 +32,6 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
 
 export default MyApp;

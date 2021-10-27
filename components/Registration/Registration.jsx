@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Input from "../EntrAccount/Input";
 import { registrationPOST } from "./registrationPOST";
-import Input from "./Input";
 
 const Registration = (props) => {
   const [email, setEmail] = useState("");
@@ -11,8 +11,6 @@ const Registration = (props) => {
     e.preventDefault();
   };
   // alex@manc.ru - alexmanc
-  // c088563f-241d14ea-67a344a1-5fd6d8f6 - рег токен
-
 
   return (
     <>

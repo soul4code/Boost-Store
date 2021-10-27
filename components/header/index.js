@@ -3,20 +3,14 @@ import { LanguageSwitcher } from "../languageSwitcher";
 import { connect } from "react-redux";
 import GameItem from "./GameItem";
 import { setCurrentGame } from "../../store/games/actions";
-import Registration from "../Registration/Registration";
-import { useState } from "react";
-import EntrAccount from "../EntrAccount/EntrAccount";
+import { setAuth, setAuthToken } from "../../store/main/actions";
+import AuthRegBtn from "./AuthRegBtn";
+import ProfileBtn from "./ProfileBtn";
 
 const Header = (props) => {
   let gamesList = props.games.map((game) => (
     <GameItem game={game} setCurrentGame={props.setCurrentGame} />
   ));
-
-  let [isAuthorisationOpen, setIsAuthorisationOpen] = useState(false);
-
-  const getIsAuthorisationOpen = () => {
-    setIsAuthorisationOpen((isAuthorisationOpen = !isAuthorisationOpen));
-  };
 
   return (
     <>
@@ -174,25 +168,8 @@ const Header = (props) => {
             </div>
           </div>
           <LanguageSwitcher />
-          <div
-            className={`link-auth header__link-auth ${isAuthorisationOpen ? 'header__auth-select':''}`} 
-          >
-            <div className={'link__auth-inner'} onClick={getIsAuthorisationOpen}>
-            <svg
-              className="link-auth__icon"
-              width="22"
-              height="28"
-              viewBox="0 0 22 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M10.6206 12.8966C12.4965 12.8966 14.1209 12.2611 15.4481 11.0074C16.7753 9.75381 17.4481 8.22002 17.4481 6.44807C17.4481 4.67673 16.7753 3.14274 15.4479 1.88879C14.1204 0.635452 12.4962 0 10.6206 0C8.74443 0 7.12047 0.635452 5.79323 1.88899C4.466 3.14254 3.79297 4.67653 3.79297 6.44807C3.79297 8.22002 4.466 9.75401 5.79345 11.0076C7.1209 12.2609 8.74508 12.8966 10.6206 12.8966Z" />
-              <path d="M21.9467 21.2072C21.9111 20.6925 21.8391 20.1311 21.733 19.5382C21.626 18.9409 21.4882 18.3762 21.3232 17.8601C21.1528 17.3267 20.9211 16.7999 20.6346 16.2951C20.3372 15.7711 19.988 15.3149 19.5961 14.9395C19.1863 14.5467 18.6845 14.2309 18.1043 14.0006C17.5261 13.7714 16.8854 13.6554 16.1999 13.6554C15.9308 13.6554 15.6704 13.766 15.1677 14.0939C14.8583 14.296 14.4963 14.5298 14.0924 14.7883C13.7469 15.0088 13.279 15.2153 12.701 15.4024C12.1371 15.5851 11.5645 15.6778 10.9994 15.6778C10.4343 15.6778 9.86192 15.5851 9.2974 15.4024C8.72001 15.2155 8.25206 15.009 7.90704 14.7885C7.50689 14.5324 7.14476 14.2986 6.83071 14.0937C6.32857 13.7658 6.06804 13.6552 5.79885 13.6552C5.11323 13.6552 4.47267 13.7714 3.89467 14.0008C3.31487 14.2307 2.81292 14.5465 2.40271 14.9397C2.01101 15.3153 1.66156 15.7713 1.36461 16.2951C1.07833 16.7999 0.846572 17.3265 0.67597 17.8603C0.511202 18.3764 0.373393 18.9409 0.266364 19.5382C0.160342 20.1303 0.0883187 20.6919 0.0527096 21.2078C0.017704 21.7132 0 22.2378 0 22.7676C0 24.1464 0.43757 25.2627 1.30044 26.0859C2.15264 26.8982 3.28026 27.3103 4.65152 27.3103H17.3485C18.7197 27.3103 19.847 26.8984 20.6994 26.0859C21.5624 25.2633 22 24.1468 22 22.7674C21.9998 22.2352 21.9819 21.7102 21.9467 21.2072Z" />
-            </svg>
-            <span>My account</span>
-            </div>
-            <EntrAccount isAuthorisationOpen={isAuthorisationOpen}/>
-          </div>
+          {props.isAuth ? <ProfileBtn /> : <AuthRegBtn />}
+
           <Link href="#">
             <a className="link-cart header__link-cart">
               <svg
@@ -215,13 +192,16 @@ const Header = (props) => {
     </>
   );
 };
-
 const mapStateToProps = (state) => ({
   games: state.games.games,
+  isAuth: state.main.isAuth,
+  authToken: state.main.authToken,
 });
 
 const mapDispatchToProps = {
   setCurrentGame,
+  setAuth,
+  setAuthToken,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

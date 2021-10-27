@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
-import { authorisationPOST } from "./authorisationPOST";
+import { useState } from "react";
 import Input from "../EntrAccount/Input";
+import { api } from "../../utils/api/api";
+import { setAuth, setAuthToken } from "../../store/main/actions";
+import { connect } from "react-redux";
 
 const Authorisation = (props) => {
   const [email, setEmail] = useState("");
@@ -8,6 +10,12 @@ const Authorisation = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    api.authorisation(email, password).then((res) => {
+      localStorage.setItem("authToken", res.token)
+      return localStorage.getItem('authToken')
+    })
+    .then(res=>props.setAuthToken(res))
+    .then(props.setAuth(true))
   };
 
   return (
@@ -32,7 +40,7 @@ const Authorisation = (props) => {
         />
         <button
           className={"button-color-basic button__auth"}
-          onClick={() => authorisationPOST(email, password)}
+          onClick={() => api.authorisation(email, password)}
         >
           Authorisation
         </button>
@@ -40,5 +48,14 @@ const Authorisation = (props) => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  isAuth: state.main.isAuth,
+  authToken: state.main.authToken,
+});
 
-export default Authorisation;
+const mapDispatchToProps = {
+  setAuth,
+  setAuthToken,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authorisation);

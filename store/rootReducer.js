@@ -6,7 +6,7 @@ import langReducer from "./main/reducer";
 const rootReducer = combineReducers({
     games: gamesReducer,
     reviews: reviewsReducer,
-    lang: langReducer,
+    main: langReducer,
 })
 
 export default rootReducer;
