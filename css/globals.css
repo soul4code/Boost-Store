@@ -638,7 +638,7 @@ template {
   margin-top: 15px;
 }
 
-.button__auth{
+.button__auth {
   margin-top: 22px;
 }
 
@@ -1606,7 +1606,8 @@ template {
   flex-wrap: wrap;
   width: 1350px;
 }
-.header__navbar-games-list.select__wrap-list::before{
+
+.header__navbar-games-list.select__wrap-list::before {
   display: none;
 }
 
@@ -1636,7 +1637,7 @@ template {
   margin-top: 15px;
 }
 
-.header__navbar-games-item+.header__navbar-games-item{
+.header__navbar-games-item+.header__navbar-games-item {
   margin-left: 10px
 }
 
@@ -2381,6 +2382,7 @@ body {
   padding: 0px 70px;
   max-width: 1430px;
   width: 100%;
+  position: relative;
 }
 
 .review__swiper-wrapper {
@@ -2402,7 +2404,7 @@ body {
   border-radius: 12px;
   padding: 21px 18px 11px 25px;
   width: 310px;
-  height: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2481,6 +2483,21 @@ body {
   line-height: 118.18182%;
 }
 
+.review__swiper-container .swiper-scrollbar {
+  opacity: 1;
+}
+
+.review__swiper-container .swiper-scrollbar .swiper-scrollbar-drag {
+  background-color: #a9c5d4;
+  border-radius: 3px;
+}
+
+.review__swiper-container .swiper-scrollbar:hover .swiper-scrollbar-drag {
+  cursor: pointer;
+  background-color: #a9c5d4;
+}
+
+
 .review__swiper-scrollbar {
   opacity: 1;
 }
@@ -2493,6 +2510,49 @@ body {
 .review__swiper-scrollbar:hover .swiper-scrollbar-drag {
   cursor: pointer;
   background-color: #a9c5d4;
+}
+
+.review__swiper-container .swiper-button-prev,
+.review__swiper-container .swiper-button-next {
+  width: 48px;
+  height: 48px;
+  background-color: #004781;
+  border-radius: 50%;
+  top: 40%;
+  display: flex;
+}
+
+.review__swiper-container .swiper-button-prev svg,
+.review__swiper-container .swiper-button-next svg {
+  width: 17px;
+  height: 12px;
+}
+
+.review__swiper-container .swiper-button-prev:hover,
+.review__swiper-container .swiper-button-next:hover {
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #fff;
+}
+
+.review__swiper-container .swiper-button-prev:hover path,
+.review__swiper-container .swiper-button-next:hover path {
+  fill: #004781;
+}
+
+.review__swiper-container .swiper-button-next:after {
+  content: url('../images/icons/slideRev-arr-next.svg');
+
+}
+
+.review__swiper-container .swiper-button-prev:after{
+  content: url('../images/icons/slideRev-arr-prev.svg');
+
+}
+
+.review__swiper-container .swiper-button-lock {
+  display: flex;
 }
 
 .review__swiper-button-prev,
@@ -6195,6 +6255,7 @@ body {
   height: 100%;
   position: relative;
   margin-top: 40px;
+  padding-bottom: 40px;
   max-width: 1570px;
   position: relative;
 }
@@ -6297,6 +6358,46 @@ body {
   object-fit: cover;
 }
 
+.main-swiper__container .swiper-pagination .swiper-pagination-bullet {
+  width: 50px;
+  height: 10px;
+  background-color: #0a1724;
+  border: 1px solid #008ed2;
+  border-radius: 0;
+  opacity: 1;
+}
+
+.main-swiper__container .swiper-pagination .swiper-pagination-bullet:hover {
+  background-color: #154676;
+}
+
+.main-swiper__container .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #008ed2;
+}
+
+.main-swiper__container .swiper-pagination .swiper-pagination-bullet-active:hover {
+  background-color: #008ed2;
+}
+
+.main-swiper__container .swiper-button-prev {
+  content: url(/img/icons/slide-arr-prev.svg);
+  position: absolute;
+}
+
+.main-swiper__container .swiper-button-next {
+  content: url(/img/icons/slide-arr-next.svg);
+  position: absolute;
+}
+
+.main-swiper__container .swiper-button-lock {
+  display: flex;
+}
+
+.main-swiper__container .swiper-pagination-lock {
+  display: block;
+}
+
+
 .main__swiper-pagination .swiper-pagination-bullet {
   width: 50px;
   height: 10px;
@@ -6317,6 +6418,7 @@ body {
 .main__swiper-pagination .swiper-pagination-bullet-active:hover {
   background-color: #008ed2;
 }
+
 
 .main__swiper-button-prev {
   content: url(/img/icons/slide-arr-prev.svg);
@@ -6827,11 +6929,11 @@ body {
     margin-left: 35px;
   }
 
-  .header__navbar-games-list{
+  .header__navbar-games-list {
     width: 1200px;
   }
 
-  .header__navbar-games-item{
+  .header__navbar-games-item {
     padding: 10px 35px
   }
 

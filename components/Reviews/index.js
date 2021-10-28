@@ -3,6 +3,7 @@ import { api } from "../../utils/api/api";
 import { connect } from "react-redux";
 import { setReviews } from "../../store/reviews/actions";
 import Review from "../Review";
+import ReviewsSlider from "./ReviewsSlider";
 
 const Reviews = (props) => {
   useEffect(() => {
@@ -72,7 +73,10 @@ const Reviews = (props) => {
             </svg>
           </div>
         </div>
-        <div className="swiper-container review__swiper-container">
+        {/* не отображаются стрелочки, мб на проде будут отображаться */}
+        <ReviewsSlider />
+        
+        {/* <div className="swiper-container review__swiper-container">
           <div className="swiper-wrapper review__swiper-wrapper">
             {reviewsList}
           </div>
@@ -105,7 +109,7 @@ const Reviews = (props) => {
               />
             </svg>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
