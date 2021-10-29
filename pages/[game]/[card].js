@@ -5,37 +5,47 @@ import WotTemplate from "../../components/card-templates/wot-template";
 import { useRouter } from "next/router";
 
 const Card = (props) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const renderCardTemplate = (param) => {
-    switch (param) {
+  const renderCardTemplate = () => {
+    switch (props.PROPERTY_CARD_TEMPLATE_VALUE) {
       case "options":
-        return <OptionsTemplate name={props.NAME} currentGame={router.query.game}/>;
+        return (
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} />
+        );
         break;
       case "progress":
-        return <MmrTemplate name={props.NAME} currentGame={router.query.game}/>;
+        return (
+          <MmrTemplate name={props.NAME} currentGame={router.query.game} />
+        );
         break;
       case "wot":
-        return <WotTemplate name={props.NAME} currentGame={router.query.game}/>;
+        return (
+          <WotTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
+        );
         break;
       default:
-        return <OptionsTemplate name={props.NAME} currentGame={router.query.game}/>;
+        return (
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} />
+        );
     }
   };
 
   return (
     <MainLayout title={props.NAME}>
       <div className="main__page">
-        {renderCardTemplate(props.PROPERTY_CARD_TEMPLATE_VALUE)}
-      </div>
+        {" "}
+        {renderCardTemplate(props.PROPERTY_CARD_TEMPLATE_VALUE)}{" "}
+      </div>{" "}
     </MainLayout>
   );
 };
 
 export async function getServerSideProps({ params }) {
+
   const res = await fetch(
-    `https://boost-center.com/api/products/${params.card}`
-  );
+    `https://boost-center.com/api/making/${params.card}/wot`);
+
   const data = await res.json();
 
   if (!data) {
@@ -43,7 +53,6 @@ export async function getServerSideProps({ params }) {
   }
 
   return { props: data };
-
 }
 
 export default Card;

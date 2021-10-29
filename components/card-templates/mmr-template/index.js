@@ -3,6 +3,7 @@ import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
 import OrderStages from "../../OrderStages";
 import Nouislider from "nouislider-react";
+import SelectDarkBlue from "../../SelectDarkBlue/SelectDarkBlue";
 
 const MmrTemplate = (props) => {
   // сюда собираем данные о том, что выбрал пользователь
@@ -21,7 +22,7 @@ const MmrTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <CategoriesGradient currentGame={props.currentGame}/>
+      <CategoriesGradient currentGame={props.currentGame} />
       <section className="matchmaking block-bg">
         <div className="matchmaking__top-box">
           <div className="matchmaking__title">
@@ -258,29 +259,8 @@ const MmrTemplate = (props) => {
                   <img src="img/matchmaking/img1.png" alt="" />
                 </div>
               </div>
-              <div className="matchmaking__progress-current-select-divCur progress-current-select">
-                <select className="matchmaking__progress-current-select matchmaking__progress-select">
-                  <option
-                    className="progress-curent-item"
-                    value="silver1"
-                    value
-                    disabled
-                    selected
-                    hidden
-                  >
-                    Сurrent rank
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    silver1
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    silver1
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    silver1
-                  </option>
-                </select>
-              </div>
+
+              <SelectDarkBlue />
             </div>
             <div className="matchmaking__progress-arr">
               <img src="img/matchmaking/progress-arr.svg" alt="" />
@@ -288,29 +268,9 @@ const MmrTemplate = (props) => {
               <img src="img/matchmaking/progress-arr.svg" alt="" />
             </div>
             <div className="matchmaking__progress-block-wrapper matchmaking__progress-block-wrapper-des">
-              <div className="matchmaking__progress-current-select-divDes progress-current-select">
-                <select className="matchmaking__progress-current-select matchmaking__progress-select">
-                  <option
-                    className="progress-curent-item"
-                    value="silver1"
-                    value
-                    disabled
-                    selected
-                    hidden
-                  >
-                    Desired rank
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    globalelite
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    globalelite
-                  </option>
-                  <option className="progress-curent-item" value="silver1">
-                    globalelite
-                  </option>
-                </select>
-              </div>
+              <SelectDarkBlue
+                addClass={``}
+              />
 
               <div className="matchmaking__progress-block-box subtitle__page">
                 <p>Desired rank</p>

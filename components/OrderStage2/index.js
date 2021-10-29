@@ -1,5 +1,6 @@
 import Link from "next/link";
 import OrderStages from "../OrderStages";
+import SelectTransparent from "../SelectTransparent/SelectTransparent";
 
 const OrderStage2 = (props) => {
   return (
@@ -25,32 +26,7 @@ const OrderStage2 = (props) => {
                     <span className="input-placeholder-form">email</span>
                   </label>
                   <div className="stage2__form-item select__form-wrapper">
-                    <select className="select__form">
-                      <option
-                        className="select__form-item"
-                        value
-                        disabled
-                        selected
-                        hidden
-                      >
-                        Where we can contact you?
-                      </option>
-                      <option className="select__form-item" value>
-                        Viber
-                      </option>
-                      <option className="select__form-item" value="foo">
-                        Telegram
-                      </option>
-                      <option className="select__form-item" value="buz">
-                        Vkontakte
-                      </option>
-                      <option className="select__form-item" value="buz">
-                        WhatsApp
-                      </option>
-                      <option className="select__form-item" value="buz">
-                        Phone
-                      </option>
-                    </select>
+                    <SelectTransparent />
                   </div>
                   <label className="stage2__form-item label-form">
                     <input
@@ -92,7 +68,8 @@ const OrderStage2 = (props) => {
                 </div>
                 <div className="stage2__form-box stage2__form-box-height">
                   <div className="stage2__form-item select__form-wrapper">
-                    <select className="select__form">
+                    <SelectTransparent />
+                    {/* <select className="select__form">
                       <option
                         className="select__form-item"
                         value
@@ -117,10 +94,12 @@ const OrderStage2 = (props) => {
                       <option className="select__form-item" value="buz">
                         Server5
                       </option>
-                    </select>
+                    </select> */}
                   </div>
                   <div className="stage2__form-item select__form-wrapper">
-                    <select className="select__form">
+                  <SelectTransparent />
+
+                    {/* <select className="select__form">
                       <option
                         className="select__form-item"
                         value
@@ -145,7 +124,7 @@ const OrderStage2 = (props) => {
                       <option className="select__form-item" value="buz">
                         Phone
                       </option>
-                    </select>
+                    </select> */}
                   </div>
                 </div>
                 <label className="label-form label__form-width">

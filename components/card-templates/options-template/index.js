@@ -1,5 +1,6 @@
 import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+import OrderStages from "../../OrderStages";
 import RangeExperience from "./RangeExperience";
 import RangeSkill from "./RangeSkill";
 
@@ -456,18 +457,7 @@ const OptionsTemplate = (props) => {
             </div>
             <div className="matchmaking__info matchmaking__info-card2">
               <div className="matchmaking__info-left matchmaking__info-left-card2">
-                <div className="stage-list">
-                  <div className="stage-list__item stage-list__item1 active">
-                    <p>Stage 1</p>
-                  </div>
-                  <div className="stage-list__item stage-list__item2">
-                    <p>Stage 2</p>
-                  </div>
-                  <div className="stage-list__item stage-list__item3">
-                    <p>Stage 3</p>
-                  </div>
-                  <div className="stage-list__bg"></div>
-                </div>
+              <OrderStages />
                 <p className="matchmaking__info-text">
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
