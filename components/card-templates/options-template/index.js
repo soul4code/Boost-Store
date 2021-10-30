@@ -1,40 +1,14 @@
+import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
+import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+import OrderStages from "../../OrderStages";
+import RangeExperience from "./RangeExperience";
+import RangeSkill from "./RangeSkill";
+
 const OptionsTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <div className="game__rank-list">
-        <a href="#" className="game__rank-item">
-          <p>MM rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Danger Zone rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Private rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Wingman rank</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Achivements</p>
-        </a>
-        <a href="#" className="game__rank-item">
-          <p>Danger Zone rank</p>
-        </a>
-        <a href="#" className="game__rank-item game__rank-item-more">
-          <p>More</p>
-          <svg
-            className="game__rank-item-arr"
-            width="9"
-            height="5"
-            viewBox="0 0 9 5"
-            fill="#fff"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M4.74694 4.89542L8.90279 0.609586C9.03566 0.467701 9.03185 0.241607 8.89427 0.104577C8.76005 -0.0291042 8.54729 -0.0291042 8.4131 0.104577L4.5021 4.13791L0.591098 0.104577C0.455871 -0.0348594 0.236633 -0.0348594 0.101406 0.104577C-0.0338011 0.244055 -0.0338011 0.470128 0.101406 0.609586L4.25725 4.89542C4.3925 5.03486 4.61172 5.03486 4.74694 4.89542Z" />
-          </svg>
-        </a>
-      </div>
+      <CategoriesGradient currentGame={props.currentGame}/>
       <div className="block-bg stage__wrapper">
         <div className="matchmaking__top-box">
           <div className="matchmaking__title">
@@ -394,14 +368,10 @@ const OptionsTemplate = (props) => {
             <div className="matchmaking__card2-box matchmaking__card2-box-progress">
               <div className="subtitle__page">Options</div>
               <div className="matchmaking__min-scrollbar-box matchmaking__scrollbar-start">
-                <div className="matchmaking__min-scrollbar-title">Skill</div>
-                <div id="matchmaking__min-scrollbar-skill"></div>
+                <RangeSkill />
               </div>
               <div className="matchmaking__min-scrollbar-box">
-                <div className="matchmaking__min-scrollbar-title">
-                  Experience
-                </div>
-                <div id="matchmaking__min-scrollbar-experience"></div>
+                <RangeExperience />
               </div>
             </div>
             <div className="matchmaking__card2-box matchmaking__card2-box-extra">
@@ -487,18 +457,7 @@ const OptionsTemplate = (props) => {
             </div>
             <div className="matchmaking__info matchmaking__info-card2">
               <div className="matchmaking__info-left matchmaking__info-left-card2">
-                <div className="stage-list">
-                  <div className="stage-list__item stage-list__item1 active">
-                    <p>Stage 1</p>
-                  </div>
-                  <div className="stage-list__item stage-list__item2">
-                    <p>Stage 2</p>
-                  </div>
-                  <div className="stage-list__item stage-list__item3">
-                    <p>Stage 3</p>
-                  </div>
-                  <div className="stage-list__bg"></div>
-                </div>
+              <OrderStages />
                 <p className="matchmaking__info-text">
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -549,9 +508,7 @@ const OptionsTemplate = (props) => {
                   <div className="enum__result">30 days</div>
                 </div>
                 <div className="matchmaking__info-btns matchmaking__info-btns-start">
-                  <button className="button-color matchmaking__info-btn">
-                    Buy it now
-                  </button>
+                <ButtonCardTemplateColor />
                   <button className="button-transp matchmaking__info-btn">
                     <p>add to cart</p>
                   </button>

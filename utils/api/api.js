@@ -13,19 +13,37 @@ class Api {
 
     getGames = () => {
         return fetch(this._baseUrl + '/games', {
-            headers: this._headers
-        })
-        .then(res => {
-            return this._checkRequest(res);
-        })
+                headers: this._headers
+            })
+            .then(res => {
+                return this._checkRequest(res);
+            })
+    }
+
+    getGameItem = (codeGame) => {
+        return fetch(`${this._baseUrl}/game/${codeGame}`, {
+                headers: this._headers
+            })
+            .then(res => {
+                return this._checkRequest(res);
+            })
     }
 
     getReviews = () => {
         return fetch(this._baseUrl + '/reviews', {
+                headers: this._headers
+            })
+            .then(res => {
+                return this._checkRequest(res);
+            })
+    }
+
+    authorisation = (email, password) => {
+        return fetch(`${this._baseUrl}/user/token?login=${email}&password=${password}`, {
             headers: this._headers
         })
-        .then(res => {
-            return this._checkRequest(res);
+        .then(res=>{
+            return this._checkRequest(res)
         })
     }
 }

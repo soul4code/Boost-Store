@@ -9,21 +9,17 @@ const SectionGames = (props) => {
   const router = useRouter();
   const t = router.locale === "ru" ? ru : en;
 
+  const GameCardList = props.games.map((game) => (
+    <Link href={`/${game.CODE}`} key={game.ID} passHref>
+      <GameCard picture={game.PICTURE} link={`/${game.CODE}`} alt={game.NAME} />
+    </Link>
+  ));
+
   return (
     <section className="section-games container">
       <h2 className="section-games__title">{t.gamesSectionTitle}</h2>
       <div className="section-games__catalog">
-        {props.games.map((game) => {
-          return (
-            <Link href={`/${game.CODE}`} key={game.ID} passHref>
-              <GameCard
-                picture={game.PICTURE}
-                link={`/${game.CODE}`}
-                alt={game.NAME}
-              />
-            </Link>
-          );
-        })}
+        {GameCardList}
 
         {/* <a className="section-games__players" href='#'>
                     <div className="section-games__players-icon">
@@ -42,7 +38,7 @@ const SectionGames = (props) => {
 
 const mapStateToProps = (state) => ({
   games: state.games.games,
-  lang: state.lang.lang,
+  lang: state.main.lang,
 });
 
 export default connect(mapStateToProps)(SectionGames);

@@ -1,11 +1,13 @@
-import Link from "next/link";
 import OrderStages from "../OrderStages";
 
 const OrderStage3 = (props) => {
   return (
     <>
       <div class="block-bg stage__wrapper">
-        <OrderStages />
+        <div className="stage__top">
+          <OrderStages width={`110`} />
+        </div>
+
         <div class="stage3__content">
           <div class="stage3__content-box-main">
             <div class="stage3__content-text">
