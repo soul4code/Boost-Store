@@ -15,7 +15,7 @@ const WotTemplate = (props) => {
 
       <section className="matchmaking block-bg matchmaking-card3">
         <MakingHeader title={props.TITLE} advantages={props.ADVANTAGES}/>
-        <PersonalMission choiseTank={props.CHOISE_TANKS}/>
+        <PersonalMission choiseTank={props.CHOISE_TANKS} isExtraOptions={props.IS_EXTRA_OPTIONS} extraOptions={props.EXTRA_OPTIONS}/>
         <MakingInfo />
       </section>
     </>

@@ -44,7 +44,7 @@ const Card = (props) => {
 export async function getServerSideProps({ params }) {
 
   const res = await fetch(
-    `https://boost-center.com/api/making/${params.card}/wot`);
+    `https://boost-center.com/api/making/${params.card}`);
 
   const data = await res.json();
 

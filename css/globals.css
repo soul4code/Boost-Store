@@ -2296,6 +2296,7 @@ body {
   border-bottom: 3px solid transparent;
   border-image-source: linear-gradient(262.9deg, #30caff 0%, #329bf8 54.17%, #3373f2 100%);
   border-image-slice: 1;
+  cursor: pointer;
 }
 
 .select__form-icon {
@@ -3005,6 +3006,14 @@ body {
   background-color: #0180FF;
   border-radius: 50%;
   transition: all .3s;
+}
+
+.progress-matchmaking-item.select__matchmaking-startValue:hover{
+  background: transparent;
+}
+
+.progress-matchmaking-item.select__matchmaking-startValue:hover::after{
+  display: none;
 }
 
 .progress-matchmaking-item.progress-matchmaking-item-current {
