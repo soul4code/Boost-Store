@@ -29,25 +29,26 @@ const PersonalMissionMain = (props) => {
   ));
 
   const addCurrentTank = (i) => {
-    if (i.classList.contains("swiper-slide-active")) {
-      let htmlStrObj = {};
-      htmlStrObj.container = i;
-      props.setCurrentTank(htmlStrObj.container.children[1].innerHTML);
-    }
+    // if (i.classList.contains("swiper-slide-active")) {
+    //   let htmlStrObj = {};
+    //   htmlStrObj.container = i;
+    //   props.setCurrentTank(htmlStrObj.container.children[1].innerHTML);
+    // }
+    props.setCurrentTank();
   };
 
-  useEffect(() => {
-    if (secondSwiper) {
-      document.querySelectorAll(".swiperTank .swiper-slide").forEach((i) => {
-        i.addEventListener("click", () => addCurrentTank(i));
-      });
-    }
-    return document
-      .querySelectorAll(".swiperTank .swiper-slide")
-      .forEach((i) => {
-        i.removeEventListener("click", () => addCurrentTank(i));
-      });
-  }, [secondSwiper]);
+  // useEffect(() => {
+  //   if (secondSwiper) {
+  //     document.querySelectorAll(".swiperTank .swiper-slide").forEach((i) => {
+  //       i.addEventListener("click", () => addCurrentTank(i));
+  //     });
+  //   }
+  //   return document
+  //     .querySelectorAll(".swiperTank .swiper-slide")
+  //     .forEach((i) => {
+  //       i.removeEventListener("click", () => addCurrentTank(i));
+  //     });
+  // }, [secondSwiper]);
 
   return (
     <div className="matchmaking__card3-item matchmaking__card3-result">
@@ -59,7 +60,12 @@ const PersonalMissionMain = (props) => {
           slidesPerView={1}
           className={`swiperTank`}
           virtual
-          onSwiper={setSecondSwiper}
+          onSwiper={(e) => {
+            setSecondSwiper();
+          }}
+          onSlideChange={(e) => {
+            props.setCurrentTank(lasgeSliderList[e.activeIndex].props.model);
+          }}
           controller={{ control: firstSwiper }}
         >
           {lasgeSliderList.map((tank, index) => (
@@ -80,12 +86,7 @@ const PersonalMissionMain = (props) => {
           controller={{ control: secondSwiper }}
         >
           {smallSliderList.map((tank, index) => (
-            <SwiperSlide
-              className={``}
-              key={tank}
-              virtualIndex={index}
-              
-            >
+            <SwiperSlide className={``} key={tank} virtualIndex={index}>
               {tank}
             </SwiperSlide>
           ))}

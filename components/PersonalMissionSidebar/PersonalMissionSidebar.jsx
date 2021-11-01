@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const PersonalMissionSidebar = (props) => {
-  debugger
+
   console.log(props.currentTank);
 
   let [currentArray, setCurrentArray] = useState();
