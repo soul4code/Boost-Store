@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const CategoriesDefault = (props) => {
   // currentGameServices={props.data}
-  debugger;
+
   let categoriesList;
   if (props.categories) {
     categoriesList = props.categories.map((category) => (
