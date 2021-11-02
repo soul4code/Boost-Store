@@ -3283,6 +3283,10 @@ body {
   align-items: center;
 }
 
+.matchmaking__progress-block-wrapper-reverse{
+  flex-direction: row-reverse;
+}
+
 .matchmaking__progress-block-wrapper>div+div {
   margin-left: 66px;
 }
@@ -3343,15 +3347,37 @@ body {
 
 .matchmaking__progress-rank-img img {
   width: 180px;
-  height: 72px;
+  height: 83px;
+  object-fit: contain;
 }
 
-.matchmaking__progress-arr img {
+.matchmaking__progress-arr{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matchmaking__progress-arr img,
+.matchmaking__progress-arr svg,
+.matchmaking__progress-arr svg path {
   width: 105px;
   height: 72px;
 }
 
-.matchmaking__progress-arr img+img {
+.matchmaking__progress-arr-box{
+  width: 105px;
+  height: 72px;
+  position: relative;
+}
+
+.svg_container{
+  width: 105px;
+  height: 72px;
+}
+
+.matchmaking__progress-arr img+img,
+.matchmaking__progress-arr svg+svg,
+.matchmaking__progress-arr-box {
   margin-left: 38px;
 }
 
@@ -3450,6 +3476,7 @@ body {
   height: 53px;
   margin-top: 13px;
   position: relative;
+  padding-top: 10px;
 }
 
 .matchmaking__progressbar-desk-item img {
@@ -3510,6 +3537,7 @@ body {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 50%;
   flex: 1 1 50%;
+  cursor: pointer;
 }
 
 .matchmaking__info {
@@ -5023,6 +5051,22 @@ body {
   grid-gap: 18px 30px;
 }
 
+.options-checkbox-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 18px 30px;
+}
+
+.options-checkbox-wrapper label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .matchmaking__card3-extra .options-checkbox-wrapper label {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6461,6 +6505,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding-bottom: 16px;
+  overflow: hidden;
 }
 
 .main-swiper__container {
@@ -6477,6 +6522,10 @@ body {
   margin-bottom: 40px;
 }
 
+.main-swiper__container .swiper-wrapper{
+  overflow: visible !important;
+}
+
 .main__swiper-slide {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6486,11 +6535,12 @@ body {
   justify-content: center;
   max-width: 1440px;
   margin: 0 auto;
-  padding-left: 70px;
+  padding-left: 100px;
 }
 
 .swiper-slide__content {
   text-align: left;
+  width: 30%;
 }
 
 .swiper-slide-title h1,
@@ -6571,6 +6621,12 @@ body {
   object-fit: cover;
 }
 
+.main-swiper__container .swiper-pagination{
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .main-swiper__container .swiper-pagination .swiper-pagination-bullet {
   width: 50px;
   height: 10px;
@@ -6578,6 +6634,7 @@ body {
   border: 1px solid #008ed2;
   border-radius: 0;
   opacity: 1;
+  margin: 0 4px;
 }
 
 .main-swiper__container .swiper-pagination .swiper-pagination-bullet:hover {
@@ -7359,14 +7416,28 @@ body {
     height: 60px;
   }
 
-  .matchmaking__progress-arr img+img {
+  .matchmaking__progress-arr img+img,
+  .matchmaking__progress-arr svg+svg {
     margin-left: 29px;
   }
 
-  .matchmaking__progress-arr img {
+  .matchmaking__progress-arr img,
+  .matchmaking__progress-arr svg,
+  .matchmaking__progress-arr svg path {
     width: 88px;
     height: 55px;
   }
+
+  .matchmaking__progress-arr-box{
+    width: 88px;
+    height: 55px;
+  }
+
+  .svg_container{
+    width: 88px;
+    height: 55px;
+  }
+
 
   .noUi-horizontal .noUi-handle {
     width: 67px;
@@ -8121,11 +8192,18 @@ body {
     height: 34px;
   }
 
-  .matchmaking__progress-arr img+img {
+  .matchmaking__progress-arr img+img,
+  .matchmaking__progress-arr svg+svg {
     margin-left: 19px;
   }
 
-  .matchmaking__progress-arr img {
+  .matchmaking__progress-arr img,
+  .matchmaking__progress-arr svg {
+    width: 50px;
+    height: 34px;
+  }
+
+  .matchmaking__progress-arr-box{
     width: 50px;
     height: 34px;
   }
@@ -9627,14 +9705,22 @@ body {
     height: 46px;
   }
 
-  .matchmaking__progress-arr img+img {
+  .matchmaking__progress-arr img+img,
+  .matchmaking__progress-arr svg+svg {
     margin-left: 12px;
   }
 
-  .matchmaking__progress-arr img {
+  .matchmaking__progress-arr img,
+  .matchmaking__progress-arr svg {
     width: 32px;
     height: 20px;
   }
+
+  .matchmaking__progress-arr-box{
+    width: 32px;
+    height: 20px;
+  }
+
 
   .noUi-horizontal .noUi-handle {
     width: 39px;

@@ -1,4 +1,4 @@
-import descrBg from '../../images/matchmaking/advant-info-bg.svg'
+import Image from 'next/image'
 
 const AdvantItem = (props) => {
   return (
@@ -45,7 +45,7 @@ const AdvantItem = (props) => {
           <p>
             {props.DESCRIPTION}
           </p>
-          <img src={descrBg} alt="" />
+          <Image src={'/img/matchmaking/advant-info-bg.svg'} alt={props.alt} layout="fill"/>
         </div>
       </div>
     </div>

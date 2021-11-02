@@ -1,6 +1,6 @@
 import Advantages from "../../Advantages/Advantages";
 import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
-import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
+
 import MakingHeader from "../../MakingHeader/MakingHeader";
 import MakingInfo from "../../MakingInfo/MakingInfo";
 import OrderStages from "../../OrderStages";

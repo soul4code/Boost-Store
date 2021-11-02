@@ -16,7 +16,7 @@ const Card = (props) => {
         break;
       case "progress":
         return (
-          <MmrTemplate name={props.NAME} currentGame={router.query.game} />
+          <MmrTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
         );
         break;
       case "wot":

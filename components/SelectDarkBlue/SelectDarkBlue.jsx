@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import SelectItem from "./SelectItem";
 import SelectStartValue from "./SelectStartValue";
 
-const SelectDarkBlue = (props) => {
+const SelectDarkBlue = ({list, addClass, defaultValue, doSelect}) => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   const getIsOpen = () => {
@@ -15,35 +16,37 @@ const SelectDarkBlue = (props) => {
   const getSelectedOption = (e) => {
     setSelectedOption(e.target.innerText);
     setIsOpen(!isOpen);
-    console.log(e.target.offsetParent);
     e.target.offsetParent.childNodes.forEach((i) => {
       i.classList.remove("progress-matchmaking-item-current");
     });
     e.target.classList.add("progress-matchmaking-item-current");
   };
 
-  const startValue = "silver1";
-  const state = [
-    { text: "silver1" },
-    { text: "silver2" },
-    { text: "silver3" },
-    { text: "silver4" },
-    { text: "silver5" },
-    { text: "silver6" },
-  ];
+  const [startValue, setStartValue] = useState();
 
-  let selectList = state.map((i, index) => (
-    <SelectItem
-      key={index}
-      index={index}
-      text={i.text}
-      action={getSelectedOption}
-    />
-  ));
+  useEffect(() => {
+    if (list) {
+      setStartValue(defaultValue);
+      doSelect(list[0].ID)
+    }
+  }, []);
+
+  let selectList;
+  if (list) {
+    selectList = list.map((i) => (
+      <SelectItem
+        key={i.ID}
+        id={i.ID}
+        text={i.TEXT}
+        action={getSelectedOption}
+        addAction={doSelect}
+      />
+    ));
+  }
 
   return (
     <>
-      <div className={`progress-current-select ${props.addClass}`}>
+      <div className={`progress-current-select ${addClass}`}>
         <div className="select__matchmaking-header" onClick={getIsOpen}>
           {selectedOption ? (
             selectedOption

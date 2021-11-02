@@ -1,6 +1,8 @@
+import Image from 'next/image'
+
 // icon - default = i
 
-const PinInfo = ({icon='i', description}) => {
+const PinInfo = ({icon='i', description, alt}) => {
   return (
     <div className="checkbox-info checkbox-info-card3">
       <span>{icon}</span>
@@ -8,7 +10,7 @@ const PinInfo = ({icon='i', description}) => {
         <p>
           {description}
         </p>
-        <img src="img/matchmaking/info-bg.svg" alt="" />
+        <Image src={'/img/matchmaking/info-bg.svg'} alt={alt} layout="fill"/>
       </div>
     </div>
   );
