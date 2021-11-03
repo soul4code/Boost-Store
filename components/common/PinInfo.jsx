@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 // icon - default = i
 
-const PinInfo = ({icon='i', description, alt}) => {
+const PinInfo = ({icon='i', description, alt=''}) => {
   return (
     <div className="checkbox-info checkbox-info-card3">
       <span>{icon}</span>

@@ -6,11 +6,12 @@ import "../css/globals.css";
 
 import { api } from "../utils/api/api";
 
-import { connect, Provider } from "react-redux";
+import { Provider } from "react-redux";
 import store from "../store/store";
 
 import { setGames } from "../store/games/actions";
 import { useEffect } from "react";
+import CheckAuth from "../components/CheckAuth/CheckAuth";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -22,12 +23,13 @@ function MyApp({ Component, pageProps }) {
       .catch((err) => {
         console.log(`Ошибка при получении списка игр ${err}`);
       });
+
   }, []);
 
   return (
     <>
     <Provider store={store}>
-      <Component {...pageProps} />
+      <CheckAuth child={<Component {...pageProps} />}/>
     </Provider>
     </>
   );

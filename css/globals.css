@@ -2947,7 +2947,7 @@ body {
   background-color: transparent;
   height: 0;
   width: 0;
-  
+
 }
 
 ::-webkit-scrollbar-button:vertical:end:increment {
@@ -3008,11 +3008,11 @@ body {
   transition: all .3s;
 }
 
-.progress-matchmaking-item.select__matchmaking-startValue:hover{
+.progress-matchmaking-item.select__matchmaking-startValue:hover {
   background: transparent;
 }
 
-.progress-matchmaking-item.select__matchmaking-startValue:hover::after{
+.progress-matchmaking-item.select__matchmaking-startValue:hover::after {
   display: none;
 }
 
@@ -3283,7 +3283,7 @@ body {
   align-items: center;
 }
 
-.matchmaking__progress-block-wrapper-reverse{
+.matchmaking__progress-block-wrapper-reverse {
   flex-direction: row-reverse;
 }
 
@@ -3351,7 +3351,7 @@ body {
   object-fit: contain;
 }
 
-.matchmaking__progress-arr{
+.matchmaking__progress-arr {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3364,13 +3364,13 @@ body {
   height: 72px;
 }
 
-.matchmaking__progress-arr-box{
+.matchmaking__progress-arr-box {
   width: 105px;
   height: 72px;
   position: relative;
 }
 
-.svg_container{
+.svg_container {
   width: 105px;
   height: 72px;
 }
@@ -3651,6 +3651,22 @@ body {
   opacity: 1;
 }
 
+.options-checkbox-options{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.options-checkbox-options>label{
+  flex: 0 1 50%;
+  margin-top: 18px;
+
+}
+
+.options-checkbox-options>label+label{
+  margin-top: 18px;
+}
+
 .checkbox-text {
   display: inline-block;
   margin-left: 16px;
@@ -3796,7 +3812,7 @@ body {
   flex-direction: column;
 }
 
-.product>a{
+.product>a {
   display: block;
 }
 
@@ -3839,7 +3855,7 @@ body {
   flex: 0 1 100%
 }
 
-.product__container{
+.product__container {
   justify-self: flex-end;
 }
 
@@ -4873,7 +4889,7 @@ body {
   justify-content: center;
 }
 
-.unvisible-div{
+.unvisible-div {
   visibility: hidden;
   width: 0;
   height: 0;
@@ -6522,7 +6538,7 @@ body {
   margin-bottom: 40px;
 }
 
-.main-swiper__container .swiper-wrapper{
+.main-swiper__container .swiper-wrapper {
   overflow: visible !important;
 }
 
@@ -6621,10 +6637,11 @@ body {
   object-fit: cover;
 }
 
-.main-swiper__container .swiper-pagination{
+.main-swiper__container .swiper-pagination {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 4;
 }
 
 .main-swiper__container .swiper-pagination .swiper-pagination-bullet {
@@ -7428,12 +7445,12 @@ body {
     height: 55px;
   }
 
-  .matchmaking__progress-arr-box{
+  .matchmaking__progress-arr-box {
     width: 88px;
     height: 55px;
   }
 
-  .svg_container{
+  .svg_container {
     width: 88px;
     height: 55px;
   }
@@ -8203,7 +8220,7 @@ body {
     height: 34px;
   }
 
-  .matchmaking__progress-arr-box{
+  .matchmaking__progress-arr-box {
     width: 50px;
     height: 34px;
   }
@@ -9716,7 +9733,7 @@ body {
     height: 20px;
   }
 
-  .matchmaking__progress-arr-box{
+  .matchmaking__progress-arr-box {
     width: 32px;
     height: 20px;
   }
@@ -11996,4 +12013,104 @@ body {
   .matchmaking__checkbox-info-text img {
     width: 90px;
   }
+}
+
+.modal__wrapper {
+  position: fixed;
+  z-index: 12;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  cursor: default;
+}
+
+.modal__wrapper.modal__wrapper-open {
+  display: flex;
+}
+
+.modal__body {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  background-color: #329bf8;
+  padding: 30px;
+  position: relative;
+  border-radius: 15px
+}
+
+.modal__close {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+
+.modal__title {
+  text-align: center;
+  margin-top: 15px;
+  color: #fff !important;
+}
+
+.modal__description {
+  text-align: center;
+  margin-top: 10px
+}
+
+.modal__form {
+  margin-top: 30px
+}
+
+.modal__label {
+  display: block;
+  margin-top: 30px;
+  position: relative;
+}
+
+.modal__label+.modal__label {
+  margin-top: 45px
+}
+
+.modal__input {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px;
+  border: 3px solid #fff;
+  background-color: transparent;
+  line-height: 60px;
+  padding-left: 20px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.modal__placeholder {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #fff;
+  position: absolute;
+  background-color: #329bf8;
+  top: -18px;
+  left: 20px;
+  padding: 7px;
+  width: auto !important
+}
+
+.modal__placeholder:first-letter {
+  text-transform: uppercase;
+}
+
+.modal__button {
+  margin-top: 30px;
+  height: 65px;
 }

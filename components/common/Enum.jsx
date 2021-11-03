@@ -1,4 +1,4 @@
-const Enum = ({title='Price', num=1000, isLarge=false, measure='$'}) => {
+const Enum = ({title='Price', num='1 000', isLarge=false, measure='$'}) => {
   return (
     <div className="enum enum__matchmaking">
       <div className="enum__title">{title}</div>

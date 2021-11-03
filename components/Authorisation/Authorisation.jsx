@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Input from "../EntrAccount/Input";
 import { api } from "../../utils/api/api";
 import { setAuth, setAuthToken } from "../../store/main/actions";
 import { connect } from "react-redux";
+import ModalForm from "../ModalForm/ModalForm";
+import InputWhiteBorder from "../common/InputWhiteBorder";
+import ButtonGradient from "../common/ButtonGradient";
 
 const Authorisation = (props) => {
   const [email, setEmail] = useState("");
@@ -10,42 +12,49 @@ const Authorisation = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.authorisation(email, password).then((res) => {
-      localStorage.setItem("authToken", res.token)
-      return localStorage.getItem('authToken')
-    })
-    .then(res=>props.setAuthToken(res))
-    .then(props.setAuth(true))
+    api
+      .authorisation(email, password)
+      .then((res) => {
+        localStorage.setItem("authToken", res.token);
+        console.log(res);
+        return localStorage.getItem("authToken");
+      })
+      .then((res) => props.setAuthToken(res))
+      .then(props.setAuth(true));
   };
 
   return (
-    <div>
-      <div className={"account__header-name text-center"}>Authorisation</div>
-      <form onSubmit={handleSubmit}>
-        <Input
-          value={email}
-          setValue={setEmail}
-          type="email"
-          placeholder="Email"
+    <>
+      <ModalForm
+        title={"Authorisation"}
+        titleButton={"Войти"}
+        onSubmitAction={handleSubmit}
+        close={props.removeCurrentType}
+      >
+        <InputWhiteBorder
+          placeholder={"email"}
+          type={"email"}
           required={true}
+          setValue={setEmail}
           minLength={3}
         />
-        <Input
-          value={password}
-          setValue={setPassword}
-          type="password"
-          placeholder="Password"
+        <InputWhiteBorder
+          placeholder={"password"}
+          type={"password"}
           required={true}
+          setValue={setPassword}
           minLength={7}
         />
-        <button
-          className={"button-color-basic button__auth"}
-          onClick={() => api.authorisation(email, password)}
-        >
-          Authorisation
-        </button>
-      </form>
-    </div>
+        <ButtonGradient
+          title={"Войти"}
+          addClass={"modal__button"}
+          action={() => {
+            api.authorisation(email, password);
+            props.getUnVisible();
+          }}
+        />
+      </ModalForm>
+    </>
   );
 };
 const mapStateToProps = (state) => ({

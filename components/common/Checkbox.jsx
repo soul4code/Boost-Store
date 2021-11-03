@@ -1,4 +1,4 @@
-const Checkbox = ({ children, text, action }) => {
+const Checkbox = ({ children, text, action, circle=false }) => {
   
   return (
     <label
@@ -7,7 +7,7 @@ const Checkbox = ({ children, text, action }) => {
       }
     >
       <input className="options-checkbox-input" type="checkbox" />
-      <span className="checkbox-circle"></span>
+      <span className={`checkbox-circle ${circle ? 'checkbox-circle-circle' : ''}`}></span>
       <span className="checkbox-text">{text}</span>
       {children}
     </label>

@@ -3,6 +3,7 @@ import OptionsTemplate from "../../components/card-templates/options-template";
 import MmrTemplate from "../../components/card-templates/mmr-template";
 import WotTemplate from "../../components/card-templates/wot-template";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Card = (props) => {
   const router = useRouter();
@@ -11,7 +12,7 @@ const Card = (props) => {
     switch (props.PROPERTY_CARD_TEMPLATE_VALUE) {
       case "options":
         return (
-          <OptionsTemplate name={props.NAME} currentGame={router.query.game} />
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
         );
         break;
       case "progress":
@@ -26,7 +27,7 @@ const Card = (props) => {
         break;
       default:
         return (
-          <OptionsTemplate name={props.NAME} currentGame={router.query.game} />
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
         );
     }
   };

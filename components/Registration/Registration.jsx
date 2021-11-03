@@ -1,6 +1,12 @@
 import { useState } from "react";
-import Input from "../EntrAccount/Input";
+import { connect } from "react-redux";
+import { api } from "../../utils/api/api";
+import ButtonGradient from "../common/ButtonGradient";
+import InputWhiteBorder from "../common/InputWhiteBorder";
+import ModalForm from "../ModalForm/ModalForm";
 import { registrationPOST } from "./registrationPOST";
+import { setAuth, setAuthToken } from "../../store/main/actions";
+
 
 const Registration = (props) => {
   const [email, setEmail] = useState("");
@@ -9,38 +15,57 @@ const Registration = (props) => {
   const handleSubmit = (e) => {
     console.log(`${email} - ${password}`);
     e.preventDefault();
+    api
+      .authorisation(email, password)
+      .then((res) => {
+        localStorage.setItem("authToken", res.token);
+        console.log(res);
+        return localStorage.getItem("authToken");
+      })
+      .then((res) => props.setAuthToken(res))
+      .then(props.setAuth(true));
   };
   // alex@manc.ru - alexmanc
 
   return (
     <>
-      <div className={"account__header-name text-center"}>Registration</div>
-      <form onSubmit={handleSubmit}>
-        <Input
-          value={email}
-          setValue={setEmail}
-          type="email"
-          placeholder="Email"
+      <ModalForm
+        title={"Registration"}
+        titleButton={"Зарегистрироваться"}
+        onSubmitAction={handleSubmit}
+        close={props.removeCurrentType}
+      >
+        <InputWhiteBorder
+          placeholder={"email"}
+          type={"email"}
           required={true}
+          setValue={setEmail}
           minLength={3}
         />
-        <Input
-          value={password}
-          setValue={setPassword}
-          type="password"
-          placeholder="Password"
+        <InputWhiteBorder
+          placeholder={"password"}
+          type={"password"}
           required={true}
+          setValue={setPassword}
           minLength={7}
         />
-        <button
-          className={"button-color-basic button__auth"}
-          onClick={() => registrationPOST(email, password)}
-        >
-          Registration
-        </button>
-      </form>
+        <ButtonGradient title={'Войти'} addClass={'modal__button'} action={() => registrationPOST(email, password)}/>
+
+      </ModalForm>
     </>
+      
+    
   );
 };
 
-export default Registration;
+const mapStateToProps = (state) => ({
+  isAuth: state.main.isAuth,
+  authToken: state.main.authToken,
+});
+
+const mapDispatchToProps = {
+  setAuth,
+  setAuthToken,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
