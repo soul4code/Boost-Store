@@ -15,6 +15,7 @@ import { useEffect } from "react";
 const Game = (props) => {
   let router =useRouter()
 
+
   // зануляю фильтр при изменении игры
   useEffect(() => {
     props.setFilter([]);

@@ -4,10 +4,17 @@ import { connect } from "react-redux";
 const CategoriesDefault = (props) => {
   // currentGameServices={props.data}
 
-  
-  const categoriesList = props.categories.map((category) => (
-    <CategoryItem category={category} setFilter={props.setFilter} currentGameServices={props.currentGameServices}/>
-  ));
+  let categoriesList;
+  if (props.categories) {
+    categoriesList = props.categories.map((category) => (
+      <CategoryItem
+        category={category}
+        setFilter={props.setFilter}
+        currentGameServices={props.currentGameServices}
+      />
+    ));
+  }
+
   return (
     <ul className="category-menu__list">
       {categoriesList}
@@ -50,10 +57,10 @@ const CategoriesDefault = (props) => {
     </ul>
   );
 };
-const mapStateToProps =(state)=>({
-    games: state.games.games
-})
+const mapStateToProps = (state) => ({
+  games: state.games.games,
+});
 
-export default connect(mapStateToProps)(CategoriesDefault)
+export default connect(mapStateToProps)(CategoriesDefault);
 
 // export default CategoriesDefault;

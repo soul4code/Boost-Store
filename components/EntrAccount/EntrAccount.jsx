@@ -14,13 +14,17 @@ const EntrAccount = (props) => {
     setTypeEntr("reg");
   };
 
+  const removeCurrentType = ()=>{
+    setTypeEntr('')
+  }
+
   const typeForm = () => {
     switch (typeEntr) {
       case "auth":
-        return <Authorisation />;
+        return <Authorisation getUnVisible={props.getIsAuthorisationOpen} removeCurrentType={removeCurrentType}/>;
 
       case "reg":
-        return <Registration />;
+        return <Registration getUnVisible={props.getIsAuthorisationOpen} removeCurrentType={removeCurrentType}/>;
 
       default:
         return null;
@@ -30,20 +34,23 @@ const EntrAccount = (props) => {
   return (
     <>
       <div
-        className={`account__header ${
+        className={`modal__wrapper ${
           props.isAuthorisationOpen
-            ? "select__wrap-list-react"
-            : "select__wrap-list"
+            ? "modal__wrapper-open"
+            : ""
         }`}
       >
-        {!typeEntr ? (
-          <div className={`account__header-entr`}>
-            <Button text='Registration' action={getTypeEntrReg}/>
-            <Button text='Authorisation' action={getTypeEntrAuth}/>
-          </div>
-        ) : 
-          typeForm()
-        }
+        <div className={"modal__body"}>
+        <div className={"modal__close"} onClick={props.getIsAuthorisationOpen}>&#10006;</div>
+          {!typeEntr ? (
+            <div className={`account__header-entr`}>
+              <Button text="Registration" action={getTypeEntrReg} />
+              <Button text="Authorisation" action={getTypeEntrAuth} />
+            </div>
+          ) : (
+            typeForm()
+          )}
+        </div>
       </div>
     </>
   );

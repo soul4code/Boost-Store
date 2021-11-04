@@ -30,7 +30,7 @@ const AuthRegBtn = (props) => {
           </svg>
           <span>My account</span>
         </div>
-        <EntrAccount isAuthorisationOpen={isAuthorisationOpen} />
+        <EntrAccount isAuthorisationOpen={isAuthorisationOpen} getIsAuthorisationOpen={getIsAuthorisationOpen}/>
       </div>
     </>
   );
