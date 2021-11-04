@@ -3651,19 +3651,19 @@ body {
   opacity: 1;
 }
 
-.options-checkbox-options{
+.options-checkbox-options {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.options-checkbox-options>label{
+.options-checkbox-options>label {
   flex: 0 1 50%;
   margin-top: 18px;
 
 }
 
-.options-checkbox-options>label+label{
+.options-checkbox-options>label+label {
   margin-top: 18px;
 }
 
@@ -4367,6 +4367,10 @@ body {
 .matchmaking__info-left-card2,
 .matchmaking__info-right-card2 {
   max-width: 100%;
+}
+
+.matchmaking__options-card2 {
+  width: 100%;
 }
 
 .matchmaking__options-card2-box {
@@ -12113,4 +12117,44 @@ body {
 .modal__button {
   margin-top: 30px;
   height: 65px;
+}
+
+.input__darkBlue-box{
+  background-color: rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  border: 2px solid #329BF8;
+  height: 100%;
+  width: 100%;
+}
+
+.input__darkBlue {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background: linear-gradient(262.9deg, #30caff 0%, #329bf8 54.17%, #3373f2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 16px;
+  line-height: 118.75%;
+}
+
+.input__darkBlue::placeholder{
+  font-size: 16px;
+  line-height: 118.75%;
+}
+
+.matchmaking__options-box {
+  display: flex;
+}
+
+.matchmaking__options-box>div+div {
+  margin-left: 45px;
+}
+
+.matchmaking__options-input{
+  width: 166px;
+  height: 44px
 }

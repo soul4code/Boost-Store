@@ -4,30 +4,36 @@ import MmrTemplate from "../../components/card-templates/mmr-template";
 import WotTemplate from "../../components/card-templates/wot-template";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import calculator from '../../calculator/main'
 
 const Card = (props) => {
   const router = useRouter();
+
+
+  
+  const calcData = calculator(props.PROPERTY_CARD_TEMPLATE_VALUE, props.CODE)
+
 
   const renderCardTemplate = () => {
     switch (props.PROPERTY_CARD_TEMPLATE_VALUE) {
       case "options":
         return (
-          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props} calcData={calcData}/>
         );
         break;
       case "progress":
         return (
-          <MmrTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
+          <MmrTemplate name={props.NAME} currentGame={router.query.game} {...props} calcData={calcData}/>
         );
         break;
       case "wot":
         return (
-          <WotTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
+          <WotTemplate name={props.NAME} currentGame={router.query.game} {...props} calcData={calcData}/>
         );
         break;
       default:
         return (
-          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props}/>
+          <OptionsTemplate name={props.NAME} currentGame={router.query.game} {...props} calcData={calcData}/>
         );
     }
   };

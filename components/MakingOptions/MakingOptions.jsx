@@ -3,10 +3,10 @@ import MakingOprionsScrollbarsMobil from "../MakingOprionsScrollbarsMobil/Making
 import MakingOptionsMain from "../MakingOptionsMain/MakingOptionsMain";
 
 const MakingOptions = (props) => {
-  console.log(props)
+console.log(props)
   return (
     <div className="matchmaking__bottom-inner matchmaking__bottom-inner-card2">
-      <MakingOptionsMain list={props.positionList} isExtraOptions={props.isExtraOptions}/>
+      <MakingOptionsMain list={props.positionList} isExtraOptions={props.isExtraOptions} input={props.calcData.input} options={props.calcData.options} progressbar={props.calcData.progressbar}/>
 
       <div className="matchmaking__info-wrapper">
         <MakingOprionsScrollbarsMobil />

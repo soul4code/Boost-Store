@@ -9,7 +9,6 @@ import MakingProgressMain from "../../MakingProgressMain/MakingProgressMain";
 import MakingProgressFooter from "../../MakingProgressFooter/MakingProgressFooter";
 
 const MmrTemplate = (props) => {
-  console.log(props)
   // сюда собираем данные о том, что выбрал пользователь
   let [orderData, setOrderData] = useState();
 

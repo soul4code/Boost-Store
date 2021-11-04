@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ImgTankItem from "./ImgTankItem";
 
 const PersonalMissionMain = (props) => {
-  console.log(props);
+
 
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);

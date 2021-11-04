@@ -4,7 +4,7 @@ import MakingOptions from "../../MakingOptions/MakingOptions";
 
 
 const OptionsTemplate = (props) => {
-
+  console.log(props)
   
   return (
     <>
@@ -13,7 +13,7 @@ const OptionsTemplate = (props) => {
       <div className="block-bg stage__wrapper">
       <MakingHeader title={props.TITLE} advantages={props.ADVANTAGES}/>
         
-      <MakingOptions positionList={props.POSITION_LIST} description={props.DESCRIPTION} isExtraOptions={props.IS_EXTRA_OPTIONS} extraOptions={props.EXTRA_OPTIONS}/>
+      <MakingOptions positionList={props.POSITION_LIST} description={props.DESCRIPTION} isExtraOptions={props.IS_EXTRA_OPTIONS} extraOptions={props.EXTRA_OPTIONS} calcData={props.calcData}/>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ const MakingProgressbarDesc = ({list}) => {
             <ProgressbarItem text={i.TEXT} id={i.ID}/>
         ))
     }
-    console.log(listItems)
+
   return (
     <div className="matchmaking__progressbar-desk">
       {listItems}

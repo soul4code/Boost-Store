@@ -6,7 +6,6 @@ const SelectedRank = (props) => {
 
   const getSelectRank = (rankId) => {
     setSelectRank(rankId);
-    console.log(rankId);
   };
 
   const [imgCurrentRank, setImgCurrentRank] = useState();
