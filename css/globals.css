@@ -12150,6 +12150,10 @@ body {
   display: flex;
 }
 
+.matchmaking__options-box+.matchmaking__options-box{
+  margin-top: 25px;
+}
+
 .matchmaking__options-box>div+div {
   margin-left: 45px;
 }

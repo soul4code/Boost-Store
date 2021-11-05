@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 
-const InputDarkBlue = ({defaultValue}) => {
+const InputDarkBlue = ({defaultValue, action, currentValue}) => {
   const [value, setValue] = useState();
   const getValue = (e) => {
-    setValue(e.target.value);
+    setValue(e);
+    action && action(e)
   };
 
   useEffect(() => {
     const getStartValue = (defaultValue) => {
         setValue(defaultValue);
+        action && action(defaultValue)
     };
     getStartValue(defaultValue)
   }, [defaultValue]);
 
+  useEffect(()=>{
+    setValue(currentValue)
+  }, [currentValue])
+
   return <div className={'input__darkBlue-box'}>
-      <input className={'input__darkBlue'} type='text' value={value} onChange={(e)=>getValue(e)}></input>
+      <input className={'input__darkBlue'} type='text' value={value} onChange={(e)=>getValue(e.target.value)}></input>
   </div>
   
 };

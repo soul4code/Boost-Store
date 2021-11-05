@@ -1,18 +1,16 @@
 import RangeExperience from "../card-templates/options-template/RangeExperience";
-import RangeSkill from "../card-templates/options-template/RangeSkill";
-import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
-import SelectDarkBlue from "../SelectDarkBlue/SelectDarkBlue";
 import Progressbar from "./Progressbar";
 
-const ProgressbarList = ({options, progressbar}) => {
-    
-    let progressList
+const ProgressbarList = ({ options, progressbar, getPriceList }) => {
+  let progressList;
 
-    if(progressbar){
-        progressList = progressbar.map(p=>(
-          <Progressbar title={p.dataProgressbar.title} isInput={p.isInput} defaultValue={p.inputProgressbar.defaultValue}/>
-        ))
-    }
+  if (progressbar) {
+    progressList = progressbar.map((p, index) => (
+      <Progressbar {...p} key={index} index={index} getPriceList={getPriceList}/>
+    ));
+  }
+
+  
 
   return (
     <div className="matchmaking__card2-box matchmaking__card2-box-progress">

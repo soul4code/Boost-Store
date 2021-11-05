@@ -55,22 +55,38 @@
                  }],
 
                  progressbar: [{
-                     dataProgressbar: {
-                         title: 'Credits (1kk)',
-                         minValue: 0,
-                         maxValue: 150,
-                         divisionCount: 0,
-                         step: 1,
-                         price: 2,
-                         sign: '+',
-                         measure: '$'
-
+                         id: 1,
+                         dataProgressbar: {
+                             title: 'Credits (1kk)',
+                             minValue: 20,
+                             maxValue: 150,
+                             density: 5,
+                             step: 5,
+                             price: 5,
+                             sign: '+',
+                             measure: '$',
+                             defaultValue: 20,
+                             daysInCount: 2,
+                         },
+                         isInput: true,
                      },
-                     isInput: true,
-                     inputProgressbar: {
-                        defaultValue: 10
+                     {
+                         id: 2,
+                         dataProgressbar: {
+                             title: 'Test',
+                             minValue: 0,
+                             maxValue: 150,
+                             density: 2,
+                             step: 1,
+                             price: 1,
+                             sign: '+',
+                             measure: '$',
+                             defaultValue: 10,
+                             daysInCount: 2,
+                         },
+                         isInput: true,
                      }
-                 }]
+                 ],
 
              }
 
@@ -89,6 +105,31 @@
      }
 
      return templates[template][code]
+ }
+
+ //  итоговый калькулятор для суммирования
+ export const endCalc = (list) => {
+     let endPrice = 0
+     for (let i = 0; i < list.length; i++) {
+        endPrice += list[i].price;
+     }
+     return endPrice
+ }
+
+ //  калькулятор цен для options
+ export const calcPrice = (price, measure, numbers, sign) => {
+     let allPrice = 0
+     if (measure === '$' && sign === '+') {
+         allPrice += price * numbers
+     } else if (measure === '%' && sign === '+') {
+         allPrice += allPrice / 100 * numbers
+     } else if (measure === '$' && sign === '-') {
+         allPrice += allPrice - price
+     } else if (measure === '%' && sign === '-') {
+         allPrice -= allPrice / 100 * numbers
+     }
+
+     return allPrice
  }
 
  export default calculator
