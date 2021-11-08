@@ -1,13 +1,26 @@
 import Nouislider from "nouislider-react";
-import { useEffect } from "react";
 
-const RangeSkill = ({ title, defaultValue, action, minValue=0, maxValue=100, step=1, density=5, startAction=true }) => {
-  
+const Range = ({
+  title,
+  defaultValue,
+  action,
+  minValue = 0,
+  maxValue = 100,
+  step = 1,
+  density = 5,
+  startAction = true,
+}) => {
   const currentPosition = (current) => {
-    if(action){
-      action(+current)
+    if (action) {
+      action(+current);
     }
   };
+
+  if (defaultValue < minValue) {
+    defaultValue === minValue;
+  } else if (defaultValue > maxValue) {
+    defaultValue === maxValue;
+  }
 
   return (
     <>
@@ -20,7 +33,9 @@ const RangeSkill = ({ title, defaultValue, action, minValue=0, maxValue=100, ste
           step={step}
           pips={{ mode: "range", density: density }}
           connect={"lower"}
-          onUpdate={(e) => currentPosition(e)}
+          onSlide={(e) => {
+            currentPosition(e);
+          }}
         />
       ) : (
         ""
@@ -29,4 +44,4 @@ const RangeSkill = ({ title, defaultValue, action, minValue=0, maxValue=100, ste
   );
 };
 
-export default RangeSkill;
+export default Range;

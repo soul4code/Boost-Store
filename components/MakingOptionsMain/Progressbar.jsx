@@ -1,63 +1,78 @@
 import { useEffect, useState } from "react";
-import { calcPrice } from "../../calculator/main";
-import RangeSkill from "../card-templates/options-template/RangeSkill";
+import { calcDays, calcPrice } from "../../calculator/main";
+import Range from "../common/Range";
 import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
 
 const Progressbar = (props) => {
-
+  // Price
   const [localPriceEnd, setLocalPriceEnd] = useState(0);
-
-  console.log(localPriceEnd)
 
   const calculLocalPriceEnd = (nums) => {
     setLocalPriceEnd(
       calcPrice(
         nums,
-        props.dataProgressbar.measure,
-        props.dataProgressbar.price,
-        props.dataProgressbar.sign
+        props.DATA_PROGRESSBAR.MEASURE,
+        props.DATA_PROGRESSBAR.PRICE,
+        props.DATA_PROGRESSBAR.SIGN
       )
     );
   };
 
   const [localNums, setLocalNums] = useState(0);
   const getLocalNums = (sum) => {
-    setLocalNums(sum);
+    if (sum <= props.DATA_PROGRESSBAR.MIN_VALUE) {
+      setLocalNums(props.DATA_PROGRESSBAR.MIN_VALUE);
+    } else if (sum >= props.DATA_PROGRESSBAR.MAX_VALUE) {
+      setLocalNums(props.DATA_PROGRESSBAR.MAX_VALUE);
+    } else {
+      setLocalNums(sum);
+    }
+    
   };
 
-  const [localDays,setLocalDays]=useState()
+  // Days
+  const [localDaysEnd, setLocalDaysEnd] = useState(0);
+
+  const calculLocalDaysEnd = (nums) => {
+    setLocalDaysEnd(
+      calcDays(
+        nums,
+        props.DATA_PROGRESSBAR.DAYS_IN_COUNT,
+        props.DATA_PROGRESSBAR.SIGN
+      )
+    );
+  };
 
   useEffect(() => {
     calculLocalPriceEnd(localNums);
-    setLocalDays(props.dataProgressbar.daysInCount*localNums)
+    calculLocalDaysEnd(localNums);
   }, [localNums]);
 
   useEffect(() => {
-      props.getPriceList(props.index, localPriceEnd);
+    props.getPriceList(props.index, localPriceEnd);
+    props.getDaysList(props.index, localDaysEnd);
   }, [localPriceEnd]);
-
-  
-
 
   return (
     <div className={"matchmaking__options-box"}>
       <div className="matchmaking__min-scrollbar-box matchmaking__scrollbar-start">
-        <RangeSkill
-          title={props.dataProgressbar.title}
-          defaultValue={props.dataProgressbar.defaultValue}
-          minValue={props.dataProgressbar.minValue}
-          maxValue={props.dataProgressbar.maxValue}
-          step={props.dataProgressbar.step}
-          density={props.dataProgressbar.density}
+        <Range
+          title={props.DATA_PROGRESSBAR.TITLE}
+          defaultValue={localNums}
+          minValue={props.DATA_PROGRESSBAR.MIN_VALUE}
+          maxValue={props.DATA_PROGRESSBAR.MAX_VALUE}
+          step={props.DATA_PROGRESSBAR.STEP}
+          density={props.DATA_PROGRESSBAR.DENSITY}
           action={getLocalNums}
         />
       </div>
       <div className={"matchmaking__options-input"}>
-        {props.isInput ? (
+        {props.IS_INPUT ? (
           <InputDarkBlue
-            defaultValue={props.dataProgressbar.defaultValue}
+            defaultValue={props.DATA_PROGRESSBAR.DEFAULT_VALUE}
             action={getLocalNums}
             currentValue={localNums}
+            type={Number}
           />
         ) : (
           ""

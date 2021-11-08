@@ -1,5 +1,4 @@
-import RangeExperience from "../card-templates/options-template/RangeExperience";
-import RangeSkill from "../card-templates/options-template/RangeSkill";
+
 
 const MakingOprionsScrollbarsMobil = () => {
   return (
@@ -7,15 +6,10 @@ const MakingOprionsScrollbarsMobil = () => {
       <div className="subtitle__page">Options</div>
       <div className="matchmaking__min-scrollbar-box matchmaking__scrollbar-start">
         <div className="matchmaking__min-scrollbar-title">Skill</div>
-        <div className="matchmaking__min-scrollbar-box matchmaking__scrollbar-start">
-          <RangeSkill />
-        </div>
       </div>
       <div className="matchmaking__min-scrollbar-box">
         <div className="matchmaking__min-scrollbar-title">Experience</div>
-        <div className="matchmaking__min-scrollbar-box">
-          <RangeExperience />
-        </div>
+        
       </div>
     </div>
   );

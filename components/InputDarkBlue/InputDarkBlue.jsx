@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const InputDarkBlue = ({defaultValue, action, currentValue}) => {
+const InputDarkBlue = ({defaultValue, action, currentValue, type}) => {
   const [value, setValue] = useState();
   const getValue = (e) => {
     setValue(e);
@@ -16,7 +16,12 @@ const InputDarkBlue = ({defaultValue, action, currentValue}) => {
   }, [defaultValue]);
 
   useEffect(()=>{
-    setValue(currentValue)
+    if(type===Number){
+      setValue(+currentValue)
+    }else{
+      setValue(currentValue)
+    }
+    
   }, [currentValue])
 
   return <div className={'input__darkBlue-box'}>

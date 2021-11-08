@@ -3,7 +3,7 @@ import CategoriesGradient from "../../CategoriesGradient/CategoriesGradient";
 import ButtonCardTemplateColor from "../../common/ButtonCardTemplateColor";
 import OrderStages from "../../OrderStages";
 
-import SelectDarkBlue from "../../SelectDarkBlue/SelectDarkBlue";
+import SelectDarkBlue from "../../common/SelectDarkBlue/SelectDarkBlue";
 import MakingHeader from "../../MakingHeader/MakingHeader";
 import MakingProgressMain from "../../MakingProgressMain/MakingProgressMain";
 import MakingProgressFooter from "../../MakingProgressFooter/MakingProgressFooter";
