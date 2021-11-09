@@ -3,7 +3,7 @@ import ButtonCardTemplateColor from "../common/ButtonCardTemplateColor";
 import Enum from "../common/Enum";
 import OrderStages from "../OrderStages";
 
-const MakingInfo = ({addClass, description}) => {
+const MakingInfo = ({addClass, description, priceEnd, daysEnd}) => {
 
   return (
     <div className={`matchmaking__info ${addClass}`}>
@@ -14,8 +14,8 @@ const MakingInfo = ({addClass, description}) => {
 
       <div className="matchmaking__info-right matchmaking__info-right-card3">
         
-        <Enum isLarge={true}/>
-        <Enum  title={'Deadline'} num={'30'} measure={'days'} />
+        <Enum isLarge={true} num={priceEnd}/>
+        <Enum  title={'Deadline'} num={daysEnd} measure={'days'} />
 
         <div className="matchmaking__info-btns matchmaking__info-btns-start">
           <ButtonCardTemplateColor />

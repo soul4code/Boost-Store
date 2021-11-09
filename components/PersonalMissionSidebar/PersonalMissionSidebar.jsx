@@ -104,7 +104,7 @@ const PersonalMissionSidebar = (props) => {
   useEffect(() => {
     const getActiveType = () => {
       if (typeTankList) {
-        console.log(typeTankList[1].props.title);
+
         setCurrentTasksList(
           typeTankList.filter((active) => active.props.title === currentType)
         );
@@ -126,7 +126,7 @@ const PersonalMissionSidebar = (props) => {
 
   const [tasksList, setTasksList] = useState();
   useEffect(() => {
-    console.log(taskItemsList)
+
     if (taskItemsList) {
       setTasksList(
         Object.values(taskItemsList).map((i) => (

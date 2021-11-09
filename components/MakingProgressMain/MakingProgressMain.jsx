@@ -1,6 +1,6 @@
 import Nouislider from "nouislider-react";
 import ArrRightLargeFat from "../icons/ArrRightLargeFat";
-import SelectDarkBlue from "../SelectDarkBlue/SelectDarkBlue";
+import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 import SelectedRank from "../SelectedRank/SelectedRank";
 import Image from "next/image";
 import MakingProgressbar from "../MakingProgressbar/MakingProgressbar";

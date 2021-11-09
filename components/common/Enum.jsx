@@ -5,7 +5,7 @@ const Enum = ({title='Price', num='1 000', isLarge=false, measure='$'}) => {
       <div className="enum__dots">
         .................................................................................................................
       </div>
-      <div className={`enum__result ${isLarge ? 'enum__result-matchmaking' : ''} `}>{num}{measure}</div>
+      <div className={`enum__result ${isLarge ? 'enum__result-matchmaking' : ''} `}>{num} {measure}</div>
     </div>
   );
 };

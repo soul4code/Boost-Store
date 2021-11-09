@@ -3,7 +3,7 @@ import Checkbox from "../common/Checkbox";
 import PinInfo from "../common/PinInfo";
 
 const ExtraOptions = (props) => {
-  console.log(props);
+
   let optionsList;
   if (props.extraOptions) {
     optionsList = props.extraOptions.map((o) => (

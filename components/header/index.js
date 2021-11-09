@@ -7,10 +7,13 @@ import { setAuth, setAuthToken } from "../../store/main/actions";
 import AuthRegBtn from "./AuthRegBtn";
 import ProfileBtn from "./ProfileBtn";
 
+
 const Header = (props) => {
   let gamesList = props.games.map((game) => (
     <GameItem game={game} setCurrentGame={props.setCurrentGame} />
   ));
+
+
 
   return (
     <>

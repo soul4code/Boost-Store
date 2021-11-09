@@ -16,7 +16,6 @@ const Authorisation = (props) => {
       .authorisation(email, password)
       .then((res) => {
         localStorage.setItem("authToken", res.token);
-        console.log(res);
         return localStorage.getItem("authToken");
       })
       .then((res) => props.setAuthToken(res))

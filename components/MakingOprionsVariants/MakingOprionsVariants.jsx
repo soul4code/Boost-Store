@@ -2,7 +2,7 @@ import MakingOptionsCheckboxList from "../MakingOptionsCheckboxList/MakingOption
 import VariantItem from "./VariantItem";
 
 const MakingOprionsVariants = ({ list }) => {
-  console.log(list);
+
 
   return (
     <>

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import SelectDarkBlue from "../SelectDarkBlue/SelectDarkBlue";
+import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 
 const SelectedRank = (props) => {
   const [selectRank, setSelectRank] = useState();
 
   const getSelectRank = (rankId) => {
     setSelectRank(rankId);
-    console.log(rankId);
   };
 
   const [imgCurrentRank, setImgCurrentRank] = useState();

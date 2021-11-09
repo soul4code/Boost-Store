@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SelectDarkBlue from "../SelectDarkBlue/SelectDarkBlue";
+import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 
 const VariantItem = ({list, defaultValue}) => {
     const [selected, setSelected]=useState()
