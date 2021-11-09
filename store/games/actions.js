@@ -1,7 +1,4 @@
-import { SET_GAMES } from "./types"
-import { SET_CURRENT_GAME } from "./types";
-import { SET_CURRENT_GAME_SERVICES } from "./types";
-import { SET_FILTER } from "./types";
+import { SET_GAMES, SET_CURRENT_GAME, SET_CURRENT_GAME_SERVICES, SET_FILTER, SET_CURRENT_CATEGORIES } from "./types";
 
 
 export const setGames = (games) => {
@@ -29,5 +26,12 @@ export const setFilter = (filter)=>{
     return {
         type: SET_FILTER,
         filter
+    }
+}
+
+export const setCurrentCategories = (categoriesLis)=>{
+    return {
+        type: SET_CURRENT_CATEGORIES,
+        categoriesLis
     }
 }

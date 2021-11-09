@@ -9,6 +9,7 @@ import {
   setCurrentGame,
   setFilter,
   setCurrentGameServices,
+  setCurrentCategories,
 } from "../store/games/actions";
 import { useEffect } from "react";
 
@@ -84,6 +85,7 @@ const mapDispatchToProps = {
   setCurrentGame,
   setFilter,
   setCurrentGameServices,
+  setCurrentCategories,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

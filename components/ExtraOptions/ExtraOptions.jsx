@@ -6,17 +6,22 @@ const ExtraOptions = (props) => {
 
   let optionsList;
   if (props.extraOptions) {
-    optionsList = props.extraOptions.map((o) => (
+    optionsList = props.extraOptions.map((o, index) => (
       <Checkbox
         children={
           <>
-            <PinInfo description={o.INFO} />{" "}
-            <Benefit measure="%" num={o.PRICE} />
+            <PinInfo description={o.INFO} />
+            <Benefit sign={o.SIGN} measure={o.MEASURE} price={o.PRICE} />
           </>
         }
         key={o.ID}
+        index={index}
         id={o.ID}
         text={o.TITLE}
+        description={o.INFO}
+        sign={o.SIGN}
+        measure={o.MEASURE}
+        price={o.PRICE}
         action={props.getCheckedOptions}
       />
     ));

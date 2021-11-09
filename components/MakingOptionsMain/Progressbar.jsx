@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { calcDays, calcPrice } from "../../calculator/main";
 import Range from "../common/Range";
-import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
+import InputDarkBlue from "../common/InputDarkBlue/InputDarkBlue";
 
 const Progressbar = (props) => {
   // Price

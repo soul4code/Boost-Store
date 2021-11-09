@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
+import InputDarkBlue from "../common/InputDarkBlue/InputDarkBlue";
 import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 import OptionsSelect from "./OptionsSelect";
 

@@ -1,7 +1,7 @@
 // measure - мера измерения (%, $, р)
 
-const Benefit =({measure, num})=>{
-    return <div className="checkbox-benefit">+{num}{measure}</div>
+const Benefit =({sign, measure, price})=>{
+    return <div className="checkbox-benefit">{sign}{price}{measure}</div>
 }
 
 export default Benefit

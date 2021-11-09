@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SmallArrBottom from "../common/SmallArrBottom";
+import SmallArrBottom from "../SmallArrBottom";
 import SelectItem from "./SelectItem";
 import SelectStartValue from "./SelectStartValue";
 

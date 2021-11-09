@@ -1,4 +1,4 @@
-import Advantages from "../Advantages/Advantages";
+import Advantages from "../common/Advantages/Advantages";
 
 const MakingHeader = (props) => {
   return (

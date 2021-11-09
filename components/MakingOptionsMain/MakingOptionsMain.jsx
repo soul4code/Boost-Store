@@ -1,6 +1,4 @@
 import ExtraOptions from "../ExtraOptions/ExtraOptions";
-import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
-import OptionsSelect from "./OptionsSelect";
 import OptionsSelectList from "./OptionsSelectList";
 import ProgressbarList from "./ProgressbarList";
 
@@ -13,7 +11,8 @@ const MakingOptionsMain = ({
   progressbar,
   getPriceList,
   getDaysList,
-  getSelectPrice
+  getSelectPrice,
+  getExtraOptionsList
 }) => {
 
   return (
@@ -33,7 +32,7 @@ const MakingOptionsMain = ({
       />
       {isExtraOptions && (
         <div className="matchmaking__card2-box matchmaking__card2-box-extra">
-          <ExtraOptions extraOptions={options} />
+          <ExtraOptions extraOptions={options} getCheckedOptions={getExtraOptionsList}/>
         </div>
       )}
     </div>
