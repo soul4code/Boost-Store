@@ -83,6 +83,40 @@ const MakingOptions = (props) => {
   // =====added calculations
 
   // input calculation
+  // const [selectPriceList, setSelectPriceList]=useState([])
+
+  // const getSelectPriceList =(priceData, index)=>{
+  //   getList(selectPriceList, index, "data", priceData, setSelectPriceList)
+  // }
+
+  // useEffect(() => {
+  //   // стартовое заполнение selectPriceList
+  //   let data = [];
+  //   for (let i = 0; i < props.calcData.INPUT.length; i++) {
+  //     data[i] = {
+  //       index: (selectPriceList.index = i),
+  //       data: props.calcData.INPUT[i],
+  //     };
+  //   }
+  //   setSelectPriceList(data);
+  // }, []);
+
+  // const [editSelectPrice, setEditSelectPrice]=useState([])
+  // const [numSelectPrice, setNumSelectPrice]=useState([])
+
+  // useEffect(() => {
+  //   const getEditSelectPrice = (() => {
+  //     let data = [];
+  //     data = selectPriceList.map((i) => {
+  //       if (i.data.checked) {
+  //         return i.data;
+  //       }
+  //     });
+  //     setEditOptionsPrice(data);
+  //   })();
+  // }, [selectPriceList, priceEnd]);
+
+
   const [selectPriceData, setSelectPriceData] = useState();
 
   const getSelectPrice = (priceData) => {
@@ -173,7 +207,7 @@ const MakingOptions = (props) => {
         progressbar={props.calcData.PROGRESSBAR}
         getPriceList={getPriceList}
         getDaysList={getDaysList}
-        getSelectPrice={getSelectPrice}
+        getSelectPriceList={getSelectPrice}
         getExtraOptionsList={getExtraOptionsList}
       />
 

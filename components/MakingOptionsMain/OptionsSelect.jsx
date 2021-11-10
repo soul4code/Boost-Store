@@ -3,7 +3,6 @@ import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 import { useEffect, useState } from "react";
 
 const OptionsSelect = (props) => {
-  console.log(props);
 
   const [localPrice, setLocalPrice] = useState();
 
@@ -22,7 +21,7 @@ const OptionsSelect = (props) => {
   };
 
   useEffect(()=>{
-    props.getSelectPrice(localPrice)
+    props.getSelectPriceList(localPrice, props.index)
   },[localPrice])
 
   return (

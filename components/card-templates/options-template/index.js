@@ -4,7 +4,6 @@ import MakingHeader from "../../MakingHeader/MakingHeader";
 import MakingOptions from "../../MakingOptions/MakingOptions";
 
 const OptionsTemplate = (props) => {
-console.log(props)
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>

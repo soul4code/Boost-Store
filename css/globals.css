@@ -4719,12 +4719,19 @@ body {
   background: #fff;
 }
 
-.matchmaking__card3-type-label.active .matchmaking__card3-type-checkbox,
-.matchmaking__card3-type-label.active .matchmaking__card3-type-checkbox-min {
+.matchmaking__card3-type-label.active .matchmaking__card3-type-checkbox{
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
   background-color: white;
+}
+
+.matchmaking__card3-type-checkbox-min.matchmaking__card3-type-checkbox-min-checked{
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  background-color: white;
+  opacity: 1;
 }
 
 .matchmaking__card3-type-label-all {
