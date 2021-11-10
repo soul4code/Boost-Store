@@ -1,4 +1,4 @@
-import InputDarkBlue from "../InputDarkBlue/InputDarkBlue";
+import InputDarkBlue from "../common/InputDarkBlue/InputDarkBlue";
 import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 import { useEffect, useState } from "react";
 

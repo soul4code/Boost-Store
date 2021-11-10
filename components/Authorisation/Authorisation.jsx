@@ -2,7 +2,7 @@ import { useState } from "react";
 import { api } from "../../utils/api/api";
 import { setAuth, setAuthToken } from "../../store/main/actions";
 import { connect } from "react-redux";
-import ModalForm from "../ModalForm/ModalForm";
+import ModalForm from "../common/ModalForm/ModalForm";
 import InputWhiteBorder from "../common/InputWhiteBorder";
 import ButtonGradient from "../common/ButtonGradient";
 

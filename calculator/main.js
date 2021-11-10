@@ -360,9 +360,17 @@
  export const endCalc = (list, name) => {
      let endPrice = 0
      for (let i = 0; i < list.length; i++) {
-         endPrice += list[i][name];
+         if (list[i]) {
+             if (name) {
+                 endPrice += list[i][name];
+             } else {
+                 endPrice += list[i];
+             }
+         } else {
+            endPrice+=0
+         }
      }
-     return endPrice
+     return Math.ceil(endPrice)
  }
 
  //  калькулятор цен для options
@@ -393,20 +401,45 @@
  }
 
  //  калькулятор для select
- export const calculPriceAfterSelect = (currentPrice, price, sign,measure) => {
+ export const calculPriceAfterSelect = (currentPrice, price, sign, measure) => {
      let allPrice = currentPrice
      if (measure !== '%' && sign === '+') {
-        allPrice += price
-    } else if (measure === '%' && sign === '+') {
-        allPrice += allPrice / 100 * price
-    } else if (measure !== '%' && sign === '-') {
-        allPrice -= price
-    } else if (measure === '%' && sign === '-') {
-        allPrice -= allPrice / 100 * price
-    }
-    console.log(allPrice)
-    return allPrice
+         allPrice += price
+     } else if (measure === '%' && sign === '+') {
+         allPrice += allPrice / 100 * price
+     } else if (measure !== '%' && sign === '-') {
+         allPrice -= price
+     } else if (measure === '%' && sign === '-') {
+         allPrice -= allPrice / 100 * price
+     }
+
+     return allPrice
 
  }
+
+ //  калькулятор для extra options
+ export const calculPriceAfterExtraOptions = (currentPrice, price, sign, measure) => {
+     let allPrice = currentPrice
+     let editPrice
+     if (measure !== '%' && sign === '+') {
+         allPrice += price
+
+     } else if (measure === '%' && sign === '+') {
+         allPrice += allPrice / 100 * price
+
+     } else if (measure !== '%' && sign === '-') {
+         allPrice -= price
+
+     } else if (measure === '%' && sign === '-') {
+         allPrice -= allPrice / 100 * price
+
+     }
+     editPrice = allPrice - currentPrice
+
+     return editPrice
+
+ }
+
+
 
  export default calculator

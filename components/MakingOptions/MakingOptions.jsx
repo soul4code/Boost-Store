@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import getList from "../../calculator/getList";
-import { calculPriceAfterSelect, endCalc } from "../../calculator/main";
+import {
+  calculPriceAfterExtraOptions,
+  calculPriceAfterSelect,
+  endCalc,
+} from "../../calculator/main";
 import MakingInfo from "../MakingInfo/MakingInfo";
 import MakingOprionsScrollbarsMobil from "../MakingOprionsScrollbarsMobil/MakingOprionsScrollbarsMobil";
 import MakingOptionsMain from "../MakingOptionsMain/MakingOptionsMain";
@@ -9,6 +13,8 @@ const MakingOptions = (props) => {
   // ======Price Caclulation
 
   // priceAfterSelect временный, пока не появится более высокоуровневые данные цены
+  const [priceAfterExtraOptions, setPriceAfterExtraOptions] = useState(0);
+
   const [priceAfterSelect, setPriceAfterSelect] = useState(0);
 
   const [priceEnd, setPriceEnd] = useState(0);
@@ -85,21 +91,76 @@ const MakingOptions = (props) => {
 
   useEffect(() => {
     if (selectPriceData) {
-      debugger
-      let data = priceEnd
       setPriceAfterSelect(
-        calculPriceAfterSelect(
-          data,
-          selectPriceData.price,
-          selectPriceData.sign,
-          selectPriceData.measure
-        ))
-      
-    }else{
+        Math.ceil(
+          calculPriceAfterSelect(
+            priceEnd,
+            selectPriceData.price,
+            selectPriceData.sign,
+            selectPriceData.measure
+          )
+        )
+      );
+    } else {
       setPriceAfterSelect(priceEnd);
     }
-    
   }, [selectPriceData, priceEnd]);
+
+  // extra options calculation
+
+  const [extraOptionsList, setExtraOptionsList] = useState([]);
+
+  const getExtraOptionsList = (priceData, index) => {
+    getList(extraOptionsList, index, "data", priceData, setExtraOptionsList);
+  };
+
+  useEffect(() => {
+    // стартовое заполнение extraOptionsList
+    let data = [];
+    for (let i = 0; i < props.calcData.EXTRA_OPTIONS.length; i++) {
+      data[i] = {
+        index: (extraOptionsList.index = i),
+        data: props.calcData.EXTRA_OPTIONS[i],
+      };
+    }
+    setExtraOptionsList(data);
+  }, []);
+
+  const [editOptionsPrice, setEditOptionsPrice] = useState([]);
+  const [numOptionsPrice, setNumOptionsPrice] = useState([]);
+
+  useEffect(() => {
+    const getEditOptionsPrice = (() => {
+      let data = [];
+      data = extraOptionsList.map((i) => {
+        if (i.data.checked) {
+          return i.data;
+        }
+      });
+      setEditOptionsPrice(data);
+    })();
+  }, [extraOptionsList, priceAfterSelect]);
+
+  useEffect(() => {
+    const getNumOptionsPrice = (() => {
+      let numsList = [];
+      numsList = editOptionsPrice.map((i) => {
+        if (i) {
+          return calculPriceAfterExtraOptions(
+            priceEnd,
+            i.price,
+            i.sign,
+            i.measure
+          );
+        }
+      });
+      setNumOptionsPrice(numsList);
+    })();
+  }, [editOptionsPrice]);
+
+  useEffect(()=>{
+    setPriceAfterExtraOptions(priceAfterSelect+endCalc(numOptionsPrice))
+  }, [numOptionsPrice])
 
   return (
     <div className="matchmaking__bottom-inner matchmaking__bottom-inner-card2">
@@ -113,6 +174,7 @@ const MakingOptions = (props) => {
         getPriceList={getPriceList}
         getDaysList={getDaysList}
         getSelectPrice={getSelectPrice}
+        getExtraOptionsList={getExtraOptionsList}
       />
 
       <div className="matchmaking__info-wrapper">
@@ -120,7 +182,7 @@ const MakingOptions = (props) => {
         <MakingInfo
           addClass={"matchmaking__info-card2"}
           description={props.description}
-          priceEnd={priceAfterSelect}
+          priceEnd={priceAfterExtraOptions}
           daysEnd={daysEnd}
         />
       </div>

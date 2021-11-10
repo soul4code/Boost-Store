@@ -1,14 +1,12 @@
-import { SET_GAMES } from "./types";
-import { SET_CURRENT_GAME } from "./types";
-import { SET_CURRENT_GAME_SERVICES } from "./types";
-import { SET_FILTER } from "./types";
+import { SET_GAMES, SET_CURRENT_GAME, SET_CURRENT_GAME_SERVICES, SET_FILTER, SET_CURRENT_CATEGORIES } from "./types";
 
 const initialState = {
     games: [],
     currentGame: null,
     currentGameServices: [],
     isFilter: false,
-    filter:[]
+    filter:[],
+    categoriesList:[]
 }
 
 const gamesReducer = (state = initialState, action) => {
@@ -24,6 +22,9 @@ const gamesReducer = (state = initialState, action) => {
 
         case SET_FILTER:
             return {...state, filter: action.filter}
+
+        case SET_CURRENT_CATEGORIES:
+            return {...state, categoriesList: action.categoriesList}
 
         default:
             return state

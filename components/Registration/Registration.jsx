@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { api } from "../../utils/api/api";
 import ButtonGradient from "../common/ButtonGradient";
 import InputWhiteBorder from "../common/InputWhiteBorder";
-import ModalForm from "../ModalForm/ModalForm";
+import ModalForm from "../common/ModalForm/ModalForm";
 import { registrationPOST } from "./registrationPOST";
 import { setAuth, setAuthToken } from "../../store/main/actions";
 

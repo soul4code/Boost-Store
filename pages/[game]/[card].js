@@ -7,6 +7,8 @@ import { useState } from "react";
 import calculator from '../../calculator/main'
 
 const Card = (props) => {
+
+  
   const router = useRouter();
 
 
