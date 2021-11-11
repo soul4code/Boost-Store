@@ -8,7 +8,6 @@ const Range = ({
   maxValue = 100,
   step = 1,
   density = 5,
-  startAction = true,
 }) => {
   const currentPosition = (current) => {
     if (action) {

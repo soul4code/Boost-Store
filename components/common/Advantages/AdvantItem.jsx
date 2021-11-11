@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const AdvantItem = (props) => {
+const AdvantItem = ({TITLE, DESCRIPTION, alt}) => {
   return (
     <div className="matchmaking__advant-item">
       <svg
@@ -39,13 +39,13 @@ const AdvantItem = (props) => {
           fill="white"
         />
       </svg>
-      <p>{props.TITLE}</p>
+      <p>{TITLE}</p>
       <div className="matchmaking__advant-item-info">
         <div className="matchmaking__advant-info-text">
           <p>
-            {props.DESCRIPTION}
+            {DESCRIPTION}
           </p>
-          <Image src={'/img/matchmaking/advant-info-bg.svg'} alt={props.alt} layout="fill"/>
+          <Image src={'/img/matchmaking/advant-info-bg.svg'} alt={alt} layout="fill"/>
         </div>
       </div>
     </div>

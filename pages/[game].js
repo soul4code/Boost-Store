@@ -16,10 +16,10 @@ import { useEffect } from "react";
 const Game = (props) => {
   let router =useRouter()
 
-
-  // зануляю фильтр при изменении игры
   useEffect(() => {
-    props.setFilter([]);
+    const editFilterAfterEditGame = (()=>{
+      props.setFilter([]);
+    })()
   }, [router.query.game]);
 
   
@@ -43,8 +43,8 @@ const Game = (props) => {
       <nav className="category-menu">
         <CategoriesDefault
           categories={props.data.CATEGORIES}
-          setFilter={props.setFilter}
-          currentGameServices={props.data}
+          actionFilter={props.setFilter}
+          services={props.data}
         />
       </nav>
       <h1 className="page__title">Games</h1>

@@ -4,18 +4,18 @@ import { useEffect } from "react";
 
 
 
-const CheckAuth = (props) => {
+const CheckAuth = ({setAuthToken, setAuth, authToken, child}) => {
   useEffect(() => {
-    props.setAuthToken(localStorage.getItem("authToken"));
+    setAuthToken(localStorage.getItem("authToken"));
   }, []);
 
   useEffect(() => {
-    if (props.authToken) {
-      props.setAuth(true);
+    if (authToken) {
+      setAuth(true);
     }
-  }, [props.authToken]);
+  }, [authToken]);
 
-  return (props.child)
+  return (child)
 };
 
 const mapStateToProps = (state) => ({

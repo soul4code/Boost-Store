@@ -1,5 +1,9 @@
-const SelectItem =(props)=>{
-    return <div className="select__form-item" onClick={props.action}>{props.text}</div>
-}
+const SelectItem = ({ action, text }) => {
+  return (
+    <div className="select__form-item" onClick={action}>
+      {text}
+    </div>
+  );
+};
 
-export default SelectItem
+export default SelectItem;

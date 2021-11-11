@@ -6,12 +6,8 @@ import Button from "./Button";
 const EntrAccount = (props) => {
   const [typeEntr, setTypeEntr] = useState("");
 
-  const getTypeEntrAuth = () => {
-    setTypeEntr("auth");
-  };
-
-  const getTypeEntrReg = () => {
-    setTypeEntr("reg");
+  const getTypeEntr = (type) => {
+    setTypeEntr(type);
   };
 
   const removeCurrentType = ()=>{
@@ -36,16 +32,15 @@ const EntrAccount = (props) => {
       <div
         className={`modal__wrapper ${
           props.isAuthorisationOpen
-            ? "modal__wrapper-open"
-            : ""
+            && "modal__wrapper-open"
         }`}
       >
         <div className={"modal__body"}>
         <div className={"modal__close"} onClick={props.getIsAuthorisationOpen}>&#10006;</div>
           {!typeEntr ? (
             <div className={`account__header-entr`}>
-              <Button text="Registration" action={getTypeEntrReg} />
-              <Button text="Authorisation" action={getTypeEntrAuth} />
+              <Button text="Registration" action={getTypeEntr} data={'reg'}/>
+              <Button text="Authorisation" action={getTypeEntr} data={'auth'}/>
             </div>
           ) : (
             typeForm()

@@ -7,7 +7,10 @@ const OptionsTemplate = (props) => {
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
-      <CategoriesGradient currentGame={props.currentGame} categoriesList={props.categoriesList}/>
+      <CategoriesGradient
+        currentGame={props.currentGame}
+        categoriesList={props.categoriesList}
+      />
       <div className="block-bg stage__wrapper">
         <MakingHeader title={props.TITLE} advantages={props.ADVANTAGES} />
 
@@ -23,11 +26,10 @@ const OptionsTemplate = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  categoriesList: state.games.currentGameServices.CATEGORIES,
+});
 
-const mapStateToProps = (state)=>({
-  categoriesList: state.games.currentGameServices.CATEGORIES
-})
-
-export default connect(mapStateToProps)(OptionsTemplate)
+export default connect(mapStateToProps)(OptionsTemplate);
 
 // export default OptionsTemplate;
