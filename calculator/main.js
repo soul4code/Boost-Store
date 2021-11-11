@@ -64,7 +64,36 @@
                          },
 
                      ]
-                 }, ],
+                 },
+                 {
+                    ID: 2,
+                    IS_SELECT: true, //(если true, то это select и нужен SELECT_LIST, HEADER. если false, то это input, нужен только TITLE)
+                    TITLE: 'WN8',
+                    HEADER: 'NOT selected',
+                    SELECT_LIST: [{
+                            ID: 1,
+                            TEXT: 'Base',
+                            IS_PRICE: false,
+                        },
+                        {
+                            ID: 2,
+                            TEXT: 'Unikum',
+                            IS_PRICE: true,
+                            PRICE: 25,
+                            SIGN: '+',
+                            MEASURE: '%'
+                        },
+                        {
+                            ID: 3,
+                            TEXT: 'Super Unikum',
+                            IS_PRICE: true,
+                            PRICE: 40,
+                            SIGN: '+',
+                            MEASURE: '%'
+                        },
+
+                    ]
+                }, ],
 
                  IS_PROGRESSBAR: true,
                  PROGRESSBAR: [{

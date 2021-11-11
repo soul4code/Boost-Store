@@ -11,7 +11,7 @@ const MakingOptionsMain = ({
   progressbar,
   getPriceList,
   getDaysList,
-  getSelectPrice,
+  getSelectPriceList,
   getExtraOptionsList
 }) => {
 
@@ -21,7 +21,7 @@ const MakingOptionsMain = ({
         <div className="subtitle__page">Boost variants</div>
         <MakingOprionsVariants list={list} />
       </div> */}
-      {isInput && <OptionsSelectList input={input} getSelectPrice={getSelectPrice}/>}
+      {isInput && <OptionsSelectList input={input} getSelectPriceList={getSelectPriceList}/>}
 
       <ProgressbarList
         input={input}

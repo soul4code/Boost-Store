@@ -4,8 +4,8 @@ import PersonalMissionMain from "../PersonalMissionMain/PersonalMissionMain";
 import PersonalMissionSidebar from "../PersonalMissionSidebar/PersonalMissionSidebar";
 
 const PersonalMission = (props) => {
-
-    const [currentTank, setCurrentTank]=useState('Stug IV')
+  console.log(props)
+    const [currentTank, setCurrentTank] = useState(props.choiseTank[0].MODEL)
 
   return (
     <div className="matchmaking__card3-inner">
