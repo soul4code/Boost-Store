@@ -19,13 +19,18 @@ const PersonalMissionTask = ({
 
   const getIsActiveAdd = (e) => {
     e.stopPropagation();
-    if(!isActive){
-      setIsActive(true)
+    if (!isActive) {
+      setIsActive(true);
       setIsActiveAdd(true);
-    } else{
+    } else {
       setIsActiveAdd(!isActiveAdd);
     }
   };
+
+  useEffect(()=>{
+    let data = { id, index, title, price, discount, isActive, isActiveAdd };
+    getTasksArray(index, data);
+  },[isActiveAdd])
 
   useEffect(() => {
     if (!isActive) {
@@ -37,14 +42,20 @@ const PersonalMissionTask = ({
 
   return (
     <div
-      className={`matchmaking__card3-type-label ${isActive ? "active" : ""} ${addClass && addClass}`}
+      className={`matchmaking__card3-type-label ${isActive ? "active" : ""} ${
+        addClass && addClass
+      }`}
+      onClick={() => {
+        let data = { id, index, title, price, discount, isActive, isActiveAdd };
+        getTasksArray(index, data);
+      }}
     >
-      <div className="matchmaking__card3-type-box" onClick={(e) => {
-        setIsActive((isActive = !isActive));
-        debugger
-        let data = {id, index, title, price, discount}
-        getTasksArray(index, data)
-      }}>
+      <div
+        className="matchmaking__card3-type-box"
+        onClick={(e) => {
+          setIsActive((isActive = !isActive));
+        }}
+      >
         <span className="matchmaking__card3-type-checkbox"></span>
         <div className="matchmaking__card3-type-title">{title}</div>
         <div className="checkbox-info checkbox-info-card3">
@@ -57,12 +68,14 @@ const PersonalMissionTask = ({
       </div>
       <div className="matchmaking__card3-type-price">
         <p>{price}$</p>
-        {title==='All' &&
-          <Benefit price={discount} measure={'%'}/>
-        }
-        
+        {title === "All" && <Benefit price={discount} measure={"%"} />}
       </div>
-      <PersonalMissionTaskAdd isActive={isActiveAdd} action={getIsActiveAdd} />
+      <PersonalMissionTaskAdd
+        isActive={isActiveAdd}
+        action={getIsActiveAdd}
+        getTasksArray={getTasksArray}
+        props={(id, index, title, price, discount, isActive, isActiveAdd)}
+      />
     </div>
   );
 };
