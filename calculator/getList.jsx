@@ -1,5 +1,4 @@
 const getList = (array, index, editName, data, useStateAction) => {
-  debugger
   useStateAction(
     array.map((i) => {
       if (index === i.index) {

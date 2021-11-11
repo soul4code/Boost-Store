@@ -70,17 +70,22 @@ const PersonalMissionSidebar = (props) => {
   const [taskItemData,setTaskItemData]=useState({})
 
   const getTasksArray = (index, taskData) => {
-    debugger;
     setTaskItemData({index, taskData})
     // getList(tasksArray, index, "data", taskData, setTasksArray);
   };
   useEffect(()=>{
-    debugger
     if(taskItemData){
       getList(tasksArray, taskItemData.index, "data", taskItemData.taskData, setTasksArray);
     }
     
   },[taskItemData])
+
+  useEffect(()=>{
+    if(props.getSelectedTasks){
+      props.getSelectedTasks(currentArray, tasksArray)
+    }
+    
+  },[tasksArray])
 
   const [tasksList, setTasksList] = useState();
   useEffect(() => {
@@ -91,6 +96,7 @@ const PersonalMissionSidebar = (props) => {
             return (
               <PersonalMissionTask
                 id={i.ID}
+                key={i.ID}
                 index={index}
                 title={"All"}
                 info={i.INFO}
@@ -106,6 +112,7 @@ const PersonalMissionSidebar = (props) => {
             return (
               <PersonalMissionTask
                 id={i.ID}
+                key={i.ID}
                 index={index}
                 title={i.TITLE}
                 info={i.INFO}
@@ -126,8 +133,6 @@ const PersonalMissionSidebar = (props) => {
 
   useEffect(() => {
     // стартовое заполнение tasksList
-    debugger;
-    
     if (taskItemsList) {
       let data = [];
       console.log(Object.values(taskItemsList)[0]);
@@ -139,7 +144,6 @@ const PersonalMissionSidebar = (props) => {
       }
       setTasksArray(data);
     }
-    
   }, [taskItemsList]);
 
 
@@ -147,7 +151,6 @@ const PersonalMissionSidebar = (props) => {
     return (
       <div
         className="matchmaking__card3-item matchmaking__card3-choice"
-        // onClick={()=>getTasksArray(0,{a:2,b:'aboba'})}
       >
         <div className="matchmaking__card3-className">{typeTankList}</div>
         <div className="matchmaking__card3-type">{tasksList}</div>

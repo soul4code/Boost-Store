@@ -1,6 +1,6 @@
 import Link from "next/link";
 import OrderStages from "../OrderStages";
-import SelectTransparent from "../SelectTransparent/SelectTransparent";
+import SelectTransparent from "../common/SelectTransparent/SelectTransparent";
 
 const OrderStage2 = (props) => {
   return (
