@@ -15,7 +15,7 @@ const MakingProgressFooter = (props) => {
   return (
     <div className="matchmaking__bottom-inner">
       <div className="matchmaking__options">
-          <ExtraOptions isExtraOptions={props.isExtraOptions} extraOptions={props.extraOptions} getCheckedOptions={getCheckedOptions}/>
+          <ExtraOptions isExtraOptions={props.isExtraOptions} extraOptions={props.extraOptions} getCheckedOptions={props.getExtraOptionsList}/>
       </div>
       <div className="matchmaking__info">
         <div className="matchmaking__info-left">
@@ -26,7 +26,7 @@ const MakingProgressFooter = (props) => {
         </div>
         <div className="matchmaking__info-right">
           <Enum isLarge={true} num={props.price}/>
-          <Enum title={'Deadline'} num={30} measure={'days'} />
+          <Enum title={'Deadline'} num={props.days} measure={'days'} />
           
           <div className="matchmaking__info-btns">
             <ButtonCardTemplateColor />
