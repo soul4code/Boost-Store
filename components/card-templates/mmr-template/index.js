@@ -7,6 +7,7 @@ import SelectDarkBlue from "../../common/SelectDarkBlue/SelectDarkBlue";
 import MakingHeader from "../../MakingHeader/MakingHeader";
 import MakingProgressMain from "../../MakingProgressMain/MakingProgressMain";
 import MakingProgressFooter from "../../MakingProgressFooter/MakingProgressFooter";
+import MakingProgress from "../../MakingProgress/MakingProgress";
 
 const MmrTemplate = (props) => {
   return (
@@ -15,12 +16,7 @@ const MmrTemplate = (props) => {
       <CategoriesGradient currentGame={props.currentGame} />
       <section className="matchmaking block-bg">
         <MakingHeader title={props.TITLE} advantages={props.ADVANTAGES} />
-        <MakingProgressMain positionList={props.POSITION_LIST} />
-        <MakingProgressFooter
-          description={props.DESCRIPTION}
-          isExtraOptions={props.IS_EXTRA_OPTIONS}
-          extraOptions={props.EXTRA_OPTIONS}
-        />
+        <MakingProgress {...props}/>
       </section>
     </>
   );

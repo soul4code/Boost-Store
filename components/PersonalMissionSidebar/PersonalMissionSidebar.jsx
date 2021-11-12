@@ -135,7 +135,7 @@ const PersonalMissionSidebar = (props) => {
     // стартовое заполнение tasksList
     if (taskItemsList) {
       let data = [];
-      console.log(Object.values(taskItemsList)[0]);
+
       for (let i = 0; i < Object.values(taskItemsList).length; i++) {
         data[i] = {
           index: i,

@@ -7,7 +7,7 @@ const SelectItem = ({
   addAction,
   priceData,
 }) => {
-  console.log(priceData);
+
   const actionCompiller = (e) => {
     if (action) {
       action(e);

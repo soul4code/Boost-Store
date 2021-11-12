@@ -24,7 +24,7 @@ const Range = ({
   return (
     <>
       <div className="matchmaking__min-scrollbar-title">{title}</div>
-      {defaultValue ? (
+      {defaultValue && 
         <Nouislider
           id={`matchmaking__min-scrollbar-skill`}
           range={{ min: minValue, max: maxValue }}
@@ -36,9 +36,7 @@ const Range = ({
             currentPosition(e);
           }}
         />
-      ) : (
-        ""
-      )}
+}
     </>
   );
 };
