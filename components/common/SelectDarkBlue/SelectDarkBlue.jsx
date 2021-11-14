@@ -37,7 +37,7 @@ const SelectDarkBlue = ({
         if (isSelectIndex) {
           doSelect(list[0]);
         } else {
-          doSelect(list[0].ID);
+          doSelect(list[0].ID, list[0]);
         }
       }
     }

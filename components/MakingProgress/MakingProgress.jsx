@@ -6,7 +6,7 @@ import MakingProgressMain from "../MakingProgressMain/MakingProgressMain";
 const MakingProgress = (props) => {
   const [priceWithExtraOptions, setPriceWithExtraOptions] = useState();
 
-  const [basePrice, setBasePrice] = useState();
+  const [basePrice, setBasePrice] = useState(0);
 
   const [days, setDays] = useState(0);
 
@@ -19,6 +19,19 @@ const MakingProgress = (props) => {
     setBasePrice(num * price);
     setDays(num * days);
   };
+
+  const getBasePriceSelect = (price) =>{
+    setBasePrice(price)
+  }
+
+  useEffect(()=>{
+    const checkBasePriceIsNaN =(()=>{
+      if(isNaN(basePrice)){
+        setBasePrice(0)
+        console.log(1)
+      }
+    })()
+  },[basePrice])
 
   const [extraOptionsList, setExtraOptionsList] = useState([]);
 
@@ -72,7 +85,7 @@ const MakingProgress = (props) => {
 
   return (
     <>
-      <MakingProgressMain {...props} getBasePrice={getBasePrice} />
+      <MakingProgressMain {...props} getBasePrice={getBasePrice} getBasePriceSelect={getBasePriceSelect}/>
       <MakingProgressFooter
         description={props.DESCRIPTION}
         isExtraOptions={props.IS_EXTRA_OPTIONS}

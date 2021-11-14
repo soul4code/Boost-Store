@@ -4,6 +4,7 @@ import MakingHeader from "../../MakingHeader/MakingHeader";
 import MakingOptions from "../../MakingOptions/MakingOptions";
 
 const OptionsTemplate = (props) => {
+  console.log(props)
   return (
     <>
       <h1 className="game__title page__title">{props.name}</h1>
@@ -19,7 +20,7 @@ const OptionsTemplate = (props) => {
           description={props.DESCRIPTION}
           isExtraOptions={props.IS_EXTRA_OPTIONS}
           extraOptions={props.EXTRA_OPTIONS}
-          calcData={props.calcData}
+          {...props}
         />
       </div>
     </>

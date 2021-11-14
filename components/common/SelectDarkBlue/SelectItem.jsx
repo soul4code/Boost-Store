@@ -16,7 +16,7 @@ const SelectItem = ({
       if (isSelectIndex) {
         addAction(index);
       } else {
-        addAction(id);
+        addAction(id, index);
       }
     }
   };

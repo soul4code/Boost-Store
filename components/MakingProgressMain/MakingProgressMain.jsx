@@ -27,6 +27,29 @@ const MakingProgressMain = (props) => {
   //   )
   // }, [currentFirst, currentSecond]);
 
+  const [indexCurrentSelect, setIndexCurrentSelect] = useState(0);
+  const [indexDesiredSelect, setIndexDesiredSelect] = useState(0);
+
+  const getCurrentSelect = (index) => {
+    setIndexCurrentSelect(index);
+    console.log(index);
+  };
+
+  const getDesiredSelect = (index) => {
+    setIndexDesiredSelect(index);
+  };
+
+  const [price, setPrice] = useState(0);
+
+  useEffect(() => {
+    let price = (indexDesiredSelect - indexCurrentSelect) * +props.PRICE;
+
+    if (price < 0) {
+      price = 0;
+    }
+    setPrice(price);
+    props.getBasePriceSelect(price);
+  }, [indexCurrentSelect, indexDesiredSelect]);
 
   return (
     <div className="matchmaking__progress">
@@ -34,6 +57,7 @@ const MakingProgressMain = (props) => {
         <SelectedRank
           positionList={props.POSITION_LIST}
           title={"Сurrent rank"}
+          action={getCurrentSelect}
         />
 
         <MakingArrs />
@@ -42,6 +66,7 @@ const MakingProgressMain = (props) => {
           positionList={props.POSITION_LIST}
           title={"Desired rank"}
           isReverse={true}
+          action={getDesiredSelect}
         />
       </div>
       <MakingProgressbar
