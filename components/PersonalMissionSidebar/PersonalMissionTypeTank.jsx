@@ -12,7 +12,6 @@ const PersonalMissionTypeTank = ({
   const [isActive, setIsActive] = useState(currentTypeItem);
 
   useEffect(() => {
-    console.log(currentTypeItem)
     setIsActive(currentTypeItem);
   }, [currentTypeItem]);
 
@@ -24,7 +23,6 @@ const PersonalMissionTypeTank = ({
       onClick={() => {
         setCurrentTypeItem(index);
       }}
-      // getCurrentType(title);
     >
       <img src={icon} alt="" />
       <span className="checkbox-text matchmaking__card3-class-checkbox-text">

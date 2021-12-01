@@ -4,7 +4,13 @@ import SelectItem from "./SelectItem";
 import SelectItemPrice from "./SelectItemPrice";
 import SelectStartValue from "./SelectStartValue";
 
-const SelectDarkBlue = ({ list, addClass, defaultValue, doSelect, isSelectIndex=false }) => {
+const SelectDarkBlue = ({
+  list,
+  addClass,
+  defaultValue,
+  doSelect,
+  isSelectIndex = false,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const getIsOpen = () => {
@@ -28,10 +34,10 @@ const SelectDarkBlue = ({ list, addClass, defaultValue, doSelect, isSelectIndex=
     if (list) {
       setStartValue(defaultValue);
       if (doSelect) {
-        if(isSelectIndex){
+        if (isSelectIndex) {
           doSelect(list[0]);
-        } else{
-          doSelect(list[0].ID);
+        } else {
+          doSelect(list[0].ID, list[0]);
         }
       }
     }
@@ -39,30 +45,18 @@ const SelectDarkBlue = ({ list, addClass, defaultValue, doSelect, isSelectIndex=
 
   let selectList;
   if (list) {
-    selectList = list.map((i,index) =>
-      i.IS_PRICE ? (
-        <SelectItemPrice
-          key={i.ID}
-          index={index}
-          isSelectIndex={isSelectIndex}
-          id={i.ID}
-          text={i.TEXT}
-          action={getSelectedOption}
-          addAction={doSelect}
-          priceData={i}
-        />
-      ) : (
-        <SelectItem
-          key={i.ID}
-          index={index}
-          isSelectIndex={isSelectIndex}
-          id={i.ID}
-          text={i.TEXT}
-          action={getSelectedOption}
-          addAction={doSelect}
-        />
-      )
-    );
+    selectList = list.map((i, index) => (
+      <SelectItem
+        key={i.ID}
+        index={index}
+        isSelectIndex={isSelectIndex}
+        id={i.ID}
+        text={i.TEXT}
+        action={getSelectedOption}
+        addAction={doSelect}
+        priceData={i}
+      />
+    ));
   }
 
   return (

@@ -1,21 +1,51 @@
-const SelectItem =({action, text, id, index, isSelectIndex, addAction})=>{
+const SelectItem = ({
+  action,
+  text,
+  id,
+  index,
+  isSelectIndex,
+  addAction,
+  priceData,
+}) => {
 
-    const doIt = (e)=>{
-        if(action){
-            action(e);
-        }
-        if(addAction){
-            if(isSelectIndex){
-                addAction(index)
-            } else{
-                addAction(id)
-            }
-        }
+  const actionCompiller = (e) => {
+    if (action) {
+      action(e);
     }
+    if (addAction) {
+      if (isSelectIndex) {
+        addAction(index);
+      } else {
+        addAction(id, index);
+      }
+    }
+  };
 
-    return <div className="progress-matchmaking-item" onClick={(e)=>{doIt(e)}}>
+  if (priceData.IS_PRICE) {
+    return (
+      <div
+        className="progress-matchmaking-item"
+        onClick={(e) => {
+          actionCompiller(e);
+        }}
+      >
+        {text} ({priceData.SIGN}
+        {priceData.PRICE}
+        {priceData.MEASURE})
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className="progress-matchmaking-item"
+        onClick={(e) => {
+          actionCompiller(e);
+        }}
+      >
         {text}
-    </div>
-}
+      </div>
+    );
+  }
+};
 
-export default SelectItem
+export default SelectItem;

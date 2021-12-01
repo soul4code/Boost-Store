@@ -1,10 +1,7 @@
-const Button = (props) => {
+const Button = ({ action, text, data }) => {
   return (
-    <button
-      className={"button-color-basic button__auth"}
-      onClick={props.action}
-    >
-      {props.text}
+    <button className={"button-color-basic button__auth"} onClick={()=>action(data)}>
+      {text}
     </button>
   );
 };

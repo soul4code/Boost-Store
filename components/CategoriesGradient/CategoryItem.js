@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-const CategoryItem = (props) => {
+const CategoryItem = ({currentGame, category}) => {
 
   return (
     <>
-      <Link href={`/${props.currentGame}`}>
+      <Link href={`/${currentGame}`}>
         <a className="game__rank-item">
-          <p>{props.category}</p>
+          <p>{category}</p>
         </a>
       </Link>
     </>

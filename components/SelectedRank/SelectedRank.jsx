@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 
-const SelectedRank = (props) => {
+const SelectedRank = ({positionList, title, isReverse, action}) => {
   const [selectRank, setSelectRank] = useState();
 
-  const getSelectRank = (rankId) => {
-    setSelectRank(rankId);
+  const getSelectRank = (id,index) => {
+    action(index);
+    setSelectRank(id)
   };
 
   const [imgCurrentRank, setImgCurrentRank] = useState();
   useEffect(() => {
     const toggleImg = () => {
-      let currentRankData = props.positionList.filter(
+      let currentRankData = positionList.filter(
         (rank) => rank.ID === selectRank
       );
       if (currentRankData.length > 0) {
@@ -21,16 +22,16 @@ const SelectedRank = (props) => {
     toggleImg();
   }, [selectRank]);
 
-  if (props.isReverse) {
+  if (isReverse) {
     return (
       <div className={'matchmaking__progress-block-wrapper'}>
         <SelectDarkBlue
-          list={props.positionList}
-          defaultValue={props.positionList[0].TEXT}
+          list={positionList}
+          defaultValue={positionList[0].TEXT}
           doSelect={getSelectRank}
         />
         <div className="matchmaking__progress-block-box subtitle__page">
-          <p>{props.title}</p>
+          <p>{title}</p>
           <div className="matchmaking__progress-rank-img">
             <img src={imgCurrentRank} alt="" />
           </div>
@@ -41,15 +42,15 @@ const SelectedRank = (props) => {
     return (
         <div className={'matchmaking__progress-block-wrapper'}>
         <div className="matchmaking__progress-block-box subtitle__page">
-          <p>{props.title}</p>
+          <p>{title}</p>
           <div className="matchmaking__progress-rank-img">
             <img src={imgCurrentRank} alt="" />
           </div>
         </div>
 
         <SelectDarkBlue
-          list={props.positionList}
-          defaultValue={props.positionList[0].TEXT}
+          list={positionList}
+          defaultValue={positionList[0].TEXT}
           doSelect={getSelectRank}
         />
       </div>

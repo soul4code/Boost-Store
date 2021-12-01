@@ -1,7 +1,9 @@
-const SelectStartValue =(props)=>{
-    return <div className="progress-matchmaking-item select__matchmaking-startValue">
-    {props.value}
-  </div>
-}
+const SelectStartValue = ({ value }) => {
+  return (
+    <div className="progress-matchmaking-item select__matchmaking-startValue">
+      {value}
+    </div>
+  );
+};
 
-export default SelectStartValue
+export default SelectStartValue;

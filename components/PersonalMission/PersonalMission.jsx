@@ -5,7 +5,7 @@ import PersonalMissionMain from "../PersonalMissionMain/PersonalMissionMain";
 import PersonalMissionSidebar from "../PersonalMissionSidebar/PersonalMissionSidebar";
 
 const PersonalMission = (props) => {
-  console.log(props);
+
   const [currentTank, setCurrentTank] = useState(props.choiseTank[0].MODEL);
 
   const [selectedTasks, setSelectedTasks] = useState([]);
