@@ -10,7 +10,7 @@ import ProfileBtn from "./ProfileBtn";
 
 const Header = (props) => {
   let gamesList = props.games.map((game) => (
-    <GameItem game={game} setCurrentGame={props.setCurrentGame} />
+    <GameItem key={game.ID} game={game} setCurrentGame={props.setCurrentGame} />
   ));
 
 

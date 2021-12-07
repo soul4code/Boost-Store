@@ -6,7 +6,7 @@ import GameItem from "./GameItem";
 
 const Footer = (props) => {
 
-  const gamesList = props.games.map((game) => <GameItem game={game} />);
+  const gamesList = props.games.map((game) => <GameItem key={game.ID} game={game} />);
   
   return (
     <>

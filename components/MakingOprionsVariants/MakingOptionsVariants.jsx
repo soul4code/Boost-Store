@@ -1,7 +1,7 @@
 import MakingOptionsCheckboxList from "../MakingOptionsCheckboxList/MakingOptionsCheckboxList";
 import VariantItem from "./VariantItem";
 
-const MakingOprionsVariants = ({ list }) => {
+const MakingOptionsVariants = ({ list }) => {
 
 
   return (
@@ -15,4 +15,4 @@ const MakingOprionsVariants = ({ list }) => {
   );
 };
 
-export default MakingOprionsVariants;
+export default MakingOptionsVariants;

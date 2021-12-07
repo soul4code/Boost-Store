@@ -21,16 +21,15 @@ const CategoriesGradient = (props) => {
 
   if (categories) {
     if (props.categoriesList) {
-      categoriesList = categories.map((category) => (
-        <CategoryItem category={category} currentGame={props.currentGame} />
+      categoriesList = categories.map((category, idx) => (
+        <CategoryItem key={idx} category={category} currentGame={props.currentGame} />
       ));
     } else if (props.currentGame) {
-      categoriesList = categories.CATEGORIES.map((category) => (
-        <CategoryItem category={category} currentGame={props.currentGame} />
+      categoriesList = categories.CATEGORIES.map((category, idx) => (
+        <CategoryItem key={idx} category={category} currentGame={props.currentGame} />
       ));
     }
   }
-
   return (
     <>
       <div className="game__rank-list">

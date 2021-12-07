@@ -29,7 +29,7 @@ const InputDarkBlue = ({ defaultValue, action, currentValue, type }) => {
         type="text"
         value={value}
         onChange={(e) => getValue(e.target.value)}
-      ></input>
+        />
     </div>
   );
 };

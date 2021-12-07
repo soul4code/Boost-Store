@@ -6,9 +6,12 @@ const OrderStage2 = (props) => {
   return (
     <>
       <div className="block-bg stage__wrapper">
-        
         <div className="stage__top">
-          <OrderStages width={`71.5`} />
+          <OrderStages
+            currentStage={props.currentStage}
+            width={`71.5`}
+            firstStageLink={props.firstStageLink}
+          />
         </div>
 
         <div className="block-bg stage__wrapper">
@@ -97,7 +100,7 @@ const OrderStage2 = (props) => {
                     </select> */}
                   </div>
                   <div className="stage2__form-item select__form-wrapper">
-                  <SelectTransparent />
+                    <SelectTransparent />
 
                     {/* <select className="select__form">
                       <option

@@ -5,7 +5,7 @@ const MakingProgressbarDesc = ({list}) => {
     let listItems
     if(list){
         listItems = list.map(i=>(
-            <ProgressbarItem text={i.TEXT} id={i.ID}/>
+            <ProgressbarItem key={i.ID} text={i.TEXT} id={i.ID}/>
         ))
     }
 

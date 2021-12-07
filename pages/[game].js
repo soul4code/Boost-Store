@@ -78,7 +78,6 @@ export async function getStaticProps({ params }) {
 const mapStateToProps = (state) => ({
   currentGame: state.games.currentGame,
   filter: state.games.filter,
-  currentGame: state.games.filter,
   currentGameServices: state.games.currentGameServices,
 });
 const mapDispatchToProps = {
