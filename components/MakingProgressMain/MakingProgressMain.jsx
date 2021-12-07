@@ -1,82 +1,59 @@
-import Nouislider from "nouislider-react";
-import ArrRightLargeFat from "../icons/ArrRightLargeFat";
-import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
 import SelectedRank from "../SelectedRank/SelectedRank";
-import Image from "next/image";
 import MakingProgressbar from "../MakingProgressbar/MakingProgressbar";
 import MakingArrs from "./MakingArrs";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const MakingProgressMain = (props) => {
-  console.log(props);
+  const [startValue, setStartValue] = useState(props.DEFAULT_VALUE_FIRST);
+  const [endValue, setEndValue] = useState(props.DEFAULT_VALUE_SECOND);
 
-  // const [currentFirst, setCurrentFirst] = useState(props.DEFAULT_VALUE_FIRS);
-  // const [currentSecond, setCurrentSecond] = useState(props.DEFAULT_VALUE_SECOND);
-
-  // const currentTracking = (e) => {
-  //   setCurrentFirst(+e[0]);
-  //   setCurrentSecond(+e[1]);
-  //   console.log(e)
-  // };
-
-  // const [basePrice, setBasePrice] = useState()
-
-  // useEffect(() => {
-  //   setBasePrice(
-  //     (Math.round(currentSecond / 100)-Math.round(currentFirst / 100))*props.PRICE
-  //   )
-  // }, [currentFirst, currentSecond]);
-
-  const [indexCurrentSelect, setIndexCurrentSelect] = useState(0);
-  const [indexDesiredSelect, setIndexDesiredSelect] = useState(0);
-
-  const getCurrentSelect = (index) => {
-    setIndexCurrentSelect(index);
-    console.log(index);
-  };
-
-  const getDesiredSelect = (index) => {
-    setIndexDesiredSelect(index);
-  };
-
-  const [price, setPrice] = useState(0);
+  const onChangeByProgressBar = useCallback(
+    (start, end) => {
+      console.log("onChangeByProgressBar");
+      setStartValue(start);
+      setEndValue(end);
+    },
+    [setStartValue, setEndValue]
+  );
 
   useEffect(() => {
-    let price = (indexDesiredSelect - indexCurrentSelect) * +props.PRICE;
+    props.getBasePrice([startValue, endValue]);
+  }, [startValue, endValue, props.getBasePrice]);
 
-    if (price < 0) {
-      price = 0;
-    }
-    setPrice(price);
-    props.getBasePriceSelect(price);
-  }, [indexCurrentSelect, indexDesiredSelect]);
+  console.log(endValue);
 
   return (
     <div className="matchmaking__progress">
       <div className="matchmaking__progress-block">
         <SelectedRank
           positionList={props.POSITION_LIST}
+          value={startValue}
           title={"Сurrent rank"}
-          action={getCurrentSelect}
+          onChange={setStartValue}
         />
 
         <MakingArrs />
 
         <SelectedRank
           positionList={props.POSITION_LIST}
+          value={endValue}
           title={"Desired rank"}
           isReverse={true}
-          action={getDesiredSelect}
+          onChange={(val) => {
+            console.log(val);
+            setEndValue(val);
+          }}
         />
       </div>
       <MakingProgressbar
         list={props.POSITION_LIST}
-        minStartValue={props.DEFAULT_VALUE_FIRST}
-        maxStartValue={props.DEFAULT_VALUE_SECOND}
-        density={props.DENSITY}
+        startValue={startValue}
+        endValue={endValue}
+        maxValue={props.MAX_VALUE}
+        minValue={props.MIN_VALUE}
         step={props.STEP}
         price={props.PRICE}
-        action={props.getBasePrice}
+        onChange={onChangeByProgressBar}
       />
     </div>
   );

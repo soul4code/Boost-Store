@@ -20,18 +20,18 @@ const MakingProgress = (props) => {
     setDays(num * days);
   };
 
-  const getBasePriceSelect = (price) =>{
-    setBasePrice(price)
-  }
+  const getBasePriceSelect = (price) => {
+    setBasePrice(price);
+  };
 
-  useEffect(()=>{
-    const checkBasePriceIsNaN =(()=>{
-      if(isNaN(basePrice)){
-        setBasePrice(0)
-        console.log(1)
+  useEffect(() => {
+    const checkBasePriceIsNaN = (() => {
+      if (isNaN(basePrice)) {
+        setBasePrice(0);
+        console.log(1);
       }
-    })()
-  },[basePrice])
+    })();
+  }, [basePrice]);
 
   const [extraOptionsList, setExtraOptionsList] = useState([]);
 
@@ -85,7 +85,11 @@ const MakingProgress = (props) => {
 
   return (
     <>
-      <MakingProgressMain {...props} getBasePrice={getBasePrice} getBasePriceSelect={getBasePriceSelect}/>
+      <MakingProgressMain
+        {...props}
+        getBasePrice={getBasePrice}
+        getBasePriceSelect={getBasePriceSelect}
+      />
       <MakingProgressFooter
         description={props.DESCRIPTION}
         isExtraOptions={props.IS_EXTRA_OPTIONS}

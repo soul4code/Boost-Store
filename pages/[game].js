@@ -14,15 +14,14 @@ import {
 import { useEffect } from "react";
 
 const Game = (props) => {
-  let router =useRouter()
+  let router = useRouter();
 
   useEffect(() => {
-    const editFilterAfterEditGame = (()=>{
+    const editFilterAfterEditGame = (() => {
       props.setFilter([]);
-    })()
+    })();
   }, [router.query.game]);
 
-  
   props.setCurrentGameServices(props.data);
 
   let cardsList;

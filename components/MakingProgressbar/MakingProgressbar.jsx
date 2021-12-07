@@ -4,44 +4,42 @@ import MakingProgressbarDesc from "./MakingProgressbarDesc";
 
 const MakingProgressbar = ({
   list,
-  minStartValue,
-  maxStartValue,
-  density,
-  price,
-  action,
+  startValue,
+  endValue,
+  maxValue,
+  minValue,
+  step,
+  onChange,
 }) => {
-  const [maxRange, setMaxRange] = useState(100);
+  const [ref, setRef] = useState();
+  const [value] = useState([startValue, endValue]);
 
   useEffect(() => {
-    setMaxRange(list.length * density);
-  }, [list, density]);
-
-
-  const [currentFirst, setCurrentFirst] = useState(minStartValue);
-  const [currentSecond, setCurrentSecond] = useState(maxStartValue);
-
-  // const currentTracking = (e) => {
-  //   setCurrentFirst(+e[0]);
-  //   setCurrentSecond(+e[1]);
-  // };
-
-  // const [basePrice, setBasePrice] = useState()
-
-  // useEffect(() => {
-  //   setBasePrice(
-  //     (Math.round(currentSecond / 100)-Math.round(currentFirst / 100))*price
-  //   )
-  // }, [currentFirst, currentSecond]);
+    console.log(ref);
+    if (!ref?.noUiSlider) {
+      return;
+    }
+    const [sliderStartValue, sliderEndValue] = ref.noUiSlider.get(true);
+    if (+startValue !== +sliderStartValue || +endValue !== +sliderEndValue) {
+      ref.noUiSlider.set([startValue, endValue]);
+    }
+  }, [startValue, endValue, ref]);
 
   return (
     <>
       <Nouislider
         id={`matchmaking__progressbar`}
-        range={{ min: 0, max: maxRange }}
-        start={[minStartValue, maxStartValue]}
+        instanceRef={(instance) => {
+          if (instance && !ref) {
+            setRef(instance);
+          }
+        }}
+        range={{ min: minValue, max: maxValue }}
+        start={value}
+        step={1}
         connect
         onUpdate={(e) => {
-          action(e);
+          onChange(...e);
         }}
       />
       <MakingProgressbarDesc list={list} />

@@ -1,34 +1,40 @@
 import { useEffect, useState } from "react";
-import SelectDarkBlue from "../common/SelectDarkBlue/SelectDarkBlue";
+import { SelectedRankInput } from "./SelectedRankInput";
 
-const SelectedRank = ({positionList, title, isReverse, action}) => {
+const SelectedRank = ({
+  positionList,
+  title,
+  isReverse,
+  onChange,
+  value,
+  defaultValue,
+}) => {
   const [selectRank, setSelectRank] = useState();
 
-  const getSelectRank = (id,index) => {
-    action(index);
-    setSelectRank(id)
-  };
-
   const [imgCurrentRank, setImgCurrentRank] = useState();
+
   useEffect(() => {
-    const toggleImg = () => {
-      let currentRankData = positionList.filter(
-        (rank) => rank.ID === selectRank
-      );
-      if (currentRankData.length > 0) {
-        setImgCurrentRank(currentRankData[0].IMG);
-      }
-    };
-    toggleImg();
-  }, [selectRank]);
+    const position = positionList.find(
+      ({ MIN, MAX }) => +value >= MIN && +value <= MAX
+    );
+    if (position) {
+      setSelectRank(position.ID);
+    }
+  }, [value, setSelectRank, positionList]);
+
+  useEffect(() => {
+    let currentRankData = positionList.find((rank) => rank.ID === selectRank);
+    if (currentRankData) {
+      setImgCurrentRank(currentRankData.IMG);
+    }
+  }, [selectRank, positionList, setImgCurrentRank]);
 
   if (isReverse) {
     return (
-      <div className={'matchmaking__progress-block-wrapper'}>
-        <SelectDarkBlue
-          list={positionList}
-          defaultValue={positionList[0].TEXT}
-          doSelect={getSelectRank}
+      <div className={"matchmaking__progress-block-wrapper"}>
+        <SelectedRankInput
+          value={value === undefined ? +defaultValue : +value}
+          onChange={onChange}
         />
         <div className="matchmaking__progress-block-box subtitle__page">
           <p>{title}</p>
@@ -40,7 +46,7 @@ const SelectedRank = ({positionList, title, isReverse, action}) => {
     );
   } else {
     return (
-        <div className={'matchmaking__progress-block-wrapper'}>
+      <div className={"matchmaking__progress-block-wrapper"}>
         <div className="matchmaking__progress-block-box subtitle__page">
           <p>{title}</p>
           <div className="matchmaking__progress-rank-img">
@@ -48,10 +54,9 @@ const SelectedRank = ({positionList, title, isReverse, action}) => {
           </div>
         </div>
 
-        <SelectDarkBlue
-          list={positionList}
-          defaultValue={positionList[0].TEXT}
-          doSelect={getSelectRank}
+        <SelectedRankInput
+          value={value === undefined ? +defaultValue : +value}
+          onChange={onChange}
         />
       </div>
     );
