@@ -1,5 +1,22 @@
 import { useEffect, useState } from "react";
 import { SelectedRankInput } from "./SelectedRankInput";
+import styled from "styled-components";
+
+const RankDescription = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+`;
+
+const RatingDescriptionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+`;
 
 const SelectedRank = ({
   positionList,
@@ -31,34 +48,38 @@ const SelectedRank = ({
 
   if (isReverse) {
     return (
-      <div className={"matchmaking__progress-block-wrapper"}>
+      <RatingDescriptionWrapper
+        className={"matchmaking__progress-block-wrapper-reverse"}
+      >
+        <RankDescription className="matchmaking__progress-block-box subtitle__page">
+          <p>{title}</p>
+          <div className="matchmaking__progress-rank-img">
+            <img src={imgCurrentRank} alt="" />
+          </div>
+        </RankDescription>
         <SelectedRankInput
           value={value === undefined ? +defaultValue : +value}
           onChange={onChange}
         />
-        <div className="matchmaking__progress-block-box subtitle__page">
-          <p>{title}</p>
-          <div className="matchmaking__progress-rank-img">
-            <img src={imgCurrentRank} alt="" />
-          </div>
-        </div>
-      </div>
+      </RatingDescriptionWrapper>
     );
   } else {
     return (
-      <div className={"matchmaking__progress-block-wrapper"}>
-        <div className="matchmaking__progress-block-box subtitle__page">
+      <RatingDescriptionWrapper
+        className={"matchmaking__progress-block-wrapper"}
+      >
+        <RankDescription className="matchmaking__progress-block-box subtitle__page">
           <p>{title}</p>
           <div className="matchmaking__progress-rank-img">
             <img src={imgCurrentRank} alt="" />
           </div>
-        </div>
+        </RankDescription>
 
         <SelectedRankInput
           value={value === undefined ? +defaultValue : +value}
           onChange={onChange}
         />
-      </div>
+      </RatingDescriptionWrapper>
     );
   }
 };

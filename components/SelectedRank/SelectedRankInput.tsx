@@ -17,6 +17,10 @@ const StyledInput = styled.input`
   }
 `;
 
+const InputWrapper = styled.div`
+  max-width: 120px;
+`;
+
 export const SelectedRankInput: React.FunctionComponent<
   SelectedRankInputProps
 > = (props) => {
@@ -46,7 +50,7 @@ export const SelectedRankInput: React.FunctionComponent<
   );
 
   return (
-    <div className={"input__darkBlue-box"}>
+    <InputWrapper className={"input__darkBlue-box"}>
       <StyledInput
         type="number"
         className={"input__darkBlue"}
@@ -55,6 +59,6 @@ export const SelectedRankInput: React.FunctionComponent<
         onChange={onInputChange}
         onKeyPress={onInputKeyPress}
       />
-    </div>
+    </InputWrapper>
   );
 };

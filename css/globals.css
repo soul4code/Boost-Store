@@ -3281,10 +3281,18 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  flex: 1;
 }
 
 .matchmaking__progress-block-wrapper-reverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   flex-direction: row-reverse;
+  flex: 1;
 }
 
 .matchmaking__progress-block-wrapper>div+div {
@@ -10479,7 +10487,8 @@ body {
     margin-top: 28px;
   }
 
-  .matchmaking__progress-block-wrapper {
+  .matchmaking__progress-block-wrapper,
+  .matchmaking__progress-block-wrapper-reverse {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
