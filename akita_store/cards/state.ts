@@ -1,8 +1,15 @@
-import { createEntityQuery, createEntityStore } from "@datorama/akita";
+import {
+  createEntityQuery,
+  createEntityStore,
+  EntityState,
+} from "@datorama/akita";
 import { Card } from "./model";
 
-export const cardsStore = createEntityStore<Card>({}, { name: "cards" });
+export const cardsStore = createEntityStore<EntityState<Card>>(
+  {},
+  { name: "cards" }
+);
 
-export const cardsQuery = createEntityQuery<Card>(cardsStore);
+export const cardsQuery = createEntityQuery<EntityState<Card>>(cardsStore);
 
 export const cards$ = cardsQuery.selectAll();

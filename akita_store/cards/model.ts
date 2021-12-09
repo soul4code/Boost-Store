@@ -1,4 +1,5 @@
 import { ID } from "@datorama/akita";
+import { CardTemplateValue } from "../../configs/types";
 
 export interface CardExtraOption {
   ID: ID;
@@ -34,7 +35,7 @@ export interface Card {
   NAME: string;
   POSITION_LIST: Position[];
   PRICE: string;
-  PROPERTY_CARD_TEMPLATE_VALUE: string;
+  PROPERTY_CARD_TEMPLATE_VALUE: CardTemplateValue;
   SIGN: string;
   STEP: number;
   TITLE: string;

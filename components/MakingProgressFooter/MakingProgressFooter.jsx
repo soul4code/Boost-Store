@@ -15,7 +15,6 @@ const MakingProgressFooter = (props) => {
   const onClickBuyNow = () => {
     orderService.setOrderStage("2");
   };
-
   return (
     <div className="matchmaking__bottom-inner">
       <div className="matchmaking__options">
@@ -31,7 +30,7 @@ const MakingProgressFooter = (props) => {
           <p className="matchmaking__info-text">{props.description}</p>
         </div>
         <div className="matchmaking__info-right">
-          <Enum isLarge={true} num={props.price} />
+          <Enum isLarge={true} num={props.price} measure={props.currencySign} />
           <Enum title={"Deadline"} num={props.days} measure={"days"} />
 
           <div className="matchmaking__info-btns">

@@ -4,25 +4,38 @@ import MmrTemplate from "../../components/card-templates/mmr-template";
 import WotTemplate from "../../components/card-templates/wot-template";
 import { useRouter } from "next/router";
 import calculator from "../../calculator/main";
-import { order$, orderService } from "../../akita_store/order";
+import {
+  order$,
+  orderPriceCurrencyAware$,
+  orderService,
+} from "../../akita_store/order";
 import { useObservableState } from "observable-hooks";
 import { useEffect } from "react";
+import { CardTemplateValue } from "../../configs/types";
+import { currentCurrency$ } from "../../akita_store/currencies";
 
 const Card = (props) => {
   const router = useRouter();
 
   const calcData = calculator(props.PROPERTY_CARD_TEMPLATE_VALUE, props.CODE);
 
-  const orderProps = useObservableState(order$);
+  const order = useObservableState(order$);
+
+  const orderPrice = useObservableState(orderPriceCurrencyAware$);
+
+  const changePrice = orderService.setOrderPrice;
+
+  const changeOrderProps = orderService.setOrderProps;
+
+  const currentCurrency = useObservableState(currentCurrency$);
 
   useEffect(() => {
-    orderService.setOrderGame(router.query.game);
-    orderService.setOrderCode(props.CODE);
-  }, [props.CODE]);
+    orderService.setOrderFromCard(router.query.game, props.CODE, props);
+  }, [props, router]);
 
   const renderCardTemplate = () => {
     switch (props.PROPERTY_CARD_TEMPLATE_VALUE) {
-      case "options":
+      case CardTemplateValue.OPTIONS:
         return (
           <OptionsTemplate
             name={props.NAME}
@@ -31,17 +44,20 @@ const Card = (props) => {
             calcData={calcData}
           />
         );
-      case "progress":
+      case CardTemplateValue.PROGRESS:
         return (
           <MmrTemplate
             name={props.NAME}
             currentGame={router.query.game}
             {...props}
             calcData={calcData}
-            orderProps={orderProps}
+            order={{ ...order, price: orderPrice }}
+            currency={currentCurrency}
+            onChangePrice={changePrice}
+            onChangeOrderProps={changeOrderProps}
           />
         );
-      case "wot":
+      case CardTemplateValue.WOT:
         return (
           <WotTemplate
             name={props.NAME}
@@ -161,7 +177,7 @@ export async function getServerSideProps({ params }) {
         INFO: "выаываываыва",
         IS_PRICE: true,
         SIGN: "-",
-        PRICE: "40.00 RUB",
+        PRICE: 40.0,
         MEASURE: "$",
       },
     ],

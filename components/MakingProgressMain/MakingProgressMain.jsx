@@ -1,9 +1,10 @@
 import SelectedRank from "../SelectedRank/SelectedRank";
 import MakingProgressbar from "../MakingProgressbar/MakingProgressbar";
 import MakingArrs from "./MakingArrs";
-import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { DEVICE } from "../../configs/breakpoints";
+import debounce from "lodash.debounce";
+import { useMemo } from "react";
 
 const MatchMakingProgressWrapper = styled.div`
   .noUi-handle {
@@ -44,45 +45,51 @@ const MatchMakingProgressWrapper = styled.div`
 `;
 
 const MakingProgressMain = (props) => {
-  const [startValue, setStartValue] = useState(props.DEFAULT_VALUE_FIRST);
-  const [endValue, setEndValue] = useState(props.DEFAULT_VALUE_SECOND);
+  const orderProps = props.order?.orderProps;
+  const changeByProgressBarHandler = (start, end) => {
+    props.onChangeOrderProps({ start, end });
+  };
 
-  const onChangeByProgressBar = useCallback(
-    (start, end) => {
-      setStartValue(start);
-      setEndValue(end);
-    },
-    [setStartValue, setEndValue]
+  const onChangeByProgressBar = useMemo(
+    () => debounce(changeByProgressBarHandler, 100),
+    [props.onChangeOrderProps]
   );
 
-  useEffect(() => {
-    props.getBasePrice([startValue, endValue]);
-  }, [startValue, endValue, props.getBasePrice]);
+  const scalePositionsList = useMemo(() => {
+    if (props.IS_POSITION_LIST) {
+      return props.POSITION_LIST;
+    }
+    const positionsCount = (props.MAX_VALUE - props.MIN_VALUE) / props.DENSITY;
+    return [...Array(positionsCount + 1).keys()].map((i) => ({
+      ID: i,
+      TEXT: `${i * props.DENSITY + props.MIN_VALUE}`,
+    }));
+  }, [props.IS_POSITION_LIST, props.POSITION_LIST]);
 
   return (
     <MatchMakingProgressWrapper className="matchmaking__progress">
       <div className="matchmaking__progress-block">
         <SelectedRank
           positionList={props.POSITION_LIST}
-          value={startValue}
+          value={orderProps?.start}
           title={"Сurrent rank"}
-          onChange={setStartValue}
+          onChange={(start) => props.onChangeOrderProps({ start })}
         />
 
         <MakingArrs />
 
         <SelectedRank
           positionList={props.POSITION_LIST}
-          value={endValue}
+          value={orderProps?.end}
           title={"Desired rank"}
           isReverse={true}
-          onChange={setEndValue}
+          onChange={(end) => props.onChangeOrderProps({ end })}
         />
       </div>
       <MakingProgressbar
-        list={props.POSITION_LIST}
-        startValue={startValue}
-        endValue={endValue}
+        list={scalePositionsList}
+        startValue={orderProps?.start}
+        endValue={orderProps?.end}
         maxValue={props.MAX_VALUE}
         minValue={props.MIN_VALUE}
         step={props.STEP}
