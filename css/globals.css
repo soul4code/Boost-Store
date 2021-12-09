@@ -9486,7 +9486,7 @@ body {
   }
 }
 
-@media (max-width: 969px) {
+@media (max-width: 1024px) {
   .btn-call {
     padding: 8px 18px 9px 19px;
   }
@@ -10318,7 +10318,7 @@ body {
   }
 }
 
-@media (max-width: 749px) {
+@media (max-width: 768px) {
   .header {
     display: none;
   }

@@ -8,14 +8,12 @@ const MakingProgressbar = ({
   endValue,
   maxValue,
   minValue,
-  step,
   onChange,
 }) => {
   const [ref, setRef] = useState();
   const [value] = useState([startValue, endValue]);
 
   useEffect(() => {
-    console.log(ref);
     if (!ref?.noUiSlider) {
       return;
     }

@@ -2,6 +2,46 @@ import SelectedRank from "../SelectedRank/SelectedRank";
 import MakingProgressbar from "../MakingProgressbar/MakingProgressbar";
 import MakingArrs from "./MakingArrs";
 import { useCallback, useEffect, useState } from "react";
+import styled from "styled-components";
+import { DEVICE } from "../../configs/breakpoints";
+
+const MatchMakingProgressWrapper = styled.div`
+  .noUi-handle {
+    &.noUi-handle-lower {
+      right: -22px;
+    }
+    &.noUi-handle-upper {
+      right: 0;
+    }
+  }
+
+  @media ${DEVICE.mobileL} {
+    .noUi-handle {
+      &.noUi-handle-lower {
+        right: -24px;
+      }
+      &.noUi-handle-upper {
+        right: -6px;
+      }
+    }
+  }
+
+  @media ${DEVICE.tablet} {
+    .noUi-handle {
+      &.noUi-handle-upper {
+        right: -17px;
+      }
+    }
+  }
+
+  @media ${DEVICE.laptop} {
+    .noUi-handle {
+      &.noUi-handle-lower {
+        right: -53px;
+      }
+    }
+  }
+`;
 
 const MakingProgressMain = (props) => {
   const [startValue, setStartValue] = useState(props.DEFAULT_VALUE_FIRST);
@@ -9,7 +49,6 @@ const MakingProgressMain = (props) => {
 
   const onChangeByProgressBar = useCallback(
     (start, end) => {
-      console.log("onChangeByProgressBar");
       setStartValue(start);
       setEndValue(end);
     },
@@ -20,10 +59,8 @@ const MakingProgressMain = (props) => {
     props.getBasePrice([startValue, endValue]);
   }, [startValue, endValue, props.getBasePrice]);
 
-  console.log(endValue);
-
   return (
-    <div className="matchmaking__progress">
+    <MatchMakingProgressWrapper className="matchmaking__progress">
       <div className="matchmaking__progress-block">
         <SelectedRank
           positionList={props.POSITION_LIST}
@@ -39,10 +76,7 @@ const MakingProgressMain = (props) => {
           value={endValue}
           title={"Desired rank"}
           isReverse={true}
-          onChange={(val) => {
-            console.log(val);
-            setEndValue(val);
-          }}
+          onChange={setEndValue}
         />
       </div>
       <MakingProgressbar
@@ -55,7 +89,7 @@ const MakingProgressMain = (props) => {
         price={props.PRICE}
         onChange={onChangeByProgressBar}
       />
-    </div>
+    </MatchMakingProgressWrapper>
   );
 };
 

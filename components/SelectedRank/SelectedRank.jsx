@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { SelectedRankInput } from "./SelectedRankInput";
 import styled from "styled-components";
+import { DEVICE } from "../../configs/breakpoints";
 
 const RankDescription = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   align-content: center;
+  .matchmaking__progress-rank-img {
+    margin-bottom: 10px;
+  }
+
+  @media ${DEVICE.mobileS} {
+    flex-direction: column;
+    .input__darkBlue-box {
+      margin-left: 0;
+    }
+  }
+
+  @media ${DEVICE.laptop} {
+    flex-direction: row;
+  }
 `;
 
-const RatingDescriptionWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-`;
+const RatingDescriptionWrapper = styled(RankDescription)``;
 
 const SelectedRank = ({
   positionList,
