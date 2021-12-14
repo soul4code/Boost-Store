@@ -2,6 +2,8 @@ import { orderStore } from "./state";
 import { Card } from "../cards";
 import { getOrderFromCard } from "./generators";
 import { getOrderCalculator } from "./calculators/registry";
+import * as api from "./api";
+import { ID } from "@datorama/akita";
 
 class OrderService {
   setOrderFromCard(game: string, code: string, card: Card) {
@@ -14,6 +16,10 @@ class OrderService {
 
   setOrderStage(stage: string): void {
     orderStore.update({ stage });
+  }
+
+  addToCart(data: { NAME: string; PRICE: string; id: ID }): Promise<void> {
+    return api.addToCart(data);
   }
 
   setOrderPrice(price: number): void {

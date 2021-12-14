@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ButtonCardTemplateColor from "../common/ButtonCardTemplateColor";
 import Enum from "../common/Enum";
 import ExtraOptions from "../ExtraOptions/ExtraOptions";
 import OrderStages from "../OrderStages";
-import { orderService } from "../../akita_store/order";
+import { orderService, orderStore } from "../../akita_store/order";
 
 const MakingProgressFooter = (props) => {
   const [checkedOptions, setCheckedOptions] = useState([]);
@@ -12,9 +12,18 @@ const MakingProgressFooter = (props) => {
     setCheckedOptions((checkedOptions) => [...checkedOptions, e]);
   };
 
-  const onClickBuyNow = () => {
-    orderService.setOrderStage("2");
-  };
+  const onClickBuyNow = useCallback(() => {
+    const { name: NAME, id: ID, price: PRICE } = props;
+    orderService.addToCart({ NAME, ID, PRICE }).then(() => {
+      void orderStore.update({ stage: "2" });
+    });
+  }, [props]);
+
+  const onClickAddToCard = useCallback(() => {
+    const { name: NAME, id: ID, price: PRICE } = props;
+    void orderService.addToCart({ NAME, ID, PRICE });
+  }, [props]);
+
   return (
     <div className="matchmaking__bottom-inner">
       <div className="matchmaking__options">
@@ -35,7 +44,10 @@ const MakingProgressFooter = (props) => {
 
           <div className="matchmaking__info-btns">
             <ButtonCardTemplateColor action={onClickBuyNow} />
-            <button className="button-transp matchmaking__info-btn">
+            <button
+              onClick={onClickAddToCard}
+              className="button-transp matchmaking__info-btn"
+            >
               <p>add to cart</p>
             </button>
           </div>

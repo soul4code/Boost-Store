@@ -24,7 +24,7 @@ const InputWrapper = styled.div`
 export const SelectedRankInput: React.FunctionComponent<
   SelectedRankInputProps
 > = (props) => {
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(props.value || 0);
 
   useEffect(() => {
     setValue(props.value);

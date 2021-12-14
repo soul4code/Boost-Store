@@ -18,6 +18,8 @@ const MakingProgress = (props) => {
         isExtraOptions={props.IS_EXTRA_OPTIONS}
         extraOptions={props.EXTRA_OPTIONS}
         price={props.order?.price}
+        name={props.NAME}
+        id={props.ID}
         days={props.order?.days}
         currencySign={props.currency?.sign}
         getExtraOptionsList={getExtraOptionsList}
