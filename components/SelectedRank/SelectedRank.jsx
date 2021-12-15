@@ -11,12 +11,9 @@ const RankDescription = styled.div`
   .matchmaking__progress-rank-img {
     margin-bottom: 10px;
   }
-
-  @media ${DEVICE.mobileS} {
-    flex-direction: column;
-    .input__darkBlue-box {
-      margin-left: 0;
-    }
+  flex-direction: column;
+  .input__darkBlue-box {
+    margin-left: 0;
   }
 
   @media ${DEVICE.laptop} {

@@ -6,22 +6,28 @@ import OrderStages from "../OrderStages";
 import { orderService, orderStore } from "../../akita_store/order";
 
 const MakingProgressFooter = (props) => {
-  const [checkedOptions, setCheckedOptions] = useState([]);
-
-  const getCheckedOptions = (e) => {
-    setCheckedOptions((checkedOptions) => [...checkedOptions, e]);
-  };
-
   const onClickBuyNow = useCallback(() => {
-    const { name: NAME, id: ID, price: PRICE } = props;
-    orderService.addToCart({ NAME, ID, PRICE }).then(() => {
-      void orderStore.update({ stage: "2" });
-    });
+    const { name: NAME, price: PRICE, currency } = props;
+    orderService
+      .addToCart({
+        NAME,
+        PRICE,
+        EMAIL: "dummy@example.com",
+        CURRENCY: currency.code,
+      })
+      .then(() => {
+        void orderStore.update({ stage: "2" });
+      });
   }, [props]);
 
   const onClickAddToCard = useCallback(() => {
-    const { name: NAME, id: ID, price: PRICE } = props;
-    void orderService.addToCart({ NAME, ID, PRICE });
+    const { name: NAME, price: PRICE, currency } = props;
+    void orderService.addToCart({
+      NAME,
+      PRICE,
+      EMAIL: "dummy@example.com",
+      CURRENCY: currency.code,
+    });
   }, [props]);
 
   return (
@@ -30,7 +36,8 @@ const MakingProgressFooter = (props) => {
         <ExtraOptions
           isExtraOptions={props.isExtraOptions}
           extraOptions={props.extraOptions}
-          getCheckedOptions={props.getExtraOptionsList}
+          usedOptions={props.usedOptions}
+          onChangeOptions={props.onChangeOptions}
         />
       </div>
       <div className="matchmaking__info">
@@ -39,7 +46,11 @@ const MakingProgressFooter = (props) => {
           <p className="matchmaking__info-text">{props.description}</p>
         </div>
         <div className="matchmaking__info-right">
-          <Enum isLarge={true} num={props.price} measure={props.currencySign} />
+          <Enum
+            isLarge={true}
+            num={props.price}
+            measure={props.currency?.sign}
+          />
           <Enum title={"Deadline"} num={props.days} measure={"days"} />
 
           <div className="matchmaking__info-btns">

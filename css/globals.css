@@ -9768,7 +9768,7 @@ body {
   }
 
   .matchmaking__bottom-inner {
-    margin-top: 60px;
+    margin-top: 85px;
   }
 
   .matchmaking__info {
@@ -10534,12 +10534,7 @@ body {
 
   .noUi-handle:after,
   .noUi-handle:before {
-    left: -23px;
-  }
-
-  .noUi-handle:after,
-  .noUi-handle:before {
-    left: -26px;
+    left: -24px;
     top: 10%;
   }
 
@@ -10552,7 +10547,7 @@ body {
   }
 
   .matchmaking__bottom-inner {
-    margin-top: 40px;
+    margin-top: 80px;
   }
 
   .matchmaking__options-title {
@@ -11154,7 +11149,7 @@ body {
   }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 425px) {
   .footer__game-catalog {
     display: -webkit-box;
     display: -ms-flexbox;

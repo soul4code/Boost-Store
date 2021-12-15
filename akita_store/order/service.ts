@@ -18,12 +18,28 @@ class OrderService {
     orderStore.update({ stage });
   }
 
-  addToCart(data: { NAME: string; PRICE: string; id: ID }): Promise<void> {
-    return api.addToCart(data);
+  addToCart(data: {
+    NAME: string;
+    EMAIL: string;
+    PRICE: string;
+    CURRENCY: string;
+  }): Promise<void> {
+    return api
+      .addToCart(data)
+      .then(({ ORDER_ID: id }) => orderStore.update({ id }));
   }
 
   setOrderPrice(price: number): void {
     orderStore.update({ price });
+  }
+
+  setOrderOptions(options: any): void {
+    const optionsPrice = Object.values(options).reduce(
+      (prev, curr: any) =>
+        prev + (curr.sign === "-" ? curr.price * -1 : curr.price),
+      0
+    ) as number;
+    orderStore.update({ optionsPrice, options });
   }
 
   setOrderProps(newProps: Record<string, unknown>): void {
@@ -40,7 +56,7 @@ class OrderService {
     orderStore.update((props) => ({
       days,
       price,
-      orderProps: { ...props, ...newProps },
+      orderProps: { ...props.orderProps, ...newProps },
     }));
   }
 }

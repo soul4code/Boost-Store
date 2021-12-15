@@ -24,13 +24,16 @@ const Card = (props) => {
   const orderPrice = useObservableState(orderPriceCurrencyAware$);
 
   const changePrice = orderService.setOrderPrice;
+  const changeOptions = orderService.setOrderOptions;
 
   const changeOrderProps = orderService.setOrderProps;
 
   const currentCurrency = useObservableState(currentCurrency$);
 
   useEffect(() => {
-    orderService.setOrderFromCard(router.query.game, props.CODE, props);
+    if (!order?.id) {
+      orderService.setOrderFromCard(router.query.game, props.CODE, props);
+    }
   }, [props, router]);
 
   const renderCardTemplate = () => {
@@ -54,6 +57,7 @@ const Card = (props) => {
             order={{ ...order, price: orderPrice }}
             currency={currentCurrency}
             onChangePrice={changePrice}
+            onChangeOptions={changeOptions}
             onChangeOrderProps={changeOrderProps}
           />
         );
