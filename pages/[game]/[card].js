@@ -3,6 +3,7 @@ import OptionsTemplate from "../../components/card-templates/options-template";
 import MmrTemplate from "../../components/card-templates/mmr-template";
 import WotTemplate from "../../components/card-templates/wot-template";
 import { useRouter } from "next/router";
+import { first, tap } from "rxjs/operators";
 import calculator from "../../calculator/main";
 import {
   order$,
@@ -28,13 +29,13 @@ const Card = (props) => {
 
   const changeOrderProps = orderService.setOrderProps;
 
+  const setOrderFromCard = orderService.setOrderFromCard;
+
   const currentCurrency = useObservableState(currentCurrency$);
 
   useEffect(() => {
-    if (!order?.id) {
-      orderService.setOrderFromCard(router.query.game, props.CODE, props);
-    }
-  }, [props, router]);
+    setOrderFromCard(router.query.game, props.CODE, props);
+  }, [props, router, setOrderFromCard]);
 
   const renderCardTemplate = () => {
     switch (props.PROPERTY_CARD_TEMPLATE_VALUE) {

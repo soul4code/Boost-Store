@@ -33,12 +33,14 @@ const MakingProgressFooter = (props) => {
   return (
     <div className="matchmaking__bottom-inner">
       <div className="matchmaking__options">
-        <ExtraOptions
-          isExtraOptions={props.isExtraOptions}
-          extraOptions={props.extraOptions}
-          usedOptions={props.usedOptions}
-          onChangeOptions={props.onChangeOptions}
-        />
+        {props.extraOptions && props.usedOptions && (
+          <ExtraOptions
+            isExtraOptions={props.isExtraOptions}
+            extraOptions={props.extraOptions}
+            usedOptions={props.usedOptions}
+            onChangeOptions={props.onChangeOptions}
+          />
+        )}
       </div>
       <div className="matchmaking__info">
         <div className="matchmaking__info-left">

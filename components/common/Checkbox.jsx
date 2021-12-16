@@ -1,3 +1,11 @@
+import styled from "styled-components";
+
+const CheckBoxWrapper = styled.label`
+  input[checked] + .checkbox-circle::after {
+    opacity: 1;
+  }
+`;
+
 const Checkbox = ({
   children,
   text,
@@ -5,12 +13,12 @@ const Checkbox = ({
   circle = false,
   id,
   index,
-  sign='+',
+  sign = "+",
   description = "",
   measure = "$",
   price,
+  checked = false,
 }) => {
-  
   const getData = (e) => {
     const data = {
       id,
@@ -18,20 +26,24 @@ const Checkbox = ({
       sign,
       measure,
       price,
-      checked: e.target.checked
+      checked: e.target.checked,
     };
-    action(data,index)
+    action(data, index);
   };
 
   return (
-    <label onChange={(e) => getData(e)}>
-      <input className="options-checkbox-input" type="checkbox" />
+    <CheckBoxWrapper onChange={(e) => getData(e)}>
+      <input
+        className="options-checkbox-input"
+        type="checkbox"
+        defaultChecked={checked}
+      />
       <span
         className={`checkbox-circle ${circle ? "checkbox-circle-circle" : ""}`}
-      ></span>
+      />
       <span className="checkbox-text">{text}</span>
       {children}
-    </label>
+    </CheckBoxWrapper>
   );
 };
 

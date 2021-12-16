@@ -3,10 +3,17 @@ import { Card } from "../cards";
 import { getOrderFromCard } from "./generators";
 import { getOrderCalculator } from "./calculators/registry";
 import * as api from "./api";
-import { ID } from "@datorama/akita";
 
 class OrderService {
   setOrderFromCard(game: string, code: string, card: Card) {
+    const currentOrder = orderStore.getValue();
+    if (
+      currentOrder.id &&
+      currentOrder.game === game &&
+      currentOrder.code === code
+    ) {
+      return;
+    }
     orderStore.update({
       game,
       code,

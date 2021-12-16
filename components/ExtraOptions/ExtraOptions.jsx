@@ -4,8 +4,6 @@ import PinInfo from "../common/PinInfo";
 import { useCallback, useMemo } from "react";
 
 const ExtraOptions = (props) => {
-  let optionsList;
-
   const onChangeOption = useCallback(
     (data) => {
       if (data.checked) {
@@ -19,27 +17,33 @@ const ExtraOptions = (props) => {
     [props.onChangeOptions, props.usedOptions]
   );
 
-  if (props.extraOptions) {
-    optionsList = props.extraOptions.map((o, index) => (
-      <Checkbox
-        children={
-          <>
-            <PinInfo description={o.INFO} />
-            <Benefit sign={o.SIGN} measure={o.MEASURE} price={o.PRICE} />
-          </>
-        }
-        key={o.ID}
-        index={index}
-        id={o.ID}
-        text={o.TITLE}
-        description={o.INFO}
-        sign={o.SIGN}
-        measure={o.MEASURE}
-        price={o.PRICE}
-        action={onChangeOption}
-      />
-    ));
-  }
+  const optionsList = useMemo(
+    () =>
+      props.extraOptions.map((o, index) => {
+        return (
+          <Checkbox
+            children={
+              <>
+                <PinInfo description={o.INFO} />
+                <Benefit sign={o.SIGN} measure={o.MEASURE} price={o.PRICE} />
+              </>
+            }
+            key={o.ID}
+            index={index}
+            id={o.ID}
+            text={o.TITLE}
+            description={o.INFO}
+            sign={o.SIGN}
+            measure={o.MEASURE}
+            price={o.PRICE}
+            checked={Object.keys(props.usedOptions).includes(o.ID.toString())}
+            action={onChangeOption}
+          />
+        );
+      }),
+    [onChangeOption, props.extraOptions, props.usedOptions]
+  );
+
   return (
     <>
       <div className="subtitle__page">Extra options</div>
