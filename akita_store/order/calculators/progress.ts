@@ -1,15 +1,47 @@
-export const calculateBasePrice = (
-  props: { start: number; end: number },
-  price
-) => {
-  let num = Math.round(+props.end / 100) - Math.round(+props.start / 100);
-  return num * price;
+const findIntersection = function (
+  start: number,
+  end: number,
+  boost_durations: { min: number; max: number; duration: number }[]
+) {
+  return boost_durations
+    .map((duration) => {
+      if (start > duration.max) {
+        return null;
+      }
+      let result = { start, end, duration: duration.duration };
+
+      if (start >= duration.min) {
+        result = { start, end, duration: duration.duration };
+        if (end > duration.max) {
+          result.end = duration.max;
+        }
+      } else if (start < duration.min && end <= duration.max) {
+        result = { start: duration.min, end, duration: duration.duration };
+      }
+      return result;
+    })
+    .filter((period) => period !== null);
+};
+
+export const calculateBasePrice = (days: number, dailyPrice: number) => {
+  return days * dailyPrice;
 };
 
 export const calculateBaseDays = (
-  props: { start: number; end: number },
-  days
+  boostProps: {
+    boost_durations: { min: number; max: number; duration: number }[];
+  },
+  props: { start: number; end: number }
 ) => {
-  let num = Math.round(+props.end / 100) - Math.round(+props.start / 100);
-  return num * days;
+  const periods = findIntersection(
+    props.start,
+    props.end,
+    boostProps.boost_durations
+  );
+  return Math.ceil(
+    periods.reduce(
+      (acc, current) => acc + (current.end - current.start) * current.duration,
+      0
+    )
+  );
 };

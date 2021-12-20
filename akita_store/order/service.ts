@@ -53,12 +53,14 @@ class OrderService {
     const order = orderStore.getValue();
     const calculatorService = getOrderCalculator(order.template);
     const days =
-      calculatorService?.calculateBaseDays(order.orderProps, order.baseDays) ||
-      order.days;
+      calculatorService?.calculateBaseDays(
+        { boost_durations: order.orderProps.boost_durations },
+        { ...order.orderProps }
+      ) || order.days;
     const price =
       calculatorService?.calculateBasePrice(
-        order.orderProps,
-        order.basePrice
+        days,
+        order.orderProps.dailyPrice
       ) || order.price;
     orderStore.update((props) => ({
       days,
